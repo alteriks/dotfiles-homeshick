@@ -1,4 +1,3 @@
-source /home/dajka_krzy_ext/.local/share/pearl/boot/vim/pearl.vim
 " TODO http://swiety-python.blogspot.com/2013/01/vim-jako-python-ide.html
 " Pathogen load
 filetype off
