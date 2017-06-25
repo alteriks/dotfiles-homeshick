@@ -1,0 +1,3 @@
+/home/kdajka	40
+/home/kdajka/.tmux/plugins/tmux-copycat	40
+/home/kdajka/.adobe	40
