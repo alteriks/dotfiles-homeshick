@@ -1,0 +1,1 @@
+KERNEL=="dock.1", ACTION=="change", RUN+="/root/Fujitsu_dock.sh >> /root/Fujitsu_dock.log"
