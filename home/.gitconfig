@@ -1,3 +1,7 @@
 [user]
-	email = alteriks@gmail.com
 	name = alteriks
+	email = alteriks@gmail.com
+[push]
+	default = simple
+[gitreview]
+	username = alteriks
