@@ -1,5 +1,3 @@
-export PEARL_ROOT=/home/dajka_krzy_ext/.local/share/pearl
-source /home/dajka_krzy_ext/.local/share/pearl/boot/sh/pearl.sh
 #setopt nocorrectall
 
 export QT_QPA_PLATFORMTHEME=qt5ct
