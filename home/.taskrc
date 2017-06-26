@@ -14,7 +14,7 @@
 data.location=~/.task
 
 # Color theme (uncomment one to use)
-include /usr/share/task/solarized-light-256.theme
+include /usr/share/task/solarized-dark-256.theme
 
 taskd.certificate=~/.task/keys/private.certificate.pem
 taskd.key=~/.task/keys/private.key.pem
