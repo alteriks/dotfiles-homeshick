@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/dajka_krzy_ext/git/puppet/modules/gc_profile/manifests/firewall/reef/gwother_chains'
-let g:netrw_dirhist_2='/home/dajka_krzy_ext/git/puppet/modules/gc_profile/manifests/firewall/reef'
-let g:netrw_dirhist_3='/home/dajka_krzy_ext/git/puppet/modules/gc_profile/manifests/firewall/reef/gwother_chains'
-let g:netrw_dirhist_4='/home/dajka_krzy_ext/.xmonad'
-let g:netrw_dirhist_5='/home/dajka_krzy_ext/git/hiera_secret/deployment_group'
-let g:netrw_dirhist_6='/home/dajka_krzy_ext/.xmonad'
