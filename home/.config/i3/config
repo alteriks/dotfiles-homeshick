@@ -171,3 +171,48 @@ bar {
 #workspace_layout default|stacking|tabbed
 #
 assign [class="*ipchat*"] workspace 7
+
+hide_edge_borders none
+
+client.focused #b58900 #b58900 #fdf6e3 #cb4b16
+client.unfocused #eee8d5 #eee8d5 #657b83 #eee8d5
+client.focused_inactive #eee8d5 #eee8d5 #657b83 #eee8d5
+client.urgent #cb4b16 #cb4b16 #fdf6e3 #eee8d5
+
+# The right button toggles floating
+bindsym button3 floating toggle
+bindsym --whole-window $mod+button3 floating toggle
+
+# The side buttons move the window around
+bindsym button9 move left
+bindsym button8 move right
+
+#TODO: will I use it?!
+## use window title, but no border
+#bindsym $mod+t border normal 0
+## use no window title and a thick border
+#bindsym $mod+y border pixel 3
+## use neither window title nor border
+#bindsym $mod+u border none
+
+new_window normal 3
+
+
+# move all floating windows to the scratchpad
+bindsym $mod+x [floating] move scratchpad
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+for_window [instance="scratchpad-vim"] move to scratchpad,
+bindsym $mod+t [instance="scratchpad-vim"] scratchpad show 
+exec_always  konsole -name scratchpad-vim -e vim
+
+
+for_window [instance="keepass_scratchpad"] move to scratchpad, border 1pixel
+bindsym $mod+Shift+t [instance="keepass_scratchpad"] scratchpad show
+exec_always keepassx2 -name keepass_scratchpad
+
