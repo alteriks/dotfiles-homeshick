@@ -27,6 +27,8 @@ dnf install -y rdesktop remmina
 dnf install -y spectacle
 
 dnf install -y openvpn
+dnf install -y virt-viewer
+
 dnf install -y xorg-x11-utils
 
 
