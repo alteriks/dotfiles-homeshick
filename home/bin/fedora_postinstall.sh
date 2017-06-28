@@ -16,3 +16,18 @@ gpgcheck=0
 EOF
 
 dnf install -y hipchat4
+
+dnf install -y 'dejavu*fonts*' liberation* xorg-x11-fonts-ISO8859-14-100dpi xorg-x11-fonts-100dpi google-noto-sans-fonts* google-noto-emoji* google-noto-fonts-common*
+fc-cache -v -f
+
+dnf install -y alsa-utils
+
+dnf install -y rdesktop remmina
+
+dnf install -y spectacle
+
+dnf install -y openvpn
+dnf install -y xorg-x11-utils
+
+
+
