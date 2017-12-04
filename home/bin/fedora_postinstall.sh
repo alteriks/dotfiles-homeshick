@@ -4,6 +4,8 @@ dnf install -y i3 i3status rofi
 dnf install -y xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-xauth
 dnf install -y firefox
 dnf install -y keepassx
+dnf install -y gcal
+
 
 chsh -s /bin/zsh alteriks
 
@@ -28,8 +30,19 @@ dnf install -y spectacle
 
 dnf install -y openvpn
 dnf install -y virt-viewer
+dnf install -y NetworkManager network-manager-applet NetworkManager-openvpn NetworkManager-openvpn-gnome
+
+systemctl start NetworkManager
+systemctl enable NetworkManager
+
+
 
 dnf install -y xorg-x11-utils
 
+
+dnf install -y virt-manager openssh-askpass
+dnf install -y thunar gnome-icon-theme lxappereance gtk2-engines
+dnf install -y volumecontrol
+dnf install docker
 
 
