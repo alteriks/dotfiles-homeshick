@@ -13,15 +13,19 @@ ShowMenuBarByDefault=false
 [MainWindow]
 Height 1080=1040
 Height 1200=1175
+Height 1377=1009
+Height 1440=1396
 Height 1920=1900
-Height 768=743
+Height 768=724
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAABVAAAALnAAAABAAAAAQAAAAIAAAACPwAAAAA
+State=AAAA/wAAAAD9AAAAAAAABrIAAAV0AAAABAAAAAQAAAAIAAAACPwAAAAA
 ToolBarsMovable=Disabled
-Width 1024=1326
+Width 1024=506
 Width 1200=1196
 Width 1366=1360
 Width 1920=954
+Width 3432=1710
+Width 3440=1714
 
 [TabBar]
 TabBarVisibility=ShowTabBarWhenNeeded

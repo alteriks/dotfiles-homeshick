@@ -8,6 +8,8 @@ call pathogen#helptags()
 filetype plugin indent on
 syntax on
 
+set mouse=a
+
 set t_Co=256
 set background=dark
 set term=screen-256color
