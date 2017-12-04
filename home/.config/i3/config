@@ -94,7 +94,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 ## WORKSPACE
 set $worskpace1 "1: Base"
@@ -164,6 +164,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+# $i3-theme-bar
 }
 
         #exec_always --no-startup-id $HOME/.config/polybar/launch.sh                                                                                                                                                
@@ -174,10 +175,10 @@ assign [class="*ipchat*"] workspace 7
 
 hide_edge_borders none
 
-client.focused #b58900 #b58900 #fdf6e3 #cb4b16
-client.unfocused #eee8d5 #eee8d5 #657b83 #eee8d5
-client.focused_inactive #eee8d5 #eee8d5 #657b83 #eee8d5
-client.urgent #cb4b16 #cb4b16 #fdf6e3 #eee8d5
+#client.focused #b58900 #b58900 #fdf6e3 #cb4b16
+#client.unfocused #eee8d5 #eee8d5 #657b83 #eee8d5
+#client.focused_inactive #eee8d5 #eee8d5 #657b83 #eee8d5
+#client.urgent #cb4b16 #cb4b16 #fdf6e3 #eee8d5
 
 # The right button toggles floating
 bindsym button3 floating toggle
@@ -209,10 +210,19 @@ bindsym $mod+minus scratchpad show
 
 for_window [instance="scratchpad-vim"] move to scratchpad,
 bindsym $mod+t [instance="scratchpad-vim"] scratchpad show 
-exec_always  konsole -name scratchpad-vim -e vim
+exec --no-startup-id ~/bin/launch_and_rename_windowname.sh konsole -name scratchpad-vim -e vim
 
 
-for_window [instance="keepass_scratchpad"] move to scratchpad, border 1pixel
-bindsym $mod+Shift+t [instance="keepass_scratchpad"] scratchpad show
-exec_always keepassx2 -name keepass_scratchpad
+for_window [instance="scratchpad-keepassx2"] move to scratchpad, border 1pixel
+bindsym $mod+Shift+t [instance="scratchpad-keepassx2"] scratchpad show
+exec --no-startup-id ~/bin/launch_and_rename_windowname.sh keepassx2 -name scratchpad-keepassx2
 
+#https://wiki.archlinux.org/index.php/I3#Save_and_restore_the_window_layout
+
+## class                 border  backgr. text    indicator
+#client.focused #4F99D3 #4F99D3 #151718 #9FCA56
+#client.focused_inactive #9FCA56 #9FCA56 #151718 #A074C4
+#client.unfocused #1f2326 #1f2326 #AAAAAA #A074C4
+#client.urgent #CE4045 #CE4045 #FFFFFF #DCCD69
+
+# $i3-theme-window
