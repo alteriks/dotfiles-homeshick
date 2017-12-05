@@ -1,0 +1,22 @@
+#!/bin/sh
+# Script to launch trayer in the correct position next to xmobar.
+# Author: Vic Fryzel
+# http://github.com/vicfryzel/xmonad-config
+
+
+# This is setup to display on dual 1920x1080 monitors, with the right-side
+# monitor as primary.  Adjust margin as necessary for other resolutions/setups.
+
+feh --bg-max  ~/fear-and-loathing.jpg ~/moonraker.jpg ~/dirtyharry.jpg &
+pkill -9 nm-applet
+pkill -9 kmix
+pkill -9 gnome-screensaver
+pkill -f -9 hipchat4
+sleep 0.5
+
+/home/dajka_krzy_ext/bin/Fujitsu_dock.sh
+
+gnome-screensaver &
+nm-applet &
+kmix --keepvisibility &
+hipchat4 &
