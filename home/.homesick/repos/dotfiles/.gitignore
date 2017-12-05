@@ -2,5 +2,6 @@
 .vim/.netrwhist
 .xmonad/xmonad.errors
 .xmonad/xmonad.hi
+.xmonad/xmonad.o
 home/.vim/.netrwhist
 .task/keys/
