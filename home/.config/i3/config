@@ -97,18 +97,18 @@ bindsym $mod+a focus parent
 bindsym $mod+d focus child
 
 ## WORKSPACE
-set $worskpace1 "1: Base"
-set $worskpace2 "2: Term"
-set $worskpace3 "3: Web"
-set $worskpace4 "4: VM"
-set $worskpace5 "5: Office"
+set $workspace1 "1: Base"
+set $workspace2 "2: Term"
+set $workspace3 "3: Web"
+set $workspace4 "4: VM"
+set $workspace5 "5: Office"
 
 # switch to workspace
-bindsym $mod+1 workspace $worskpace1
-bindsym $mod+2 workspace $worskpace2
-bindsym $mod+3 workspace $worskpace3
-bindsym $mod+4 workspace $worskpace4
-bindsym $mod+5 workspace $worskpace5
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -116,11 +116,11 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $worskpace1
-bindsym $mod+Shift+2 move container to workspace $worskpace2
-bindsym $mod+Shift+3 move container to workspace $worskpace3
-bindsym $mod+Shift+4 move container to workspace $worskpace4
-bindsym $mod+Shift+5 move container to workspace $worskpace5
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
@@ -167,9 +167,27 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+#bar {
+#        status_command i3status
+## $i3-theme-bar
+#}
 bar {
-        status_command i3status
-# $i3-theme-bar
+  mode dock
+  position top
+  status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+
+  # Colors
+    colors {
+         background #282828
+         statusline #ebdbb2
+         separator  #756d59
+
+                            #border backgr. text
+         focused_workspace  #676d3d #ffce00 #282828
+         active_workspace   #323232 #5f676a #ebdbb2
+         inactive_workspace #323232 #323232 #888888
+         urgent_workspace   #333333 #900000 #ffffff
+  }
 }
 
         #exec_always --no-startup-id $HOME/.config/polybar/launch.sh                                                                                                                                                
@@ -241,12 +259,12 @@ for_window [class=".*"] border pixel 3
 workspace $workspace1 output DP1
 workspace $workspace2 output DP2
 workspace $workspace3 output HDMI3
+workspace $workspace4 output HDMI3
+workspace $workspace5 output DP2
 
 workspace_layout tabbed
 
 workspace_auto_back_and_forth yes
-
-
 
 # Screen lock
 bindsym Mod1+Control+l exec ~/.config/i3/pixelate_lock.sh
@@ -274,25 +292,21 @@ exec --no-startup-id kmix --keepvisibility
 #exec --no-startup-id ~/.config/i3/tray
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id redshift -l 58.23:26.43
-#exec --no-startup-id kalu
 #exec --no-startup-id setxkbmap -layout us,ee -option grp:caps_toggle
-#exec --no-startup-id sh ~/.fehbg
 #exec --no-startup-id compton -b
-#exec --no-startup-id caffeine
 
 #exec --no-startup-id pulseaudio -D
 #exec --no-startup-id dropbox
-
-#exec i3lock -u -i ~/.wallpaper_lock
 
 # Assign workspaces
 assign [class="(?i)keepass2"] 5
 # Start on specific workspace
 exec i3-msg 'exec hipchat4'
 exec i3-msg 'exec keepassx'
-exec i3-msg 'exec vivaldi
+exec i3-msg 'exec vivaldi'
 exec i3-msg 'exec konsole'
 
-assign [ class = "HipChat" ] workspace 1
-assign [ class = "konsole" ] workspace 2
-assign [ class = "Vivaldi" ] workspace 3
+assign [ class = "HipChat" ] workspace $workspace1
+assign [ class = "konsole" ] workspace $workspace2
+assign [ class = "Vivaldi" ] workspace $workspace3
+assign [ class = "Remmina" ] workspace $workspace4
