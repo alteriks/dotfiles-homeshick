@@ -32,7 +32,7 @@ font pango:DejaVu Sans Mono for Powerline, Book 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -233,7 +233,7 @@ bindsym $mod+minus scratchpad show
 
 for_window [instance="scratchpad-vim"] move to scratchpad,
 bindsym $mod+t [instance="scratchpad-vim"] scratchpad show 
-exec --no-startup-id ~/bin/launch_and_rename_windowname.sh konsole -name scratchpad-vim -e vim
+exec --no-startup-id ~/bin/launch_and_rename_windowname.sh termite -name scratchpad-vim -e vim
 
 
 for_window [instance="scratchpad-keepassx2"] move to scratchpad, border 1pixel
@@ -292,7 +292,7 @@ exec --no-startup-id kmix --keepvisibility
 #exec --no-startup-id ~/.config/i3/tray
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id redshift -l 58.23:26.43
-#exec --no-startup-id setxkbmap -layout us,ee -option grp:caps_toggle
+exec --no-startup-id setxkbmap -layout pl -option
 #exec --no-startup-id compton -b
 
 #exec --no-startup-id pulseaudio -D
@@ -304,9 +304,9 @@ assign [class="(?i)keepass2"] 5
 exec i3-msg 'exec hipchat4'
 exec i3-msg 'exec keepassx'
 exec i3-msg 'exec vivaldi'
-exec i3-msg 'exec konsole'
+exec i3-msg 'exec termite'
 
 assign [ class = "HipChat" ] workspace $workspace1
-assign [ class = "konsole" ] workspace $workspace2
+assign [ class = "termite" ] workspace $workspace2
 assign [ class = "Vivaldi" ] workspace $workspace3
 assign [ class = "Remmina" ] workspace $workspace4
