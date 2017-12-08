@@ -1,15 +1,16 @@
 #! /bin/sh
 
-blockdate=$(date '+%d-%M-%Y')
+blockdate=$(date '+%d-%m-%Y %H:%M:%S')
 
 case "$BLOCK_BUTTON" in
-    1|2|3) date=$(date '%d-%M-%Y')
+    1|2|3) date=$(date '+%d-%m-%Y')
 export TERM=xterm
 #cal --color=always \
-#    | sed 's/\x1b\[[7;]*m/\<b\>\<u\>/g' \
-#    | sed 's/\x1b\[[27;]*m/\<\/u\>\<\/b\>/g' \
-#    | tail -n +2 \
-gcal  -i -q PL -s 1 -n .  | sed "s,\(Sun  .*\|Sat  .*\|:....:\|:..:\),$(tput setaf 1)&$(tput sgr0),g; s,:, ,g; s,<\(..\)>,$(tput bold) \1 $(tput sgr0)," \
+    #| sed 's/\x1b\[[7;]*m/\<b\>\<u\>/g' \
+    #| sed 's/\x1b\[[31;]*m/\<\/u\>\<\/b\>/g' \
+ #| sed 's/\^\[\[31m/\<b\>/g' | sed 's/\^\[\[m\^O/\<\\b\>/g' \
+#gcal  -i -q PL -s 1 -n .  | sed "s,\(Sun  .*\|Sat  .*\|:....:\|:..:\),\<b\>&$(tput sgr0),g; s,:, ,g; s,<\(..\)>,$(tput bold) \1 $(tput sgr0)," \
+gcal  -i -q PL -s 1 -n .  | sed '1,2d' |sed "s,\(Sun  .*\|Sat  .*\|:....:\|:..:\),\<span color='red'\>&\<\/span\>,g; s,:, ,g;  s,<\(..\)>,\<span color='blue'\>\<b\> \1 \</b\><\/span\>," \
     | rofi \
         -dmenu \
         -markup-rows \
@@ -17,10 +18,9 @@ gcal  -i -q PL -s 1 -n .  | sed "s,\(Sun  .*\|Sat  .*\|:....:\|:..:\),$(tput set
         -font "Monospace 12" \
         -hide-scrollbar \
         -bw 2 \
-        -m -3 \
-        -theme-str '#window {anchor:southeast; location: northwest;}' \
-
-        -no-custom \
+        -lines 23 \
+        -width -83 \
+	-monitor -2 \
         -p "$date" > /dev/null 
     esac
 echo $blockdate
