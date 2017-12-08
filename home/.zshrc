@@ -2,9 +2,15 @@
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
+#
+#https://deductivelabs.com/en/using-true-color-vim-tmux/
 export TERM="xterm-256color"
-#export TERM="screen-256color"
+
 export EDITOR=vim
+# BEGIN archlinux
+export EDITOR=nvim
+alias vim=nvim
+# END archlinux
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -66,11 +72,11 @@ alias cls='clear && echo -en "[3J"'
 
 
 DEFAULT_USER="kdajka"
-if [[ $UID -eq 1001 ]]; then 
+if [[ $UID -eq 1001 || $UID -eq 1000 ]]; then 
 	ZSH_TMUX_AUTOSTART=true
 	ZSH_TMUX_AUTOQUIT=false
 fi
-HIST_IGNORE_SPACE=1
+HIST_IGNORE_SPACE=0
 
 
 # User configuration
@@ -109,7 +115,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-windows="rdesktop -r disk:local=/home/kdajka -u dajka_krzy_ext -d GIGA -k pl -g 1920x1172 10.3.102.19"
+alias windows="rdesktop -r disk:local=/home/kdajka -u dajka_krzy_ext -d GIGA -k pl -g 1920x1172 10.3.102.19"
 
 bindkey "[[1;5D" backward-word
 bindkey "[[1;5C" forward-word
