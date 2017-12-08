@@ -1,9 +1,9 @@
 #! /bin/sh
 
-blockdate=$(date '+%a. %d. %b. %Y')
+blockdate=$(date '+%d-%M-%Y')
 
 case "$BLOCK_BUTTON" in
-    1|2|3) date=$(date '+%A, %d. %B')
+    1|2|3) date=$(date '%d-%M-%Y')
 export TERM=xterm
 #cal --color=always \
 #    | sed 's/\x1b\[[7;]*m/\<b\>\<u\>/g' \
@@ -24,4 +24,4 @@ gcal  -i -q PL -s 1 -n .  | sed "s,\(Sun  .*\|Sat  .*\|:....:\|:..:\),$(tput set
         -p "$date" > /dev/null 
     esac
 echo $blockdate
-date '+%d.%m.%Y'
+date '+%d.%m.%Y %H:%M:%S'
