@@ -2,14 +2,22 @@
 pacman -Syu python-pip
 pip install mir.qualia
 
-pacman -Syu i3blocks bc acpi sysstat wget
-pacman -Syu termite arandr rofi xclip feh lshw xsensors
+pacman -Syu i3blocks compton
+pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools
+pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr
 
 pacman -Sy extra/networkmanager-openvpn easy-rsa
 
+# vivaldi
+# https://gist.github.com/BlackIkeEagle/5c00face3c7a0f98847a
+pacman -Syu vivaldi  libva-intel-driver libva-mesa-driver
+git clone https://aur.archlinux.org/vivaldi-snapshot.git
+cd vivaldi-snapshot
+makepkg -si
+
 
 pacman -Syu qemu dmidecode bridge-utils icedtea-web jre8-openjdk virt-manager spotify mc vlc unace unarj unrar zip chromium electrum opera virt-viewer wireshark-gtk libreoffice-still 
-pacman -Syu keepassx2
+pacman -Syu keepassx2 remmina rdesktop freerdp
 
 # for iPhone USB tethering
 pacman -Syu usbmuxd libimobiledevice
@@ -32,3 +40,7 @@ WantedBy=multi-user.target
 [root@revenge ~]# systemctl enable powertop
 Created symlink /etc/systemd/system/multi-user.target.wants/powertop.service → /etc/systemd/system/powertop.service.
 [root@revenge ~]# systemctl start powertop
+
+/etc/modprobe.d/nobeep.conf
+# Do not load the 'pcspkr' module on boot.
+blacklist pcspkr
