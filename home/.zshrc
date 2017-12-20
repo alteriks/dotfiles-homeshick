@@ -4,7 +4,8 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 #
 #https://deductivelabs.com/en/using-true-color-vim-tmux/
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
+export TERM="screen-256color"
 
 export EDITOR=vim
 # BEGIN archlinux
@@ -81,7 +82,7 @@ HIST_IGNORE_SPACE=0
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/home/dajka_krzy_ext/.gem/ruby/2.4.0/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 #homeshick
