@@ -11,6 +11,7 @@ export EDITOR=vim
 # BEGIN archlinux
 export EDITOR=nvim
 alias vim=nvim
+alias bc='bc -l'
 # END archlinux
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh

@@ -177,6 +177,26 @@ mode $displayMode {
 #https://github.com/i3/i3/issues/2936
 disable_randr15 yes
 
+set $printScreenMode "Take PrintScreen [f]ull [a]ctivewindow [s]election [d]elay"
+bindsym --release Print mode $printScreenMode
+mode $printScreenMode {
+    bindsym f exec "\
+                scrot -e 'mv $f ~/Pictures'"; \
+                mode "default"
+    bindsym a exec "\
+                scrot -ue 'mv $f ~/Pictures'"; \
+                mode "default"
+    bindsym --release s exec "\
+                scrot -s -e 'mv $f ~/Pictures'"; \
+                mode "default"
+    bindsym d exec "\
+                scrot -cd 3 -e 'mv $f ~/Pictures'"; \
+                mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -289,8 +309,8 @@ workspace_auto_back_and_forth yes
 bindsym Mod1+Control+l exec ~/.config/i3/pixelate_lock.sh
 
 # Media keys
-bindsym Print exec ~/bin/scrot-with-message
-bindsym Shift+Print exec ~/bin/scrot-with-message -s
+#bindsym Print exec ~/bin/scrot-with-message
+#bindsym Shift+Print exec ~/bin/scrot-with-message -s
 bindsym XF86AudioPlay exec ~/.i3/musickeys.sh toggle
 bindsym XF86AudioStop exec ~/.i3/musickeys.sh stop
 bindsym XF86AudioNext exec ~/.i3/musickeys.sh next
