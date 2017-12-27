@@ -44,3 +44,7 @@ Created symlink /etc/systemd/system/multi-user.target.wants/powertop.service →
 /etc/modprobe.d/nobeep.conf
 # Do not load the 'pcspkr' module on boot.
 blacklist pcspkr
+
+xdg-mime query default application/pdf          
+xdg-mime default zathura.desktop application/pdf
+
