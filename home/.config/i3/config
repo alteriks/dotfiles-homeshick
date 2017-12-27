@@ -66,7 +66,7 @@ bindsym --release $mod+g split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -348,7 +348,17 @@ exec i3-msg 'exec vivaldi-snapshot'
 exec i3-msg 'exec kitty'
 
 assign [ class = "HipChat" ] workspace $workspace1
+assign [ class = "Thunar" ] workspace $workspace1
+for_window [ class = "Thunar" ] focus
 assign [ class = "termite" ] workspace $workspace2
 assign [ class = "kitty" ]   workspace $workspace2
 assign [ class = "Vivaldi" ] workspace $workspace3
+for_window [ class = "Vivaldi" ] focus
+assign [ class = "Opera" ] workspace $workspace3
+for_window [ class = "Opera" ] focus
 assign [ class = "Remmina" ] workspace $workspace4
+assign [ class = "Zathura" ] workspace $workspace5
+for_window [ class = "Zathura" ] focus
+
+bindsym $mod+f [urgent=latest] focus
+
