@@ -1,0 +1,13 @@
+[Default Applications]
+text/html=vivaldi.desktop
+x-scheme-handler/http=vivaldi.desktop
+x-scheme-handler/https=vivaldi.desktop
+x-scheme-handler/about=vivaldi.desktop
+x-scheme-handler/unknown=vivaldi.desktop
+x-scheme-handler/mailto=vivaldi.desktop
+x-scheme-handler/webcal=vivaldi.desktop
+application/pdf=zathura.desktop
+
+[Added Associations]
+application/pdf=zathura.desktop;
+image/jpeg=org.kde.gwenview.desktop;gimp.desktop;
