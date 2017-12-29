@@ -3,7 +3,8 @@ pacman -Syu python-pip
 pip install mir.qualia
 
 pacman -Syu i3blocks compton
-pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools
+pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf
+
 pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr
 
 pacman -Sy extra/networkmanager-openvpn easy-rsa
@@ -47,4 +48,12 @@ blacklist pcspkr
 
 xdg-mime query default application/pdf          
 xdg-mime default zathura.desktop application/pdf
+
+git clone https://aur.archlinux.org/vivaldi.git
+cd vivaldi
+makepkg -si
+cd ..
+git clone https://aur.archlinux.org/hipchat.git
+cd hipchat
+makepkg -si
 
