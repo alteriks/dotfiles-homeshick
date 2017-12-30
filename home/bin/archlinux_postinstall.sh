@@ -3,9 +3,9 @@ pacman -Syu python-pip
 pip install mir.qualia
 
 pacman -Syu i3blocks compton
-pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf
+pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf 
 
-pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr
+pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight
 
 pacman -Sy extra/networkmanager-openvpn easy-rsa
 
