@@ -262,16 +262,18 @@ bindsym $mod+minus scratchpad show
 
 for_window [instance="scratchpad-vim"] move to scratchpad,
 bindsym $mod+t [instance="scratchpad-vim"] scratchpad show
-exec --no-startup-id ~/bin/launch_and_rename_windowname.sh termite -name scratchpad-vim -e vim
+exec --no-startup-id ~/bin/launch_and_rename_windowname.sh kitty --name scratchpad-vim vim
 
 
 # Launch keepassx2 and name window scratchpad-keepassx2
 exec --no-startup-id ~/bin/launch_and_rename_windowname.sh keepassx2 -name scratchpad-keepassx2
 # Move to scratchpad only main KeePassX windows (window_role)
-for_window [instance="scratchpad-keepassx2" window_role=" KeePassX"] move to scratchpad, border 1pixel
+for_window [instance="scratchpad-keepassx2" title="KeePassX"] move to scratchpad, border 1pixel
 bindsym $mod+Shift+t [instance="scratchpad-keepassx2"] scratchpad show
 
-#https://wiki.archlinux.org/index.php/I3#Save_and_restore_the_window_layout
+for_window [title="Open database"] sticky enable border normal
+
+#TODO: https://wiki.archlinux.org/index.php/I3#Save_and_restore_the_window_layout
 
 ## class                 border  backgr. text    indicator
 #client.focused #4F99D3 #4F99D3 #151718 #9FCA56
