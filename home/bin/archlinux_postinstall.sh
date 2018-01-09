@@ -57,3 +57,10 @@ git clone https://aur.archlinux.org/hipchat.git
 cd hipchat
 makepkg -si
 
+git clone https://aur.archlinux.org/gcal.git
+cd gcal
+makepkg -si
+
+git clone https://aur.archlinux.org/todotxt.git
+cd todotxt
+makepkg -si
