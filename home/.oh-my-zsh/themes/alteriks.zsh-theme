@@ -70,7 +70,7 @@ prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment black default "%(!.%{%F{red}%}.)$USER@%m"
 	else
-		prompt_segment black default "$USER@%m"
+		#prompt_segment black default "$USER@%m"
   fi
 }
 
@@ -186,7 +186,7 @@ build_prompt() {
   prompt_context
   prompt_dir
   prompt_git
-  prompt_hg
+  #prompt_hg
   prompt_end
 }
 
