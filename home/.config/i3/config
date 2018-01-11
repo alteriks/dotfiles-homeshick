@@ -3,6 +3,8 @@
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod1
+#set $lock ~/.config/i3/pixelate_lock.sh
+set $lock ~/.config/i3/i3lock-color-git.sh
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -29,6 +31,7 @@ bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+F4 kill
 
 # start launcher
 bindsym $mod+p exec --no-startup-id "rofi -matching fuzzy -modi combi -show combi -combi-modi window,run"
@@ -236,8 +239,6 @@ bar {
 #
 assign [class="*ipchat*"] workspace 7
 
-hide_edge_borders none
-
 #client.focused #b58900 #b58900 #fdf6e3 #cb4b16
 #client.unfocused #eee8d5 #eee8d5 #657b83 #eee8d5
 #client.focused_inactive #eee8d5 #eee8d5 #657b83 #eee8d5
@@ -251,35 +252,38 @@ bindsym --whole-window $mod+button2 floating toggle
 bindsym button9 move left
 bindsym button8 move right
 
-# move all floating windows to the scratchpad
-bindsym $mod+x [floating] move scratchpad
 
+##### Not needed use window matching
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
+#bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show
+#bindsym $mod+minus scratchpad show
+# move all floating windows to the scratchpad
+#bindsym $mod+x [floating] move scratchpad
 
 for_window [instance="scratchpad-vim"] move to scratchpad,
 bindsym $mod+t [instance="scratchpad-vim"] scratchpad show
 exec --no-startup-id ~/bin/launch_and_rename_windowname.sh kitty --name scratchpad-vim vim
 
+for_window [instance="scratchpad-todo"] move to scratchpad
+bindsym Mod4+t [instance="scratchpad-todo"] scratchpad show, exec --no-startup-id  xdotool key --window $(xdotool search --classname scratchpad-todo) R
+exec --no-startup-id ~/bin/launch_and_rename_windowname.sh kitty --name scratchpad-todo todotxt-machine --config ~/.config/todo/todotxt-machinerc 
 
 # Launch keepassx2 and name window scratchpad-keepassx2
 exec --no-startup-id ~/bin/launch_and_rename_windowname.sh keepassx2 -name scratchpad-keepassx2
 # Move to scratchpad only main KeePassX windows (window_role)
 for_window [instance="scratchpad-keepassx2" title="KeePassX"] move to scratchpad, border 1pixel
-bindsym $mod+Shift+t [instance="scratchpad-keepassx2"] scratchpad show
+bindsym Mod4+k [instance="scratchpad-keepassx2"] scratchpad show
 
 for_window [title="Open database"] sticky enable border normal
 
 #TODO: https://wiki.archlinux.org/index.php/I3#Save_and_restore_the_window_layout
 
 ## class                 border  backgr. text    indicator
-#client.focused #4F99D3 #4F99D3 #151718 #9FCA56
-#client.focused_inactive #9FCA56 #9FCA56 #151718 #A074C4
-#client.unfocused #1f2326 #1f2326 #AAAAAA #A074C4
-#client.urgent #CE4045 #CE4045 #FFFFFF #DCCD69
+#client.focused_inactive #4F99D3 #4F99D3 #151718 #9FCA56
+client.focused #9FCA56 #9FCA56 #151718 #A074C4
+client.unfocused #1f2326 #1f2326 #AAAAAA #A074C4
+client.urgent #CE4045 #CE4045 #FFFFFF #DCCD69
 
 # $i3-theme-window
 #
@@ -316,7 +320,7 @@ workspace $workspace5 output HDMI3
 workspace_layout tabbed
 
 # Screen lock
-bindsym Mod4+l exec ~/.config/i3/pixelate_lock.sh
+bindsym Mod4+l exec $lock
 
 # Media keys
 #bindsym Print exec ~/bin/scrot-with-message
@@ -351,7 +355,7 @@ exec --no-startup-id setxkbmap -layout pl -option
 #exec --no-startup-id compton -bG 
 
 # Assign workspaces
-assign [class="(?i)keepass2"] 5
+#assign [class="(?i)keepass2"] 5
 # Start on specific workspace
 exec i3-msg 'exec hipchat4'
 exec i3-msg 'exec keepassx'
@@ -416,14 +420,15 @@ bindsym $mod+Ctrl+Left workspace prev
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id manjaro-hello
+#exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id dropbox start
+exec --no-startup-id xautolock -time 10 -locker $lock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -445,7 +450,7 @@ smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+#smart_borders no_gaps
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner

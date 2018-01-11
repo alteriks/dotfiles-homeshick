@@ -33,10 +33,3 @@ V='#bb00bbbb'  # verifying
 --datestr="%A, %m %Y" \
 --keylayout 2         \
 
-# --veriftext="Drinking verification can..."
-# --wrongtext="Nope!"
-# --textsize=20
-# --modsize=10
-# --timefont=comic-sans
-# --datefont=monofur
-# etc
