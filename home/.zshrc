@@ -10,6 +10,8 @@ export TERM="screen-256color"
 export EDITOR=vim
 # BEGIN archlinux
 export EDITOR=nvim
+alias todo="todo.sh -d $HOME/.config/todo/todo.cfg"
+alias todotxt-machine="todotxt-machine --config ~/.config/todo/todotxt-machinerc"
 alias vim=nvim
 alias bc='bc -l'
 # END archlinux
@@ -73,17 +75,17 @@ alias pushd=' pushd'
 alias cls='clear && echo -en "[3J"'
 
 
-DEFAULT_USER="kdajka"
-if [[ $UID -eq 1001 || $UID -eq 1000 ]]; then 
-	ZSH_TMUX_AUTOSTART=true
-	ZSH_TMUX_AUTOQUIT=false
-fi
+DEFAULT_USER="alteriks"
+#if [[ $UID -eq 1001 || $UID -eq 1000 ]]; then 
+#	ZSH_TMUX_AUTOSTART=true
+#	ZSH_TMUX_AUTOQUIT=false
+#fi
 HIST_IGNORE_SPACE=0
 
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/home/dajka_krzy_ext/.gem/ruby/2.4.0/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/home/dajka_krzy_ext/.gem/ruby/2.5.0/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 #homeshick
