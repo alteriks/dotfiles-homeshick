@@ -5,7 +5,9 @@ pip install mir.qualia
 pacman -Syu i3blocks compton
 pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf 
 
-pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight
+pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight strace ruby
+gem install rainbow terminal-notifier
+#terminal-notifier it's macOS only
 
 pacman -Sy extra/networkmanager-openvpn easy-rsa
 
@@ -63,4 +65,12 @@ makepkg -si
 
 git clone https://aur.archlinux.org/todotxt.git
 cd todotxt
+makepkg -si
+
+git clone https://aur.archlinux.org/dropbox.git
+cd dropbox
+makepkg -si
+
+git clone https://aur.archlinux.org/i3lock-color-git.git
+cd i3lock-color-git
 makepkg -si
