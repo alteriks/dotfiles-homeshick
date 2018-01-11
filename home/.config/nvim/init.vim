@@ -1,4 +1,3 @@
-
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -9,6 +8,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-signify'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'easymotion/vim-easymotion'
 Plug 'yegappan/mru'
 Plug 'mhinz/vim-startify'
@@ -62,7 +62,9 @@ let MRU_Window_Height = 15
 let MRU_Add_Menu = 0
 
 "yank/paste with xclip
-set clipboard=unnamed
+"ctrl+shift+v to paste yanked buffer (unnamedplus) doesn't conflict with
+"MiddleClick in tmux.conf with xclip
+set clipboard=unnamedplus
 
 set mouse=a
 
@@ -80,12 +82,3 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-"augroup ProjectDrawer
-"  autocmd!
-"  "autocmd VimEnter * :Vexplore
-"  autocmd VimEnter *
-"                \   if !argc()
-"                \ |   Startify
-"                \ |   :Vexplore
-"                \ |   wincmd w
-"augroup END
