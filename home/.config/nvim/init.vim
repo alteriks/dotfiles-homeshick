@@ -68,6 +68,10 @@ set clipboard=unnamedplus
 
 set mouse=a
 
+"mkdir ~/nvim for shada (old viminfo)
+set shada='50,<1000,s100,:0,n~/nvim/shada
+
+
 " https://jeffkreeftmeijer.com/vim-number/
 set relativenumber
 set number
