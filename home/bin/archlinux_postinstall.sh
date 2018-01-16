@@ -19,7 +19,7 @@ cd vivaldi-snapshot
 makepkg -si
 
 
-pacman -Syu qemu dmidecode bridge-utils icedtea-web jre8-openjdk virt-manager spotify mc vlc unace unarj unrar zip chromium electrum opera virt-viewer wireshark-gtk libreoffice-still 
+pacman -Syu qemu dmidecode bridge-utils icedtea-web jre8-openjdk virt-manager spotify mc vlc unace unarj unrar zip chromium electrum opera virt-viewer wireshark-gtk libreoffice-still dnsmasq
 pacman -Syu keepassx2 remmina rdesktop freerdp
 
 # for iPhone USB tethering
@@ -74,3 +74,12 @@ makepkg -si
 git clone https://aur.archlinux.org/i3lock-color-git.git
 cd i3lock-color-git
 makepkg -si
+
+~/.ssh/config
+Host *
+StrictHostKeyChecking no
+preferredauthentications=publickey,password
+
+cat /etc/NetworkManager/NetworkManager.conf
+[main]
+dns=dnsmasq

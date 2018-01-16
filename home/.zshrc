@@ -14,6 +14,7 @@ alias todo="todo.sh -d $HOME/.config/todo/todo.cfg"
 alias todotxt-machine="todotxt-machine --config ~/.config/todo/todotxt-machinerc"
 alias vim=nvim
 alias bc='bc -l'
+alias ag='ag --hidden --depth -1'
 # END archlinux
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -126,6 +127,8 @@ bindkey "[[1;5C" forward-word
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 #for tmux
+bindkey "\e[1~" beginning-of-line
+bindkey "\e[4~" end-of-line
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[OD" backward-word
@@ -139,3 +142,31 @@ ssh() {
         command ssh "$@"
     fi
 }
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export	LESS_TERMCAP_so=$'\E[30;41m' \
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-r
+#function man() {
+#        env \
+#		LESS_TERMCAP_mb=$'\E[01;32m' \
+#		LESS_TERMCAP_md=$'\E[01;32m' \
+#		LESS_TERMCAP_me=$'\E[0m' \
+#		LESS_TERMCAP_se=$'\E[0m' \
+#		LESS_TERMCAP_ue=$'\E[0m' \
+#		LESS_TERMCAP_us=$'\E[01;36m' \
+#		LESS_TERMCAP_so=$'\E[30;41m' \
+#                PAGER="${commands[less]:-$PAGER}" \
+#                _NROFF_U=1 \
+#                        man "$@"
+#}
+#export TERMINFO=
+# hack for HOME/END in neovim in tmux using kitty
+if [[ $TERMINFO == /usr/lib/kitty/terminfo ]]; then
+	unset TERMINFO
+fi
