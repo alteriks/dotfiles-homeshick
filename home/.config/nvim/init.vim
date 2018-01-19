@@ -69,7 +69,7 @@ set clipboard=unnamedplus
 set mouse=a
 
 "mkdir ~/nvim for shada (old viminfo)
-set shada='50,<1000,s100,:0,n~/nvim/shada
+set shada='50,<1000,s100,:0,n~/.local/share/nvim/shada/main.shada
 
 
 " https://jeffkreeftmeijer.com/vim-number/
