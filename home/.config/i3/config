@@ -65,8 +65,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split orientation
-bindsym $mod+g split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+bar split h; exec notify-send 'tile horizontally'
+bindsym $mod+minus splitv; exec notify-send 'tile vertically'
 bindsym $mod+q split toggle
 
 # enter fullscreen mode for the focused container
@@ -357,14 +357,17 @@ exec i3-msg 'exec hipchat4'
 exec i3-msg 'exec keepassx'
 exec i3-msg 'exec vivaldi-snapshot'
 #exec i3-msg 'exec termite'
-exec i3-msg 'exec kitty'
+exec --no-startup-id i3-msg 'workspace $workspace2; splith; exec kitty'
 
-for_window [workspace=$workspace2] layout splith
+#exec i3-msg 'exec kitty'
+#set $workspace2 "2: Term "
+
+#for_window [workspace=$workspace2] layout splith
 assign [ class = "HipChat" ] workspace $workspace1
 assign [ class = "Thunar" ] workspace $workspace1
 for_window [ class = "Thunar" ] focus
 assign [ class = "termite" ] workspace $workspace2
-assign [ class = "kitty" ]   workspace $workspace2
+#assign [ class = "kitty" ]   workspace $workspace2
 assign [ class = "Vivaldi" ] workspace $workspace3
 for_window [ class = "Vivaldi" ] focus
 assign [ class = "Opera" ] workspace $workspace3
@@ -382,9 +385,6 @@ hide_edge_borders none
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
-
-# start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -421,7 +421,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
+#exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id dropbox start
 exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/i3lock-color-git.sh
