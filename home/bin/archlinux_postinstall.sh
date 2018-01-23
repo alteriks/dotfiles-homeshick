@@ -3,7 +3,7 @@ pacman -Syu python-pip
 pip install mir.qualia
 
 pacman -Syu i3blocks compton
-pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf 
+pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf net-tools pkgfile
 
 pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight strace ruby
 gem install rainbow terminal-notifier
@@ -20,7 +20,7 @@ makepkg -si
 
 
 pacman -Syu qemu dmidecode bridge-utils icedtea-web jre8-openjdk virt-manager spotify mc vlc unace unarj unrar zip chromium electrum opera virt-viewer wireshark-gtk libreoffice-still dnsmasq
-pacman -Syu keepassx2 remmina rdesktop freerdp
+pacman -Syu keepassx2 keepassxc tigervnc remmina rdesktop freerdp
 
 # for iPhone USB tethering
 pacman -Syu usbmuxd libimobiledevice
@@ -75,6 +75,16 @@ git clone https://aur.archlinux.org/i3lock-color-git.git
 cd i3lock-color-git
 makepkg -si
 
+
+git clone https://aur.archlinux.org/autorandr.git
+cd autorandr
+makepkg -si
+
+git clone https://aur.archlinux.org/networkmanager-dmenu-git.git
+cd networkmanager-dmenu-git
+makepkg -si
+
+
 ~/.ssh/config
 Host *
 StrictHostKeyChecking no
@@ -83,3 +93,11 @@ preferredauthentications=publickey,password
 cat /etc/NetworkManager/NetworkManager.conf
 [main]
 dns=dnsmasq
+
+
+#TODO:
+$HOME/.ssh/config
+$HOME/.config/remmina
+.local/share/remmina
+.config/tmuxinator/
+/etc/systemd/system/monitor_hotplug.service
