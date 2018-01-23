@@ -8,7 +8,9 @@ export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u ${X_USER})/bus
 function connect()
 {   
 #
-/usr/bin/autorandr -c 
+/usr/bin/autorandr off
+  sleep 1
+/usr/bin/autorandr -c --force
 #xrandr --output VIRTUAL1 --off --output DP1 --mode 3440x1440 --pos 1366x0 --rotate normal --output eDP1 --primary --mode 1366x768 --pos 0x672 --rotate normal --output DP3 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off --output VGA1 --off --output DP2 --off
 
     #dual monitor - HDMI1 at right - xfce panel on left (LVDS1)
@@ -28,10 +30,17 @@ function disconnect(){
 
 #if [ $(cat /sys/class/drm/card0-DP-1/status) == "connected" ] ; then
 if [ $(cat /sys/class/drm/card0-{DP,HDMI,VGA}*/status | grep -c '^connected') -ge 1 ] ; then
-	sleep 1
+  DISPLAY_SETUP=`autorandr 2>&1 | grep detected | cut -f1 | awk '{print $1}'`
+  if [[ ${DISPLAY_SETUP} =~ 'docked' ]]; then
+    qualia ${DISPLAY_SETUP} < ~/.config/i3/config_orig > ~/.config/i3/config
+    sleep 1
+    i3-msg restart
+  fi
+  sleep 1
   connect
 #  TODO: indent
 #  TODO: qualia or i3-msg to move workspaces
+#i3msg-reload
 
 elif [ $(cat /sys/class/drm/card0-{DP,HDMI,VGA}*/status | grep -c '^connected') -eq 0 ] ; then
 #elif [ $(cat /sys/class/drm/card0-DP-1/status) == "disconnected" ] ; then
