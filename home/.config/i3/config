@@ -41,6 +41,7 @@ bindsym $mod+space exec --no-startup-id "rofi -matching fuzzy -modi combi -show 
 bindsym $mod+i exec --no-startup-id "networkmanager_dmenu"
 
 # change focus
+#force_focus_wrapping yes
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -295,19 +296,19 @@ for_window [class="(?i)qpaeq"] floating enable
 for_window [class=".*"] border pixel 3
 
 # BEGIN docked_work
-#workspace $workspace1 output DP1
-#workspace $workspace2 output HDMI3
-#workspace $workspace3 output DP2
-#workspace $workspace4 output DP2
-#workspace $workspace5 output HDMI3
+workspace $workspace1 output DP1
+workspace $workspace2 output HDMI3
+workspace $workspace3 output DP2
+workspace $workspace4 output DP2
+workspace $workspace5 output HDMI3
 # END docked_work
 
 # BEGIN docked_home
-workspace $workspace1 output DP3
-workspace $workspace2 output HDMI2
-workspace $workspace3 output HDMI2
-workspace $workspace4 output HDMI2
-workspace $workspace5 output DP3
+#workspace $workspace1 output DP3
+#workspace $workspace2 output HDMI2
+#workspace $workspace3 output HDMI2
+#workspace $workspace4 output HDMI2
+#workspace $workspace5 output DP3
 # END docked_home
 
 bindsym $mod+F10 exec $HOME/.screenlayout/laptop.sh
@@ -391,13 +392,13 @@ exec --no-startup-id feh --bg-max ~/moonraker.jpg ~/fear-and-loathing.jpg ~/dirt
 exec --no-startup-id setxkbmap -layout pl -option
 
 # Start on specific workspace
-exec i3-msg 'exec hipchat4'
-exec i3-msg 'exec vivaldi-snapshot'
+exec i3-msg 'exec --no-startup-id hipchat4'
+exec i3-msg 'exec --no-startup-id vivaldi-snapshot'
 exec --no-startup-id i3-msg 'workspace $workspace2; splith; exec kitty'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id xfce4-power-manager
 exec --no-startup-id blueman-applet
 #exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
