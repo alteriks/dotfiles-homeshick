@@ -18,6 +18,7 @@ alias todotxt-machine="todotxt-machine --config ~/.config/todo/todotxt-machinerc
 alias vim=nvim
 alias bc='bc -l'
 alias ag='ag --hidden --depth -1'
+alias vimdiff='neovim -d'
 # END archlinux
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
