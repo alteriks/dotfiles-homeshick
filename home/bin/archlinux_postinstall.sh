@@ -1,11 +1,11 @@
 # Qualia for managing dotfiles configuration
 pacman -Syu python-pip
-pip install mir.qualia
+pip install mir.qualia undervolt
 
 pacman -Syu i3blocks compton
 pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf net-tools pkgfile
 
-pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight strace ruby
+pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight strace ruby i7z jwhois usleep
 gem install rainbow terminal-notifier
 #terminal-notifier it's macOS only
 
@@ -82,6 +82,10 @@ makepkg -si
 
 git clone https://aur.archlinux.org/networkmanager-dmenu-git.git
 cd networkmanager-dmenu-git
+makepkg -si
+
+git clone https://aur.archlinux.org/pacolog.git
+cd pacolog
 makepkg -si
 
 
