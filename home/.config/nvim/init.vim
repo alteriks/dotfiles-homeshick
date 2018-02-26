@@ -71,6 +71,8 @@ set mouse=a
 "mkdir ~/nvim for shada (old viminfo)
 set shada='50,<1000,s100,:0,n~/.local/share/nvim/shada/main.shada
 
+"better tab completion
+set wildmode=longest,list,full
 
 " https://jeffkreeftmeijer.com/vim-number/
 set relativenumber
