@@ -174,3 +174,5 @@ export LESS=-r
 if [[ $TERMINFO == /usr/lib/kitty/terminfo ]]; then
 	unset TERMINFO
 fi
+# Kubernetes workshop
+source <(kubectl completion zsh)
