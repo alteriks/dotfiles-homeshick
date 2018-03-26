@@ -1,6 +1,7 @@
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
+"  :PlugInstall 
 call plug#begin('~/.config/nvim/plugins/')
 
 Plug 'iCyMind/NeoSolarized'
@@ -13,6 +14,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'yegappan/mru'
 Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
+Plug 'rodjek/vim-puppet'
 
 " Initialize plugin system
 call plug#end()
