@@ -5,3 +5,5 @@
 	default = simple
 [gitreview]
 	username = KrzysztofDajka
+[icdiff]
+	options = --highlight --line-numbers

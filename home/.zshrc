@@ -176,3 +176,16 @@ if [[ $TERMINFO == /usr/lib/kitty/terminfo ]]; then
 fi
 # Kubernetes workshop
 source <(kubectl completion zsh)
+
+#source ~/.zplug/init.zsh
+#zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+#zplug "changyuheng/fz", defer:1
+#zplug "rupa/z", use:z.sh
+
+# Archlinux fzf path
+#https://github.com/rupa/z
+#. ~/bin/z.sh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+setopt no_share_history

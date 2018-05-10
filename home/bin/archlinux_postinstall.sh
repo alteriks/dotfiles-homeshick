@@ -1,6 +1,6 @@
 # Qualia for managing dotfiles configuration
 pacman -Syu python-pip
-pip install mir.qualia undervolt
+pip install mir.qualia undervolt s-tui
 
 pacman -Syu i3blocks compton
 pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf net-tools pkgfile
@@ -88,6 +88,9 @@ git clone https://aur.archlinux.org/pacolog.git
 cd pacolog
 makepkg -si
 
+git clone https://aur.archlinux.org/pacman-lint.git
+cd pacman-lint
+makepkg -si
 
 ~/.ssh/config
 Host *
@@ -105,3 +108,10 @@ $HOME/.config/remmina
 .local/share/remmina
 .config/tmuxinator/
 /etc/systemd/system/monitor_hotplug.service
+
+
+yaourt -Sb icdiff
+git config --global icdiff.options '--highlight --line-numbers'
+
+
+gem install librarian-puppet

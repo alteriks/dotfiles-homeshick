@@ -4,9 +4,12 @@
 "  :PlugInstall 
 call plug#begin('~/.config/nvim/plugins/')
 
+" Themes {{{
 Plug 'iCyMind/NeoSolarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" }}}
+
 Plug 'mhinz/vim-signify'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -15,6 +18,18 @@ Plug 'yegappan/mru'
 Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
 Plug 'rodjek/vim-puppet'
+
+Plug 'junegunn/fzf'
+
+" Linters {{{
+  Plug 'w0rp/ale'
+" }}}
+"
+
+" Syntax highlight {{{
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" }}}
 
 " Initialize plugin system
 call plug#end()
@@ -28,10 +43,10 @@ let g:neosolarized_visibility = "high"
 set termguicolors
 
 "'vim-airline/vim-airline'
-"let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#enabled = 1
  
 " 'mhinz/vim-signify'
 let g:signify_vcs_list = [ 'git' ]
@@ -67,6 +82,19 @@ let MRU_Add_Menu = 0
 "ctrl+shift+v to paste yanked buffer (unnamedplus) doesn't conflict with
 "MiddleClick in tmux.conf with xclip
 set clipboard=unnamedplus
+
+
+" Linters 'w0rp/ale'
+let g:ale_fixers = {
+\   'puppet': ['puppetlint'],
+\}
+let g:ale_fix_on_save = 1
+
+" 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_folding_level = 2
+set conceallevel=2
 
 set mouse=a
 
