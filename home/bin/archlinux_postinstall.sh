@@ -10,17 +10,9 @@ pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight stra
 #terminal-notifier it's macOS only
 
 pacman -Sy extra/networkmanager-openvpn easy-rsa
-
-# vivaldi
-# https://gist.github.com/BlackIkeEagle/5c00face3c7a0f98847a
-pacman -Syu vivaldi  libva-intel-driver libva-mesa-driver
-git clone https://aur.archlinux.org/vivaldi-snapshot.git
-cd vivaldi-snapshot
-makepkg -si
-
-
 pacman -Syu qemu dmidecode bridge-utils icedtea-web jre8-openjdk virt-manager mc vlc unace unarj unrar zip chromium electrum opera virt-viewer wireshark-gtk libreoffice-still dnsmasq
 pacman -Syu keepassx2 keepassxc tigervnc remmina rdesktop freerdp
+
 
 # for iPhone USB tethering
 pacman -Syu usbmuxd libimobiledevice
@@ -51,48 +43,13 @@ blacklist pcspkr
 xdg-mime query default application/pdf          
 xdg-mime default zathura.desktop application/pdf
 
-
-git clone https://aur.archlinux.org/jwhois.git
-cd jwhois
+git clone https://aur.archlinux.org/yay.git
+cd yay
 makepkg -si
+yay -Syu --afterclean --answeredit None spotify i3lock-color-git autorandr rapid-photo-downloader networkmanager-dmenu-git pacolog icdiff vivaldi-snapshot
+# vivaldi
+# https://gist.github.com/BlackIkeEagle/5c00face3c7a0f98847a
 
-cd ..
-git clone https://aur.archlinux.org/hipchat.git
-cd hipchat
-makepkg -si
-
-git clone https://aur.archlinux.org/gcal.git
-cd gcal
-makepkg -si
-
-git clone https://aur.archlinux.org/todotxt.git
-cd todotxt
-makepkg -si
-
-git clone https://aur.archlinux.org/dropbox.git
-cd dropbox
-makepkg -si
-
-git clone https://aur.archlinux.org/i3lock-color-git.git
-cd i3lock-color-git
-makepkg -si
-
-
-git clone https://aur.archlinux.org/autorandr.git
-cd autorandr
-makepkg -si
-
-git clone https://aur.archlinux.org/networkmanager-dmenu-git.git
-cd networkmanager-dmenu-git
-makepkg -si
-
-git clone https://aur.archlinux.org/pacolog.git
-cd pacolog
-makepkg -si
-
-git clone https://aur.archlinux.org/pacman-lint.git
-cd pacman-lint
-makepkg -si
 
 ~/.ssh/config
 Host *
