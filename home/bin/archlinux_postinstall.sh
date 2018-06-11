@@ -5,7 +5,7 @@ pip install mir.qualia undervolt s-tui
 pacman -Syu i3blocks compton
 pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf net-tools pkgfile
 
-pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight strace ruby i7z jwhois usleep
+pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight strace ruby i7z usleep
 
 #terminal-notifier it's macOS only
 
@@ -19,7 +19,7 @@ cd vivaldi-snapshot
 makepkg -si
 
 
-pacman -Syu qemu dmidecode bridge-utils icedtea-web jre8-openjdk virt-manager spotify mc vlc unace unarj unrar zip chromium electrum opera virt-viewer wireshark-gtk libreoffice-still dnsmasq
+pacman -Syu qemu dmidecode bridge-utils icedtea-web jre8-openjdk virt-manager mc vlc unace unarj unrar zip chromium electrum opera virt-viewer wireshark-gtk libreoffice-still dnsmasq
 pacman -Syu keepassx2 keepassxc tigervnc remmina rdesktop freerdp
 
 # for iPhone USB tethering
@@ -51,9 +51,11 @@ blacklist pcspkr
 xdg-mime query default application/pdf          
 xdg-mime default zathura.desktop application/pdf
 
-git clone https://aur.archlinux.org/vivaldi.git
-cd vivaldi
+
+git clone https://aur.archlinux.org/jwhois.git
+cd jwhois
 makepkg -si
+
 cd ..
 git clone https://aur.archlinux.org/hipchat.git
 cd hipchat
