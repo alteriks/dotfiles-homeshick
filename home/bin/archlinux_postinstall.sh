@@ -1,12 +1,12 @@
 # Qualia for managing dotfiles configuration
-pacman -Syu python-pip
+pacman -Syu python-pip ruby
 pip install mir.qualia undervolt s-tui
 
 pacman -Syu i3blocks compton
 pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools tmux neovim zathura-pdf-mupdf net-tools pkgfile
 
 pacman -Syu termite arandr rofi xclip feh lshw xsensors mtr xorg-xbacklight strace ruby i7z jwhois usleep
-gem install rainbow terminal-notifier
+
 #terminal-notifier it's macOS only
 
 pacman -Sy extra/networkmanager-openvpn easy-rsa
@@ -115,3 +115,4 @@ git config --global icdiff.options '--highlight --line-numbers'
 
 
 gem install librarian-puppet
+gem install rainbow terminal-notifier
