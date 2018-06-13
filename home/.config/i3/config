@@ -356,12 +356,10 @@ workspace_layout tabbed
 bindsym Mod4+l exec xset s activate
 
 # Media keys
-#bindsym Print exec ~/bin/scrot-with-message
-#bindsym Shift+Print exec ~/bin/scrot-with-message -s
-bindsym XF86AudioPlay exec $i3config/musickeys.sh toggle
-bindsym XF86AudioStop exec $i3config/musickeys.sh stop
-bindsym XF86AudioNext exec $i3config/musickeys.sh next
-bindsym XF86AudioPrev exec $i3config/musickeys.sh prev
+#bindsym XF86AudioPlay exec $i3config/musickeys.sh toggle
+#bindsym XF86AudioStop exec $i3config/musickeys.sh stop
+#bindsym XF86AudioNext exec $i3config/musickeys.sh next
+#bindsym XF86AudioPrev exec $i3config/musickeys.sh prev
 
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym XF86MonBrightnessUp   exec xbacklight -inc 10
@@ -442,8 +440,8 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # Lock
-#exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/i3lock-color-git.sh
-exec --no-startup-id xss-lock ~/.config/i3/i3lock-color-git.sh
+#exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/bin/i3lock-color-git.sh
+exec --no-startup-id xss-lock ~/.config/i3/bin/i3lock-color-git.sh
 
 
 #############################
