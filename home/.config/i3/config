@@ -38,6 +38,7 @@ bindsym $mod+F4 kill
 # start launcher
 bindsym $mod+p exec --no-startup-id "rofi -matching fuzzy -modi combi -show combi -combi-modi window,run"
 bindsym $mod+space exec --no-startup-id "rofi -matching fuzzy -modi combi -show combi -width -50 -combi-modi run"
+bindsym $mod+Shift+space exec --no-startup-id "rofi -modi calc -show calc -width -50 -no-show-match -no-sort"
 bindsym $mod+i exec --no-startup-id "networkmanager_dmenu"
 
 # change focus
@@ -67,22 +68,22 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split orientation
-bindsym $mod+bar split h; exec notify-send 'tile horizontally'
-bindsym $mod+minus splitv; exec notify-send 'tile vertically'
-bindsym $mod+q split toggle
+bindsym $mod+bar split h; exec notify-send 'i3: tile horizontally'
+bindsym $mod+minus splitv; exec notify-send 'i3: tile vertically'
+bindsym $mod+q split toggle exec notify-send 'i3: split'
 
 # enter fullscreen mode for the focused container
 bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking; exec notify-send 'stacking'
-bindsym $mod+w layout tabbed; exec notify-send 'tabbed'
-bindsym $mod+e layout toggle split; 
+bindsym $mod+s layout stacking; exec notify-send 'i3: stacking layout'
+bindsym $mod+w layout tabbed; exec notify-send 'i3: tabbed layout'
+bindsym $mod+e layout toggle split; exec notify-send 'i3: tabbed split'
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+#TODO: toggle tiling / floating
+#bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
+#TODO: change focus between tiling / floating windows
 bindsym $mod+ctrl+space focus mode_toggle
 
 # focus the parent container
@@ -97,7 +98,7 @@ set $workspace2 "2: Term "
 set $workspace3 "3: Web " 
 set $workspace4 "4: VM"
 set $workspace5 "5: Office "
-set $workspace6 "6: "
+set $workspace6 "6: Photo "
 set $workspace7 "7: "
 set $workspace8 "8: "
 set $workspace9 "9: "
@@ -176,22 +177,23 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $displayMode "Set display mode [w]ork [l]aptop [h]ome"
-bindsym --release $mod+F7 mode $displayMode
-mode $displayMode {
-    bindsym w exec "\
-                ~/.screenlayout/3externalmonitors.sh"; \
-                mode "default"
-    bindsym h exec "\
-                ~/.screenlayout/fujitsu+predator.sh"; \
-                mode "default"
-    bindsym l exec "\
-                ~/.screenlayout/laptopscreen.sh"; \
-                mode "default"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+bindsym --release $mod+F7 exec ~/.config/i3/bin/rofi_autorandr.sh
+#set $displayMode "Set display mode [w]ork [l]aptop [h]ome"
+#bindsym --release $mod+F7 mode $displayMode
+#mode $displayMode {
+#    bindsym w exec "\
+#                ~/.screenlayout/3externalmonitors.sh"; \
+#                mode "default"
+#    bindsym h exec "\
+#                ~/.screenlayout/fujitsu+predator.sh"; \
+#                mode "default"
+#    bindsym l exec "\
+#                ~/.screenlayout/laptopscreen.sh"; \
+#                mode "default"
+#
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
+#}
 
 #https://github.com/i3/i3/issues/2936
 disable_randr15 yes
@@ -215,6 +217,40 @@ mode $printScreenMode {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+mode "focused" {
+
+  # hardcoded focus keybindings
+  bindsym f [class="(?i)firefox"] focus; mode "default"
+  bindsym t [class="(?i)termite"] focus
+  # bindsym w [class="(?i)terminal" title="weechat"] focus
+  bindsym m [class="(?i)vivaldi"] focus
+  bindsym z [class="(?i)zathura"] focus
+
+  # keybindings for marking and jumping to clients
+  bindsym a exec i3-input -F 'mark %s' -P 'Mark name: '
+  bindsym g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+
+  # Assign marks to keys 1-5
+  bindsym Shift+1 mark mark1
+  bindsym Shift+2 mark mark2
+  bindsym Shift+3 mark mark3
+  bindsym Shift+4 mark mark4
+  bindsym Shift+5 mark mark5
+
+  # Jump to clients marked 1-5
+  bindsym 1 [con_mark="mark1"] focus
+  bindsym 2 [con_mark="mark2"] focus
+  bindsym 3 [con_mark="mark3"] focus
+  bindsym 4 [con_mark="mark4"] focus
+  bindsym 5 [con_mark="mark5"] focus
+
+  # Exit to the default mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "focused"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -316,7 +352,8 @@ bindsym $mod+F10 exec $HOME/.screenlayout/laptop.sh
 workspace_layout tabbed
 
 # Screen lock
-bindsym Mod4+l exec ~/.config/i3/i3lock-color-git.sh
+#bindsym Mod4+l exec ~/.config/i3/i3lock-color-git.sh
+bindsym Mod4+l exec xset s activate
 
 # Media keys
 #bindsym Print exec ~/bin/scrot-with-message
@@ -392,7 +429,7 @@ exec --no-startup-id feh --bg-max ~/moonraker.jpg ~/fear-and-loathing.jpg ~/dirt
 exec --no-startup-id setxkbmap -layout pl -option
 
 # Start on specific workspace
-exec i3-msg 'exec --no-startup-id hipchat4'
+#exec i3-msg 'exec --no-startup-id hipchat4'
 exec i3-msg 'exec --no-startup-id vivaldi-snapshot'
 exec --no-startup-id i3-msg 'workspace $workspace2; splith; exec termite'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -400,12 +437,14 @@ exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
 #exec --no-startup-id xfce4-power-manager
 exec --no-startup-id blueman-applet
-#exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
 exec_always --no-startup-id dropbox start
-exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/i3lock-color-git.sh
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+
+# Lock
+#exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/i3lock-color-git.sh
+exec --no-startup-id xss-lock ~/.config/i3/i3lock-color-git.sh
+
 
 #############################
 ### settings for i3-gaps: ###
