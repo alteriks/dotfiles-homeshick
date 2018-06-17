@@ -6,6 +6,7 @@ D='#ff00ffcc'  # default
 T='#ee00eeee'  # text
 W='#880000bb'  # wrong
 V='#bb00bbbb'  # verifying
+size=140
 
 /usr/bin/i3lock \
 --insidevercolor=$C   \
@@ -19,7 +20,8 @@ V='#bb00bbbb'  # verifying
 --linecolor=$B        \
 --separatorcolor=$D   \
 \
---textcolor=$T        \
+--verifcolor=$T        \
+--wrongcolor=$T        \
 --timecolor=$T        \
 --datecolor=$T        \
 --layoutcolor=$T      \
@@ -32,4 +34,8 @@ V='#bb00bbbb'  # verifying
 --timestr="%H:%M:%S"  \
 --datestr="%A, %m %Y" \
 --keylayout 2         \
-
+#--timesize=$size \
+#--datesize=$size \
+#--layoutsize=$size \
+#--verifsize=$size \
+#--wrongsize=$size \
