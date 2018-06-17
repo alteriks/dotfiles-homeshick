@@ -1,19 +1,25 @@
 # Qualia for managing dotfiles configuration
-pacman -Syu python-pip ruby icedtea-web jre8-openjdk python-urwid
+pacman -Syu python-pip python2-pip ruby icedtea-web jre8-openjdk python-urwid
 pip install mir.qualia undervolt s-tui
 
-pacman -Syu i3blocks compton termite arandr rofi xclip feh xorg-xbacklight tmux neovim zathura-pdf-mupdf xss-lock
-pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip i7z jq
+pacman -Syu i3blocks compton termite arandr rofi xclip xorg-xbacklight tmux neovim zathura-pdf-mupdf xss-lock nemo redshift
+pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip i7z jq lsof lftp
 pacman -Syu dmidecode lshw xsensors mtr strace usleep
 pacman -Syu bridge-utils extra/networkmanager-openvpn easy-rsa dnsmasq wireshark-gtk 
 pacman -Syu qemu virt-manager virt-viewer vagrant
-pacman -Syu libreoffice-still 
-pacman -Syu keepassx2 keepassxc tigervnc remmina rdesktop freerdp libvncserver
+pacman -Syu libreoffice-still nomacs
+pacman -Syu keepassxc tigervnc remmina rdesktop freerdp libvncserver
 pacman -Syu chromium opera 
 
-pacman -Syu vlc digikam darktable kodi electrum  rapid-photo-downloader-bzr
+pacman -Syu vlc digikam darktable kodi electrum filezilla
 # for iPhone USB tethering
 pacman -Syu usbmuxd libimobiledevice
+
+pacman -Rs mousepad
+
+systemctl enable libvirtd
+systemctl start libvirtd
+
 
 [root@revenge ~]# cat /etc/systemd/system/powertop.service
 [Unit]
@@ -67,10 +73,14 @@ git config --global icdiff.options '--highlight --line-numbers'
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-yay -Syu --afterclean --answeredit None spotify i3lock-color-git autorandr rapid-photo-downloader networkmanager-dmenu-git pacolog icdiff vivaldi-snapshot rofi-calc todotxt-machine-git
+yay -Syu --afterclean --answeredit None spotify i3lock-color-git autorandr  networkmanager-dmenu-git pacolog icdiff vivaldi-snapshot rofi-calc todotxt-machine-git python-git-remote-dropbox-git
+yay -Syu  #rapid-photo-downloader-bzr 
 # vivaldi
 # https://gist.github.com/BlackIkeEagle/5c00face3c7a0f98847a
 gem install librarian-puppet
 gem install rainbow terminal-notifier
 #terminal-notifier it's macOS only
 gem install tmuxinator
+
+# Change application for "Open in terminal" context menu entry
+gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty

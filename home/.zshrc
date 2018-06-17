@@ -175,7 +175,7 @@ if [[ $TERMINFO == /usr/lib/kitty/terminfo ]]; then
 	unset TERMINFO
 fi
 # Kubernetes workshop
-source <(kubectl completion zsh)
+#source <(kubectl completion zsh)
 
 #source ~/.zplug/init.zsh
 #zplug 'zplug/zplug', hook-build:'zplug --self-manage'

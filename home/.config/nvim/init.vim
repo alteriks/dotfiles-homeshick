@@ -18,6 +18,7 @@ Plug 'yegappan/mru'
 Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
 Plug 'rodjek/vim-puppet'
+Plug 'pearofducks/ansible-vim'
 
 Plug 'junegunn/fzf'
 

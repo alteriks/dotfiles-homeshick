@@ -6,8 +6,15 @@ x-scheme-handler/about=vivaldi.desktop
 x-scheme-handler/unknown=vivaldi.desktop
 x-scheme-handler/mailto=vivaldi.desktop
 x-scheme-handler/webcal=vivaldi.desktop
-application/pdf=zathura.desktop
+application/pdf=org.pwmt.zathura.desktop
+x-scheme-handler/tg=telegramdesktop.desktop
+image/jpeg=nomacs.desktop
 
 [Added Associations]
-application/pdf=zathura.desktop;
-image/jpeg=org.kde.gwenview.desktop;gimp.desktop;
+application/pdf=org.pwmt.zathura.desktop;
+image/jpeg=nomacs.desktop;feh.desktop;org.kde.gwenview.desktop;gimp.desktop;
+application/vnd.oasis.opendocument.spreadsheet=libreoffice-calc.desktop;
+application/x-alpm-package=pamac-installer.desktop;
+text/x-pkgbuild=neovim.desktop;
+text/markdown=markdown_previewer.desktop;
+text/plain=neovim.desktop;
