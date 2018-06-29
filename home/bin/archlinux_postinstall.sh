@@ -3,10 +3,10 @@ pacman -Syu python-pip python2-pip ruby icedtea-web jre8-openjdk python-urwid
 pip install mir.qualia undervolt s-tui
 
 pacman -Syu i3blocks compton termite arandr rofi xclip xorg-xbacklight tmux neovim zathura-pdf-mupdf xss-lock nemo redshift
-pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip i7z jq lsof lftp
+pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip i7z jq lsof lftp tcpdump
 pacman -Syu dmidecode lshw xsensors mtr strace usleep
 pacman -Syu bridge-utils extra/networkmanager-openvpn easy-rsa dnsmasq wireshark-gtk 
-pacman -Syu qemu virt-manager virt-viewer vagrant
+pacman -Syu qemu virt-manager virt-viewer vagrant chrony
 pacman -Syu libreoffice-still nomacs
 pacman -Syu keepassxc tigervnc remmina rdesktop freerdp libvncserver
 pacman -Syu chromium opera 
@@ -19,6 +19,8 @@ pacman -Rs mousepad
 
 systemctl enable libvirtd
 systemctl start libvirtd
+systemctl enable chronyd
+systemctl start chronyd
 
 
 [root@revenge ~]# cat /etc/systemd/system/powertop.service
@@ -84,3 +86,8 @@ gem install tmuxinator
 
 # Change application for "Open in terminal" context menu entry
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
+
+#ansible
+useradd -r -m  -G wheel ansible
+su - ansible -c "ssh-keygen -t ed25519"
+
