@@ -3,7 +3,7 @@ pacman -Syu python-pip python2-pip ruby icedtea-web jre8-openjdk python-urwid
 pip install mir.qualia undervolt s-tui
 
 pacman -Syu i3blocks compton termite arandr rofi xclip xorg-xbacklight tmux neovim zathura-pdf-mupdf xss-lock nemo redshift
-pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip i7z jq lsof lftp tcpdump
+pacman -Syu rsync bc acpi sysstat wget fzf the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip i7z jq lsof lftp tcpdump
 pacman -Syu dmidecode lshw xsensors mtr strace usleep
 pacman -Syu bridge-utils extra/networkmanager-openvpn easy-rsa dnsmasq wireshark-gtk 
 pacman -Syu qemu virt-manager virt-viewer vagrant chrony
