@@ -184,7 +184,7 @@ fi
 
 # Archlinux fzf path
 #https://github.com/rupa/z
-#. ~/bin/z.sh
+. ~/bin/z.sh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 

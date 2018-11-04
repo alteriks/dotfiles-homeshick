@@ -400,7 +400,7 @@ exec --no-startup-id blueman-applet
 exec_always --no-startup-id dropbox start
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id exec i3wsr
+#exec_always --no-startup-id exec i3wsr
 
 # Lock
 #exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/bin/i3lock-color-git.sh
