@@ -2,18 +2,12 @@
 pacman --noconfirm -Syu python-pip python2-pip ruby icedtea-web jre8-openjdk python-urwid
 pip install mir.qualia 
 
-<<<<<<< HEAD
-pacman -Syu i3blocks compton termite arandr rofi xclip xorg-xbacklight tmux neovim zathura-pdf-mupdf xss-lock nemo redshift numlockx
-pacman -Syu rsync bc acpi sysstat wget the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip i7z jq lsof lftp tcpdump
-pacman -Syu dmidecode lshw xsensors mtr strace usleep
-=======
 # Baremetal
 pip install undervolt s-tui
 
 pacman --noconfirm -Syu i3blocks compton termite arandr rofi xclip xorg-xbacklight zathura-pdf-mupdf xss-lock nemo redshift
 pacman --noconfirm -Syu neovim tmux rsync bc acpi sysstat wget fzf the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip i7z jq lsof lftp tcpdump mtr strace usleep
 pacman -Syu dmidecode lshw xsensors
->>>>>>> 3b254c93e61abceac1580d96814f8690c2691249
 pacman -Syu bridge-utils extra/networkmanager-openvpn easy-rsa dnsmasq wireshark-gtk 
 pacman -Syu qemu virt-manager virt-viewer vagrant chrony
 pacman -Syu libreoffice-still nomacs
