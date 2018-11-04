@@ -12,6 +12,31 @@
 # Neovim plugins 
     # plasticboy/vim-markdown
     open the link under the cursor in the same browser 
-    ```vim
+```
     gx
-    ```
+```
+
+# Tmux
+    # zoom pane 
+```
+^C-a + z
+```    
+    # buffer history
+    $ ^C-a + =
+    
+    # select session/window
+    $ ^C-a + s
+    
+    # sync pane
+    $ ^C-a + -
+    
+    
+    # on selection
+        # copy&paste
+        $ Y
+        
+        # open in $EDITOR 
+        $ ^C+o
+        
+        # rectangle selection
+        $ v 
