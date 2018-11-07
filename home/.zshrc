@@ -75,15 +75,15 @@ ZSH_TMUX_FIXTERM_WITH_256COLOR="screen-256color"
 #TODO: install tmuxinator https://github.com/tmuxinator/tmuxinator
 #TODO: fasd https://github.com/clvv/fasd
 #plugins=(dircycle fasd git history-substring-search systemd taskwarrior tmux tmuxinator web-search)
-plugins=(dircycle fasd fancy-ctrl-z git history-substring-search safe-paste systemd taskwarrior tmux tmuxinator web-search)
+plugins=(dircycle fasd fancy-ctrl-z git history-substring-search safe-paste systemd taskwarrior tmux web-search)
 alias pushd=' pushd'
 alias cls='clear && echo -en "[3J"'
 
 
 DEFAULT_USER="alteriks"
 #if [[ $UID -eq 1001 || $UID -eq 1000 ]]; then 
-#	ZSH_TMUX_AUTOSTART=true
-#	ZSH_TMUX_AUTOQUIT=false
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOQUIT=false
 #fi
 HIST_IGNORE_SPACE=0
 

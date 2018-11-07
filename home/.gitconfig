@@ -1,6 +1,7 @@
 [user]
 	name = Krzysztof Dajka
-	email = krzysztof.dajka.ext@gigaset.com
+	email = alteriks@protonmail.com
+	signingkey = 0xB6C314849BF49C13
 [push]
 	default = simple
 [gitreview]
