@@ -4,6 +4,7 @@
 	signingkey = 0xB6C314849BF49C13
 [push]
 	default = simple
+	gpgsign = true
 [gitreview]
 	username = KrzysztofDajka
 [icdiff]
@@ -19,3 +20,5 @@
   prompt = false
 [diff]
   tool = vimdiff
+[commit]
+	gpgsign = true
