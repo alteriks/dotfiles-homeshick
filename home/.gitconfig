@@ -4,7 +4,7 @@
 	signingkey = 0xB6C314849BF49C13
 [push]
 	default = simple
-	gpgsign = true
+	gpgsign = false
 [gitreview]
 	username = KrzysztofDajka
 [icdiff]
