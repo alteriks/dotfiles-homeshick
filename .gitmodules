@@ -1,3 +1,48 @@
-[submodule "home/.config/nvim/plugin"]
-	path = home/.config/nvim/plugin
-	url = https://github.com/rking/ag.vim.git
+[submodule "home/.config/nvim/plug/ale"]
+	path = home/.config/nvim/plug/ale
+	url = /home/alteriks/.config/nvim/plugins/ale
+[submodule "home/.config/nvim/plug/ag.vim"]
+	path = home/.config/nvim/plug/ag.vim
+	url = /home/alteriks/.config/nvim/plugins/ag.vim
+[submodule "home/.config/nvim/plug/ansible-vim"]
+	path = home/.config/nvim/plug/ansible-vim
+	url = /home/alteriks/.config/nvim/plugins/ansible-vim
+[submodule "home/.config/nvim/plug/fzf"]
+	path = home/.config/nvim/plug/fzf
+	url = /home/alteriks/.config/nvim/plugins/fzf
+[submodule "home/.config/nvim/plug/mru"]
+	path = home/.config/nvim/plug/mru
+	url = /home/alteriks/.config/nvim/plugins/mru
+[submodule "home/.config/nvim/plug/NeoSolarized"]
+	path = home/.config/nvim/plug/NeoSolarized
+	url = /home/alteriks/.config/nvim/plugins/NeoSolarized
+[submodule "home/.config/nvim/plug/tabular"]
+	path = home/.config/nvim/plug/tabular
+	url = /home/alteriks/.config/nvim/plugins/tabular
+[submodule "home/.config/nvim/plug/vim-airline"]
+	path = home/.config/nvim/plug/vim-airline
+	url = /home/alteriks/.config/nvim/plugins/vim-airline
+[submodule "home/.config/nvim/plug/vim-airline-themes"]
+	path = home/.config/nvim/plug/vim-airline-themes
+	url = /home/alteriks/.config/nvim/plugins/vim-airline-themes
+[submodule "home/.config/nvim/plug/vim-easymotion"]
+	path = home/.config/nvim/plug/vim-easymotion
+	url = /home/alteriks/.config/nvim/plugins/vim-easymotion
+[submodule "home/.config/nvim/plug/vim-markdown"]
+	path = home/.config/nvim/plug/vim-markdown
+	url = /home/alteriks/.config/nvim/plugins/vim-markdown
+[submodule "home/.config/nvim/plug/vim-puppet"]
+	path = home/.config/nvim/plug/vim-puppet
+	url = /home/alteriks/.config/nvim/plugins/vim-puppet
+[submodule "home/.config/nvim/plug/vim-signify"]
+	path = home/.config/nvim/plug/vim-signify
+	url = /home/alteriks/.config/nvim/plugins/vim-signify
+[submodule "home/.config/nvim/plug/vim-startify"]
+	path = home/.config/nvim/plug/vim-startify
+	url = /home/alteriks/.config/nvim/plugins/vim-startify
+[submodule "home/.config/nvim/plug/vim-tmux"]
+	path = home/.config/nvim/plug/vim-tmux
+	url = /home/alteriks/.config/nvim/plugins/vim-tmux
+[submodule "home/.config/nvim/plug/vim-tmux-focus-events"]
+	path = home/.config/nvim/plug/vim-tmux-focus-events
+	url = /home/alteriks/.config/nvim/plugins/vim-tmux-focus-events

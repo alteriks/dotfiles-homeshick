@@ -2,7 +2,7 @@
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 "  :PlugInstall 
-call plug#begin('~/.config/nvim/plugins/')
+call plug#begin('~/.config/nvim/plug/')
 
 " Themes {{{
 Plug 'iCyMind/NeoSolarized'
