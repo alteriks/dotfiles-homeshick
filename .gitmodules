@@ -1,0 +1,3 @@
+[submodule "home/.config/nvim/plugin"]
+	path = home/.config/nvim/plugin
+	url = https://github.com/rking/ag.vim.git

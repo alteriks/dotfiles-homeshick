@@ -1,7 +1,7 @@
 [user]
 	name = Krzysztof Dajka
 	email = alteriks@protonmail.com
-	signingkey = 513B005BDEFFBED16D470EF8B6C314849BF49C13
+	#signingkey = 513B005BDEFFBED16D470EF8B6C314849BF49C13
 [push]
 	default = simple
 	gpgsign = false
@@ -20,5 +20,5 @@
   prompt = false
 [diff]
   tool = vimdiff
-[commit]
-	gpgsign = true
+#[commit]
+#	gpgsign = true
