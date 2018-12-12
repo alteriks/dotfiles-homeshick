@@ -1,75 +1,75 @@
 [submodule "home/.config/nvim/plug/ale"]
 	path = home/.config/nvim/plug/ale
-	url = /home/alteriks/.config/nvim/plugins/ale
+	url = ~/.config/nvim/plugins/ale
 [submodule "home/.config/nvim/plug/ag.vim"]
 	path = home/.config/nvim/plug/ag.vim
-	url = /home/alteriks/.config/nvim/plugins/ag.vim
+	url = ~/.config/nvim/plugins/ag.vim
 [submodule "home/.config/nvim/plug/ansible-vim"]
 	path = home/.config/nvim/plug/ansible-vim
-	url = /home/alteriks/.config/nvim/plugins/ansible-vim
+	url = ~/.config/nvim/plugins/ansible-vim
 [submodule "home/.config/nvim/plug/fzf"]
 	path = home/.config/nvim/plug/fzf
-	url = /home/alteriks/.config/nvim/plugins/fzf
+	url = ~/.config/nvim/plugins/fzf
 [submodule "home/.config/nvim/plug/mru"]
 	path = home/.config/nvim/plug/mru
-	url = /home/alteriks/.config/nvim/plugins/mru
+	url = ~/.config/nvim/plugins/mru
 [submodule "home/.config/nvim/plug/NeoSolarized"]
 	path = home/.config/nvim/plug/NeoSolarized
-	url = /home/alteriks/.config/nvim/plugins/NeoSolarized
+	url = ~/.config/nvim/plugins/NeoSolarized
 [submodule "home/.config/nvim/plug/tabular"]
 	path = home/.config/nvim/plug/tabular
-	url = /home/alteriks/.config/nvim/plugins/tabular
+	url = ~/.config/nvim/plugins/tabular
 [submodule "home/.config/nvim/plug/vim-airline"]
 	path = home/.config/nvim/plug/vim-airline
-	url = /home/alteriks/.config/nvim/plugins/vim-airline
+	url = ~/.config/nvim/plugins/vim-airline
 [submodule "home/.config/nvim/plug/vim-airline-themes"]
 	path = home/.config/nvim/plug/vim-airline-themes
-	url = /home/alteriks/.config/nvim/plugins/vim-airline-themes
+	url = ~/.config/nvim/plugins/vim-airline-themes
 [submodule "home/.config/nvim/plug/vim-easymotion"]
 	path = home/.config/nvim/plug/vim-easymotion
-	url = /home/alteriks/.config/nvim/plugins/vim-easymotion
+	url = ~/.config/nvim/plugins/vim-easymotion
 [submodule "home/.config/nvim/plug/vim-markdown"]
 	path = home/.config/nvim/plug/vim-markdown
-	url = /home/alteriks/.config/nvim/plugins/vim-markdown
+	url = ~/.config/nvim/plugins/vim-markdown
 [submodule "home/.config/nvim/plug/vim-puppet"]
 	path = home/.config/nvim/plug/vim-puppet
-	url = /home/alteriks/.config/nvim/plugins/vim-puppet
+	url = ~/.config/nvim/plugins/vim-puppet
 [submodule "home/.config/nvim/plug/vim-signify"]
 	path = home/.config/nvim/plug/vim-signify
-	url = /home/alteriks/.config/nvim/plugins/vim-signify
+	url = ~/.config/nvim/plugins/vim-signify
 [submodule "home/.config/nvim/plug/vim-startify"]
 	path = home/.config/nvim/plug/vim-startify
-	url = /home/alteriks/.config/nvim/plugins/vim-startify
+	url = ~/.config/nvim/plugins/vim-startify
 [submodule "home/.config/nvim/plug/vim-tmux"]
 	path = home/.config/nvim/plug/vim-tmux
-	url = /home/alteriks/.config/nvim/plugins/vim-tmux
+	url = ~/.config/nvim/plugins/vim-tmux
 [submodule "home/.config/nvim/plug/vim-tmux-focus-events"]
 	path = home/.config/nvim/plug/vim-tmux-focus-events
-	url = /home/alteriks/.config/nvim/plugins/vim-tmux-focus-events
+	url = ~/.config/nvim/plugins/vim-tmux-focus-events
 [submodule "home/.tmux/plugins/tmux-better-mouse-mode"]
 	path = home/.tmux/plugins/tmux-better-mouse-mode
-	url = /home/alteriks/.tmux//plugins/tmux-better-mouse-mode
+	url = ~/.tmux//plugins/tmux-better-mouse-mode
 [submodule "home/.tmux/plugins/tmux-continuum"]
 	path = home/.tmux/plugins/tmux-continuum
-	url = /home/alteriks/.tmux//plugins/tmux-continuum
+	url = ~/.tmux//plugins/tmux-continuum
 [submodule "home/.tmux/plugins/tmux-current-pane-hostname"]
 	path = home/.tmux/plugins/tmux-current-pane-hostname
-	url = /home/alteriks/.tmux//plugins/tmux-current-pane-hostname
+	url = ~/.tmux//plugins/tmux-current-pane-hostname
 [submodule "home/.tmux/plugins/tmux-open"]
 	path = home/.tmux/plugins/tmux-open
-	url = /home/alteriks/.tmux//plugins/tmux-open
+	url = ~/.tmux//plugins/tmux-open
 [submodule "home/.tmux/plugins/tmux-prefix-highlight"]
 	path = home/.tmux/plugins/tmux-prefix-highlight
-	url = /home/alteriks/.tmux//plugins/tmux-prefix-highlight
+	url = ~/.tmux//plugins/tmux-prefix-highlight
 [submodule "home/.tmux/plugins/tmux-resurrect"]
 	path = home/.tmux/plugins/tmux-resurrect
-	url = /home/alteriks/.tmux//plugins/tmux-resurrect
+	url = ~/.tmux//plugins/tmux-resurrect
 [submodule "home/.tmux/plugins/tmux-sensible"]
 	path = home/.tmux/plugins/tmux-sensible
-	url = /home/alteriks/.tmux//plugins/tmux-sensible
+	url = ~/.tmux//plugins/tmux-sensible
 [submodule "home/.tmux/plugins/tmux-yank"]
 	path = home/.tmux/plugins/tmux-yank
-	url = /home/alteriks/.tmux//plugins/tmux-yank
+	url = ~/.tmux//plugins/tmux-yank
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
-	url = /home/alteriks/.tmux//plugins/tpm
+	url = ~/.tmux//plugins/tpm
