@@ -69,7 +69,7 @@
 	url = https://github.com/tmux-plugins/tmux-sensible
 [submodule "home/.tmux/plugins/tmux-yank"]
 	path = home/.tmux/plugins/tmux-yank
-	url = https://github.com/tmux-plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-yank
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
