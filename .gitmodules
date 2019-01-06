@@ -1,75 +1,75 @@
 [submodule "home/.config/nvim/plug/ale"]
 	path = home/.config/nvim/plug/ale
-	url = ~/.config/nvim/plugins/ale
+	url = https://github.com/w0rp/ale
 [submodule "home/.config/nvim/plug/ag.vim"]
 	path = home/.config/nvim/plug/ag.vim
-	url = ~/.config/nvim/plugins/ag.vim
+	url = https://github.com/rking/ag.vim
 [submodule "home/.config/nvim/plug/ansible-vim"]
 	path = home/.config/nvim/plug/ansible-vim
-	url = ~/.config/nvim/plugins/ansible-vim
+	url = https://github.com/pearofducks/ansible-vim
 [submodule "home/.config/nvim/plug/fzf"]
 	path = home/.config/nvim/plug/fzf
-	url = ~/.config/nvim/plugins/fzf
+	url = https://github.com/junegunn/fzf.vim
 [submodule "home/.config/nvim/plug/mru"]
 	path = home/.config/nvim/plug/mru
-	url = ~/.config/nvim/plugins/mru
+	url = https://github.com/yegappan/mru
 [submodule "home/.config/nvim/plug/NeoSolarized"]
 	path = home/.config/nvim/plug/NeoSolarized
-	url = ~/.config/nvim/plugins/NeoSolarized
+	url = https://github.com/iCyMind/NeoSolarized
 [submodule "home/.config/nvim/plug/tabular"]
 	path = home/.config/nvim/plug/tabular
-	url = ~/.config/nvim/plugins/tabular
+	url = https://github.com/godlygeek/tabular
 [submodule "home/.config/nvim/plug/vim-airline"]
 	path = home/.config/nvim/plug/vim-airline
-	url = ~/.config/nvim/plugins/vim-airline
+	url = https://github.com/vim-airline/vim-airline
 [submodule "home/.config/nvim/plug/vim-airline-themes"]
 	path = home/.config/nvim/plug/vim-airline-themes
-	url = ~/.config/nvim/plugins/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
 [submodule "home/.config/nvim/plug/vim-easymotion"]
 	path = home/.config/nvim/plug/vim-easymotion
-	url = ~/.config/nvim/plugins/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
 [submodule "home/.config/nvim/plug/vim-markdown"]
 	path = home/.config/nvim/plug/vim-markdown
-	url = ~/.config/nvim/plugins/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown
 [submodule "home/.config/nvim/plug/vim-puppet"]
 	path = home/.config/nvim/plug/vim-puppet
-	url = ~/.config/nvim/plugins/vim-puppet
+	url = https://github.com/rodjek/vim-puppet
 [submodule "home/.config/nvim/plug/vim-signify"]
 	path = home/.config/nvim/plug/vim-signify
-	url = ~/.config/nvim/plugins/vim-signify
+	url = https://github.com/mhinz/vim-signify
 [submodule "home/.config/nvim/plug/vim-startify"]
 	path = home/.config/nvim/plug/vim-startify
-	url = ~/.config/nvim/plugins/vim-startify
+	url = https://github.com/mhinz/vim-startify
 [submodule "home/.config/nvim/plug/vim-tmux"]
 	path = home/.config/nvim/plug/vim-tmux
-	url = ~/.config/nvim/plugins/vim-tmux
+	url = https://github.com/tmux-plugins/vim-tmux
 [submodule "home/.config/nvim/plug/vim-tmux-focus-events"]
 	path = home/.config/nvim/plug/vim-tmux-focus-events
-	url = ~/.config/nvim/plugins/vim-tmux-focus-events
+	url = https://github.com/tmux-plugins/vim-tmux-focus-events
 [submodule "home/.tmux/plugins/tmux-better-mouse-mode"]
 	path = home/.tmux/plugins/tmux-better-mouse-mode
-	url = ~/.tmux//plugins/tmux-better-mouse-mode
+	url = https://github.com/NHDaly/tmux-better-mouse-mode
 [submodule "home/.tmux/plugins/tmux-continuum"]
 	path = home/.tmux/plugins/tmux-continuum
-	url = ~/.tmux//plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum
 [submodule "home/.tmux/plugins/tmux-current-pane-hostname"]
 	path = home/.tmux/plugins/tmux-current-pane-hostname
-	url = ~/.tmux//plugins/tmux-current-pane-hostname
+	url = https://github.com/soyuka/tmux-current-pane-hostname
 [submodule "home/.tmux/plugins/tmux-open"]
 	path = home/.tmux/plugins/tmux-open
-	url = ~/.tmux//plugins/tmux-open
+	url = https://github.com/tmux-plugins/tmux-open
 [submodule "home/.tmux/plugins/tmux-prefix-highlight"]
 	path = home/.tmux/plugins/tmux-prefix-highlight
-	url = ~/.tmux//plugins/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight
 [submodule "home/.tmux/plugins/tmux-resurrect"]
 	path = home/.tmux/plugins/tmux-resurrect
-	url = ~/.tmux//plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
 [submodule "home/.tmux/plugins/tmux-sensible"]
 	path = home/.tmux/plugins/tmux-sensible
-	url = ~/.tmux//plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
 [submodule "home/.tmux/plugins/tmux-yank"]
 	path = home/.tmux/plugins/tmux-yank
-	url = ~/.tmux//plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-sensible
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
-	url = ~/.tmux//plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
