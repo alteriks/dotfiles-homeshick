@@ -1,51 +1,52 @@
-[submodule "home/.config/nvim/plug/ale"]
-	path = home/.config/nvim/plug/ale
-	url = https://github.com/w0rp/ale
-[submodule "home/.config/nvim/plug/ag.vim"]
-	path = home/.config/nvim/plug/ag.vim
-	url = https://github.com/rking/ag.vim
-[submodule "home/.config/nvim/plug/ansible-vim"]
-	path = home/.config/nvim/plug/ansible-vim
-	url = https://github.com/pearofducks/ansible-vim
-[submodule "home/.config/nvim/plug/fzf"]
-	path = home/.config/nvim/plug/fzf
-	url = https://github.com/junegunn/fzf.vim
-[submodule "home/.config/nvim/plug/mru"]
-	path = home/.config/nvim/plug/mru
-	url = https://github.com/yegappan/mru
-[submodule "home/.config/nvim/plug/NeoSolarized"]
-	path = home/.config/nvim/plug/NeoSolarized
-	url = https://github.com/iCyMind/NeoSolarized
-[submodule "home/.config/nvim/plug/tabular"]
-	path = home/.config/nvim/plug/tabular
-	url = https://github.com/godlygeek/tabular
-[submodule "home/.config/nvim/plug/vim-airline"]
-	path = home/.config/nvim/plug/vim-airline
-	url = https://github.com/vim-airline/vim-airline
-[submodule "home/.config/nvim/plug/vim-airline-themes"]
-	path = home/.config/nvim/plug/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "home/.config/nvim/plug/vim-easymotion"]
-	path = home/.config/nvim/plug/vim-easymotion
-	url = https://github.com/easymotion/vim-easymotion
-[submodule "home/.config/nvim/plug/vim-markdown"]
-	path = home/.config/nvim/plug/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown
-[submodule "home/.config/nvim/plug/vim-puppet"]
-	path = home/.config/nvim/plug/vim-puppet
-	url = https://github.com/rodjek/vim-puppet
-[submodule "home/.config/nvim/plug/vim-signify"]
-	path = home/.config/nvim/plug/vim-signify
-	url = https://github.com/mhinz/vim-signify
-[submodule "home/.config/nvim/plug/vim-startify"]
-	path = home/.config/nvim/plug/vim-startify
-	url = https://github.com/mhinz/vim-startify
-[submodule "home/.config/nvim/plug/vim-tmux"]
-	path = home/.config/nvim/plug/vim-tmux
-	url = https://github.com/tmux-plugins/vim-tmux
-[submodule "home/.config/nvim/plug/vim-tmux-focus-events"]
-	path = home/.config/nvim/plug/vim-tmux-focus-events
-	url = https://github.com/tmux-plugins/vim-tmux-focus-events
+#[submodule "home/.config/nvim/plug/ale"]
+#	path = home/.config/nvim/plug/ale
+#	url = https://github.com/w0rp/ale
+#[submodule "home/.config/nvim/plug/ag.vim"]
+#	path = home/.config/nvim/plug/ag.vim
+#	url = https://github.com/rking/ag.vim
+#[submodule "home/.config/nvim/plug/ansible-vim"]
+#	path = home/.config/nvim/plug/ansible-vim
+#	url = https://github.com/pearofducks/ansible-vim
+#[submodule "home/.config/nvim/plug/fzf"]
+#	path = home/.config/nvim/plug/fzf
+#	url = https://github.com/junegunn/fzf
+#	fetchRecurseSubmodules = true
+#[submodule "home/.config/nvim/plug/mru"]
+#	path = home/.config/nvim/plug/mru
+#	url = https://github.com/yegappan/mru
+#[submodule "home/.config/nvim/plug/NeoSolarized"]
+#	path = home/.config/nvim/plug/NeoSolarized
+#	url = https://github.com/iCyMind/NeoSolarized
+#[submodule "home/.config/nvim/plug/tabular"]
+#	path = home/.config/nvim/plug/tabular
+#	url = https://github.com/godlygeek/tabular
+#[submodule "home/.config/nvim/plug/vim-airline"]
+#	path = home/.config/nvim/plug/vim-airline
+#	url = https://github.com/vim-airline/vim-airline
+#[submodule "home/.config/nvim/plug/vim-airline-themes"]
+#	path = home/.config/nvim/plug/vim-airline-themes
+#	url = https://github.com/vim-airline/vim-airline-themes
+#[submodule "home/.config/nvim/plug/vim-easymotion"]
+#	path = home/.config/nvim/plug/vim-easymotion
+#	url = https://github.com/easymotion/vim-easymotion
+#[submodule "home/.config/nvim/plug/vim-markdown"]
+#	path = home/.config/nvim/plug/vim-markdown
+#	url = https://github.com/plasticboy/vim-markdown
+#[submodule "home/.config/nvim/plug/vim-puppet"]
+#	path = home/.config/nvim/plug/vim-puppet
+#	url = https://github.com/rodjek/vim-puppet
+#[submodule "home/.config/nvim/plug/vim-signify"]
+#	path = home/.config/nvim/plug/vim-signify
+#	url = https://github.com/mhinz/vim-signify
+#[submodule "home/.config/nvim/plug/vim-startify"]
+#	path = home/.config/nvim/plug/vim-startify
+#	url = https://github.com/mhinz/vim-startify
+#[submodule "home/.config/nvim/plug/vim-tmux"]
+#	path = home/.config/nvim/plug/vim-tmux
+#	url = https://github.com/tmux-plugins/vim-tmux
+#[submodule "home/.config/nvim/plug/vim-tmux-focus-events"]
+#	path = home/.config/nvim/plug/vim-tmux-focus-events
+#	url = https://github.com/tmux-plugins/vim-tmux-focus-events
 [submodule "home/.tmux/plugins/tmux-better-mouse-mode"]
 	path = home/.tmux/plugins/tmux-better-mouse-mode
 	url = https://github.com/NHDaly/tmux-better-mouse-mode
@@ -73,3 +74,21 @@
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+#[submodule "home/.config/nvim/plug/deoplete.vim"]
+#	path = home/.config/nvim/plug/deoplete.vim
+#	url = https://github.com/Shougo/deoplete.nvim
+#[submodule "home/.config/nvim/plug/deoplete-jedi"]
+#	path = home/.config/nvim/plug/deoplete-jedi
+#	url = https://github.com/zchee/deoplete-jedi
+#[submodule "home/.config/nvim/plug/syntastic"]
+#	path = home/.config/nvim/plug/syntastic
+#	url = https://github.com/vim-syntastic/syntastic
+#[submodule "home/.config/nvim/plug/vim-flake8"]
+#	path = home/.config/nvim/plug/vim-flake8
+#	url = https://github.com/nvie/vim-flake8
+#[submodule "home/.config/nvim/plug/vim-python-pep8-indent"]
+#	path = home/.config/nvim/plug/vim-python-pep8-indent
+#	url = https://github.com/Vimjas/vim-python-pep8-indent
+#[submodule "home/.config/nvim/plug/delimitMate"]
+#	path = home/.config/nvim/plug/delimitMate
+#	url = https://github.com/Raimondi/delimitMate

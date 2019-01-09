@@ -32,6 +32,31 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " }}}
 
+" Python {{{
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+Plug 'zchee/deoplete-jedi'
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
+"automatically closing the scratch window at the top of the vim window on finishing a complete or leaving insert
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+Plug 'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+Plug 'nvie/vim-flake8'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Raimondi/delimitMate'
+
+
+" }}}
+
 " Initialize plugin system
 call plug#end()
 
