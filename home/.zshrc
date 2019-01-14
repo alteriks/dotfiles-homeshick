@@ -146,30 +146,19 @@ ssh() {
         command ssh "$@"
     fi
 }
+
+export PAGER=most less
 # Color man pages
-export LESS_TERMCAP_mb=$'\E[01;32m'
-export LESS_TERMCAP_md=$'\E[01;32m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;47;34m'
-export	LESS_TERMCAP_so=$'\E[30;41m' \
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;36m'
-export LESS=-r
-#function man() {
-#        env \
-#		LESS_TERMCAP_mb=$'\E[01;32m' \
-#		LESS_TERMCAP_md=$'\E[01;32m' \
-#		LESS_TERMCAP_me=$'\E[0m' \
-#		LESS_TERMCAP_se=$'\E[0m' \
-#		LESS_TERMCAP_ue=$'\E[0m' \
-#		LESS_TERMCAP_us=$'\E[01;36m' \
-#		LESS_TERMCAP_so=$'\E[30;41m' \
-#                PAGER="${commands[less]:-$PAGER}" \
-#                _NROFF_U=1 \
-#                        man "$@"
-#}
-#export TERMINFO=
+# export LESS_TERMCAP_mb=$'\E[01;32m'
+# export LESS_TERMCAP_md=$'\E[01;32m'
+# export LESS_TERMCAP_me=$'\E[0m'
+# export LESS_TERMCAP_se=$'\E[0m'
+# export LESS_TERMCAP_so=$'\E[01;47;34m'
+# export	LESS_TERMCAP_so=$'\E[30;41m' \
+# export LESS_TERMCAP_ue=$'\E[0m'
+# export LESS_TERMCAP_us=$'\E[01;36m'
+# export LESS=-r
+
 # hack for HOME/END in neovim in tmux using kitty
 if [[ $TERMINFO == /usr/lib/kitty/terminfo ]]; then
 	unset TERMINFO
