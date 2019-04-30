@@ -15,7 +15,7 @@ font pango:DejaVu Sans Mono for Powerline, Book 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -306,6 +306,7 @@ bindsym Mod4+k [instance="scratchpad-keepassxc"] scratchpad show
 
 for_window [title="Open database"] sticky enable, border normal
 for_window [window_type="dialog"] sticky enable, border normal, focus
+for_window [title="Yubico Authenticator"] sticky enable, border normal, focus, floating enable
 
 #TODO: https://wiki.archlinux.org/index.php/I3#Save_and_restore_the_window_layout
 
@@ -405,7 +406,7 @@ exec --no-startup-id setxkbmap -layout pl -option
 # Start on specific workspace
 #exec i3-msg 'exec --no-startup-id hipchat4'
 exec i3-msg 'exec --no-startup-id vivaldi-snapshot'
-exec --no-startup-id i3-msg 'workspace $workspace2; splith; exec termite'
+exec --no-startup-id i3-msg 'workspace $workspace2; splith; exec kitty'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
