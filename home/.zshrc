@@ -173,8 +173,13 @@ fi
 
 # Archlinux fzf path
 #https://github.com/rupa/z
-. ~/bin/z.sh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+if [[ -e ~/bin/z.sh ]];then
+  source ~/bin/z.sh
+fi
+
+if [[ -d /usr/share/fzf/ ]];then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+fi
 
 setopt no_share_history
