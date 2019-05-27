@@ -19,8 +19,18 @@ Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'pearofducks/ansible-vim'
+Plug 'mbbill/undotree'
 
+" Search {{{
+Plug 'nelstrom/vim-visual-star-search'
 Plug 'junegunn/fzf'
+" }}}
+"Plug 'Shougo/denite.nvim'
+"nmap ; :Denite buffer -split=floating -winrow=1<CR>
+"nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
+"nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+"nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+
 
 " Linters {{{
   Plug 'w0rp/ale'
@@ -121,6 +131,19 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_level = 2
 set conceallevel=2
+
+" 'mhinz/vim-startify'
+let g:startify_bookmarks = [
+  \ { 'n': '~/.config/nvim/init.vim' },
+  \ { 'i': '~/.config/i3/config'},
+  \ ]
+let g:startify_custom_footer =
+  \ [
+  \ '', "   Put new things here!", '',
+  \ "   Try :UndotreeToggle https://github.com/mbbill/undotree", '',
+  \ "   Try nelstrom/vim-visual-star-search Select with VISUALMODE and search for pattern using */# ", '',
+  \ "   Try :SSave    save a session in vim-startify", '',
+  \ ]
 
 set mouse=a
 
