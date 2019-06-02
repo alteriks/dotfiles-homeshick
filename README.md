@@ -13,7 +13,7 @@
   
     $ cd $HOME/.homesick/repos/dotfiles
     $ git remote set-url origin git@github.com:alteriks/dotfiles
-b
+
 # Neovim plugins 
     # plasticboy/vim-markdown
     open the link under the cursor in the same browser 
