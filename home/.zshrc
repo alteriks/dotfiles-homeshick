@@ -5,7 +5,7 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 #
 #https://deductivelabs.com/en/using-true-color-vim-tmux/
 #export TERM="xterm-256color"
-export TERM="screen-256color"
+#export TERM="screen-256color" ### Fucks nvim on pwsh
 
 #tmuxinator
 export DISABLE_AUTO_TITLE=true
@@ -75,7 +75,8 @@ ZSH_TMUX_FIXTERM_WITH_256COLOR="screen-256color"
 #TODO: install tmuxinator https://github.com/tmuxinator/tmuxinator
 #TODO: fasd https://github.com/clvv/fasd
 #plugins=(dircycle fasd git history-substring-search systemd taskwarrior tmux tmuxinator web-search)
-plugins=(dircycle fasd fancy-ctrl-z git history-substring-search safe-paste systemd taskwarrior tmux web-search)
+#plugins=(dircycle fasd fancy-ctrl-z git history-substring-search safe-paste systemd taskwarrior tmux web-search)
+plugins=(dircycle fasd fancy-ctrl-z git history-substring-search safe-paste systemd web-search)
 alias pushd=' pushd'
 alias cls='clear && echo -en "[3J"'
 
@@ -177,9 +178,12 @@ if [[ -e ~/bin/z.sh ]];then
   source ~/bin/z.sh
 fi
 
-if [[ -d /usr/share/fzf/ ]];then
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-fi
+#if [[ -d /usr/share/fzf/ ]];then
+#  source /usr/share/fzf/key-bindings.zsh
+#  source /usr/share/fzf/completion.zsh
+#fi
 
+# FZF managed by vimplug
 setopt no_share_history
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias fzfp=fzf --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500'
