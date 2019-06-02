@@ -1,6 +1,6 @@
 # Add new key
     $ ssh-keygen -t ed25519 -C `hostname`
-    $ cat .ssh/id_ed25519.pub
+    $ cat $HOME/.ssh/id_ed25519.pub
 # dotfiles
     # pacman -Syu git
     
@@ -8,6 +8,11 @@
     $ printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.zshrc
     $ source $HOME/.zshrc
     $ homeshick clone git@github.com:alteriks/dotfiles
+
+*OR*
+  
+    $ cd $HOME/.homesick/repos/dotfiles
+    $ git remote set-url origin git@github.com:alteriks/dotfiles
 
 # Neovim plugins 
     # plasticboy/vim-markdown
