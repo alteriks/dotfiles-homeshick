@@ -23,7 +23,9 @@ Plug 'mbbill/undotree'
 
 " Search {{{
 Plug 'nelstrom/vim-visual-star-search'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-fish' }
+Plug 'junegunn/fzf.vim'
+
 " }}}
 "Plug 'Shougo/denite.nvim'
 "nmap ; :Denite buffer -split=floating -winrow=1<CR>
@@ -44,22 +46,11 @@ Plug 'plasticboy/vim-markdown'
 
 " Python {{{
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
+"""""let g:deoplete#enable_at_startup = 1
 Plug 'zchee/deoplete-jedi'
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
-"automatically closing the scratch window at the top of the vim window on finishing a complete or leaving insert
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
 
 Plug 'vim-syntastic/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 Plug 'nvie/vim-flake8'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Raimondi/delimitMate'
@@ -69,6 +60,24 @@ Plug 'Raimondi/delimitMate'
 
 " Initialize plugin system
 call plug#end()
+"
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
+"automatically closing the scratch window at the top of the vim window on finishing a complete or leaving insert
+augroup pumvisible
+  autocmd!
+  autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup END
+
+"'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "'iCyMind/NeoSolarized'
 "https://github.com/icymind/NeoSolarized#tmux
@@ -134,8 +143,10 @@ set conceallevel=2
 
 " 'mhinz/vim-startify'
 let g:startify_bookmarks = [
-  \ { 'n': '~/.config/nvim/init.vim' },
   \ { 'i': '~/.config/i3/config'},
+  \ { 'n': '~/.config/nvim/init.vim' },
+  \ { 't': '~/.tmux.conf' },
+  \ { 'z': '~/.zshrc' },
   \ ]
 let g:startify_custom_footer =
   \ [
@@ -144,6 +155,22 @@ let g:startify_custom_footer =
   \ "   Try nelstrom/vim-visual-star-search Select with VISUALMODE and search for pattern using */# ", '',
   \ "   Try :SSave    save a session in vim-startify", '',
   \ ]
+
+"Plug 'junegunn/fzf.vim'
+" Add namespace for fzf.vim exported commands
+let g:fzf_command_prefix = 'Fzf'
+" [Buffers] Jump to the existing window if possible
+" let g:fzf_buffers_jump = 1
+"
+nnoremap <silent> <leader>o :FZF<CR>
+nnoremap <silent> <leader>O :FZF!<CR>
+nnoremap <silent> <leader>l  :FzfBuffers<CR>
+nnoremap <silent> <leader>b :FzfBLines<CR>
+nnoremap <silent> <leader>`  :FzfMarks<CR>
+nnoremap <silent> <leader>p :FzfCommands<CR>
+nnoremap <silent> <F1> :FzfHelptags<CR>
+inoremap <silent> <F1> <ESC>:FzfHelptags<CR>`
+
 
 set mouse=a
 
