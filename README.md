@@ -1,6 +1,6 @@
 # Add new key
     $ ssh-keygen -t ed25519 -C `hostname`
-    $ cat .ssh/id_ed25519.pub
+    $ cat $HOME/.ssh/id_ed25519.pub
 # dotfiles
     # pacman -Syu git
     
