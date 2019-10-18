@@ -6,7 +6,7 @@ pip install mir.qualia
 pip install undervolt s-tui
 
 pacman --noconfirm -Syu i3blocks compton termite arandr rofi xclip xorg-xbacklight zathura-pdf-mupdf xss-lock nemo redshift
-pacman --noconfirm -Syu neovim tmux rsync bc acpi sysstat wget fzf the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip unzip i7z jq lsof lftp tcpdump mtr strace usleep most 
+pacman --noconfirm -Syu nnn neovim tmux rsync bc acpi sysstat wget fzf the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip unzip i7z jq lsof lftp tcpdump mtr strace usleep most 
 pacman -Syu dmidecode lshw xsensors
 pacman -Syu bridge-utils extra/networkmanager-openvpn easy-rsa dnsmasq wireshark-gtk 
 pacman -Syu qemu virt-manager virt-viewer vagrant chrony
