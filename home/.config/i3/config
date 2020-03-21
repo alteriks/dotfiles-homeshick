@@ -374,15 +374,15 @@ bindsym $mod+f [urgent=latest] focus
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+#exec --no-startup-id volumeicon
+#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 ################################################################################################
 
 # Start Applications
 bindsym $mod+F3 exec pcmanfm
-bindsym $mod+c exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+c exec --no-startup-id pkill picom
+bindsym $mod+Ctrl+t exec --no-startup-id picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends 
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 
 # workspace back and forth (with/without active container)
@@ -400,6 +400,7 @@ bindsym $mod+Ctrl+Left  workspace prev
 # Autostart applications
 #exec --no-startup-id ~/.config/i3/tray
 exec --no-startup-id redshift-gtk
+#exec --no-startup-id pulseaudio -D
 exec --no-startup-id feh --bg-max ~/moonraker.jpg ~/fear-and-loathing.jpg ~/dirtyharry.jpg
 exec --no-startup-id setxkbmap -layout pl -option
 
@@ -408,7 +409,7 @@ exec --no-startup-id setxkbmap -layout pl -option
 exec i3-msg 'exec --no-startup-id vivaldi-snapshot'
 exec --no-startup-id i3-msg 'workspace $workspace2; splith; exec kitty'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends 
 exec --no-startup-id nm-applet
 #exec --no-startup-id xfce4-power-manager
 exec --no-startup-id blueman-applet
@@ -427,7 +428,7 @@ exec --no-startup-id xss-lock ~/.config/i3/bin/i3lock-color-git.sh
 #############################
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 6
 gaps outer -4
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.

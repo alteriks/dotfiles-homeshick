@@ -18,8 +18,11 @@ Plug 'yegappan/mru'
 Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
 Plug 'rodjek/vim-puppet'
-Plug 'pearofducks/ansible-vim'
+Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'mbbill/undotree'
+
+Plug 'SirVer/ultisnips'
+
 
 " Search {{{
 Plug 'nelstrom/vim-visual-star-search'
@@ -54,13 +57,11 @@ Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'Raimondi/delimitMate'
-
-
 " }}}
 
 " Initialize plugin system
 call plug#end()
-"
+
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible()? "\<c-n>" : "\<tab>"
 "automatically closing the scratch window at the top of the vim window on finishing a complete or leaving insert
@@ -154,6 +155,9 @@ let g:startify_custom_footer =
   \ "   Try :UndotreeToggle https://github.com/mbbill/undotree", '',
   \ "   Try nelstrom/vim-visual-star-search Select with VISUALMODE and search for pattern using */# ", '',
   \ "   Try :SSave    save a session in vim-startify", '',
+  \ "   Try :Ultisnip 'TODO<tab> + yaml.ansible'", '',
+  \ "   Try <leader> \\", '',
+  \ "   Try :FZF <leader>o", '',
   \ ]
 
 "Plug 'junegunn/fzf.vim'
@@ -175,7 +179,7 @@ inoremap <silent> <F1> <ESC>:FzfHelptags<CR>`
 set mouse=a
 
 "mkdir ~/nvim for shada (old viminfo)
-set shada='50,<1000,s100,:0,n~/.local/share/nvim/shada/main.shada
+set shada='50,<1000,s100,:1000,n~/.local/share/nvim/shada/main.shada
 
 "better tab completion
 set wildmode=longest,list,full
