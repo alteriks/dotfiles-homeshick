@@ -127,7 +127,9 @@ let MRU_Add_Menu = 0
 "yank/paste with xclip
 "ctrl+shift+v to paste yanked buffer (unnamedplus) doesn't conflict with
 "MiddleClick in tmux.conf with xclip
-set clipboard=unnamedplus
+set clipboard=unnamed
+"vnoremap y "*y
+"vnoremap p "*p
 
 
 " Linters 'w0rp/ale'

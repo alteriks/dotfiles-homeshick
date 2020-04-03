@@ -180,13 +180,13 @@ set $displayMode "Set display mode [w]ork [l]aptop [h]ome"
 bindsym --release $mod+F7 mode $displayMode
 mode $displayMode {
     bindsym w exec "\
-                ~/.screenlayout/3externalmonitors.sh"; \
+                ~/bin/screenlayout/3externalmonitors.sh"; \
                 mode "default"
     bindsym h exec "\
-                ~/.screenlayout/fujitsu+predator.sh"; \
+                ~/bin/screenlayout/fujitsu+predator.sh"; \
                 mode "default"
     bindsym l exec "\
-                ~/.screenlayout/laptopscreen.sh"; \
+                ~/bin/screenlayout/laptopscreen.sh"; \
                 mode "default"
 
     bindsym Return mode "default"

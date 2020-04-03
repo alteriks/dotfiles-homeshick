@@ -14,13 +14,13 @@ function connect()
 
 function disconnect(){
   #/usr/bin/autorandr -l laptop
-  /home/${X_USER}/.screenlayout/laptop.sh
+  /home/${X_USER}/bin/screenlayout/laptop.sh
 }
 
 if [ $(cat /sys/class/drm/card0-{DP,HDMI,VGA}*/status | grep -c '^connected') -ge 1 ] ; then
   DISPLAY_SETUP=`autorandr 2>&1 | grep detected | cut -f1 | awk '{print $1}'`
   if [[ ${DISPLAY_SETUP} =~ 'docked' ]]; then
-    qualia ${DISPLAY_SETUP} < ~/.config/i3/config_orig > ~/.config/i3/config
+    #TODO: qualia ${DISPLAY_SETUP} < ~/.config/i3/config_orig > ~/.config/i3/config
     sleep 1
     i3-msg restart
   fi
