@@ -21,7 +21,7 @@ alias ag='ag --hidden --depth -1'
 alias vimdiff='neovim -d'
 # END archlinux
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/config/oh-my-zsh
+export ZSH=$HOME/.config/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

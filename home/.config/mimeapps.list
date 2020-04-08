@@ -1,14 +1,15 @@
 [Default Applications]
-text/html=vivaldi.desktop
-x-scheme-handler/http=vivaldi.desktop
-x-scheme-handler/https=vivaldi.desktop
-x-scheme-handler/about=vivaldi.desktop
-x-scheme-handler/unknown=vivaldi.desktop
-x-scheme-handler/mailto=vivaldi.desktop
-x-scheme-handler/webcal=vivaldi.desktop
+text/html=vivaldi-stable.desktop
+x-scheme-handler/http=vivaldi-stable.desktop
+x-scheme-handler/https=vivaldi-stable.desktop
+x-scheme-handler/about=vivaldi-stable.desktop
+x-scheme-handler/unknown=vivaldi-stable.desktop
+x-scheme-handler/mailto=vivaldi-stable.desktop
+x-scheme-handler/webcal=vivaldi-stable.desktop
 application/pdf=org.pwmt.zathura.desktop
 x-scheme-handler/tg=telegramdesktop.desktop
 image/jpeg=nomacs.desktop
+application/x-mimearchive=vivaldi-stable.desktop
 
 [Added Associations]
 application/pdf=org.pwmt.zathura.desktop;
@@ -18,3 +19,4 @@ application/x-alpm-package=pamac-installer.desktop;
 text/x-pkgbuild=neovim.desktop;
 text/markdown=markdown_previewer.desktop;
 text/plain=neovim.desktop;
+application/x-mimearchive=vivaldi-stable.desktop;
