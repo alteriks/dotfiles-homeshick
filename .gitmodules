@@ -47,33 +47,33 @@
 #[submodule "home/.config/nvim/plug/vim-tmux-focus-events"]
 #	path = home/.config/nvim/plug/vim-tmux-focus-events
 #	url = https://github.com/tmux-plugins/vim-tmux-focus-events
-[submodule "home/.tmux/plugins/tmux-better-mouse-mode"]
-	path = home/.config/tmux/plugins/tmux-better-mouse-mode
-	url = https://github.com/NHDaly/tmux-better-mouse-mode
-[submodule "home/.tmux/plugins/tmux-continuum"]
-	path = home/.config/tmux/plugins/tmux-continuum
-	url = https://github.com/tmux-plugins/tmux-continuum
-[submodule "home/.tmux/plugins/tmux-current-pane-hostname"]
-	path = home/.config/tmux/plugins/tmux-current-pane-hostname
-	url = https://github.com/soyuka/tmux-current-pane-hostname
-[submodule "home/.tmux/plugins/tmux-open"]
-	path = home/.config/tmux/plugins/tmux-open
-	url = https://github.com/tmux-plugins/tmux-open
-[submodule "home/.tmux/plugins/tmux-prefix-highlight"]
-	path = home/.config/tmux/plugins/tmux-prefix-highlight
-	url = https://github.com/tmux-plugins/tmux-prefix-highlight
-[submodule "home/.tmux/plugins/tmux-resurrect"]
-	path = home/.config/tmux/plugins/tmux-resurrect
-	url = https://github.com/tmux-plugins/tmux-resurrect
-[submodule "home/.tmux/plugins/tmux-sensible"]
-	path = home/.config/tmux/plugins/tmux-sensible
-	url = https://github.com/tmux-plugins/tmux-sensible
-[submodule "home/.tmux/plugins/tmux-yank"]
-	path = home/.config/tmux/plugins/tmux-yank
-	url = https://github.com/tmux-plugins/tmux-yank
-[submodule "home/.tmux/plugins/tpm"]
-	path = home/.config/tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
+#[submodule "home/.tmux/plugins/tmux-better-mouse-mode"]
+#	path = home/.config/tmux/plugins/tmux-better-mouse-mode
+#	url = https://github.com/NHDaly/tmux-better-mouse-mode
+#[submodule "home/.tmux/plugins/tmux-continuum"]
+#	path = home/.config/tmux/plugins/tmux-continuum
+#	url = https://github.com/tmux-plugins/tmux-continuum
+#[submodule "home/.tmux/plugins/tmux-current-pane-hostname"]
+#	path = home/.config/tmux/plugins/tmux-current-pane-hostname
+#	url = https://github.com/soyuka/tmux-current-pane-hostname
+#[submodule "home/.tmux/plugins/tmux-open"]
+#	path = home/.config/tmux/plugins/tmux-open
+#	url = https://github.com/tmux-plugins/tmux-open
+#[submodule "home/.tmux/plugins/tmux-prefix-highlight"]
+#	path = home/.config/tmux/plugins/tmux-prefix-highlight
+#	url = https://github.com/tmux-plugins/tmux-prefix-highlight
+#[submodule "home/.tmux/plugins/tmux-resurrect"]
+#	path = home/.config/tmux/plugins/tmux-resurrect
+#	url = https://github.com/tmux-plugins/tmux-resurrect
+#[submodule "home/.tmux/plugins/tmux-sensible"]
+#	path = home/.config/tmux/plugins/tmux-sensible
+#	url = https://github.com/tmux-plugins/tmux-sensible
+#[submodule "home/.tmux/plugins/tmux-yank"]
+#	path = home/.config/tmux/plugins/tmux-yank
+#	url = https://github.com/tmux-plugins/tmux-yank
+#[submodule "home/.tmux/plugins/tpm"]
+#	path = home/.config/tmux/plugins/tpm
+#	url = https://github.com/tmux-plugins/tpm
 #[submodule "home/.config/nvim/plug/deoplete.vim"]
 #	path = home/.config/nvim/plug/deoplete.vim
 #	url = https://github.com/Shougo/deoplete.nvim
