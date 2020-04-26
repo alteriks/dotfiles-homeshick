@@ -1,8 +1,10 @@
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod1
+set $mod Mod4
 #set $lock ~/.config/i3/pixelate_lock.sh
 set $i3config ~/.config/i3 
 set $lock $i3config/i3lock-color-git.sh
@@ -15,14 +17,16 @@ font pango:DejaVu Sans Mono for Powerline, Book 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+set $terminal kitty
+bindsym $mod+Return exec $terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+F4 kill
+bindsym Mod1+F4 kill
 
 # start launcher
-bindsym $mod+p           exec --no-startup-id "rofi -modi combi -show combi -width -80 -levenshtein-sort -combi-modi window,drun"
+#bindsym $mod+p           exec --no-startup-id "rofi -modi combi -show combi -width -80 -levenshtein-sort -combi-modi window,drun"
 bindsym $mod+space       exec --no-startup-id "rofi -modi combi -show combi -width -80 -levenshtein-sort -combi-modi window,drun"
 bindsym $mod+F2          exec --no-startup-id "rofi -modi combi -show combi -width -80 -levenshtein-sort -combi-modi window,drun"
 bindsym $mod+Shift+space exec --no-startup-id "rofi -modi calc -show calc -width -50 -no-show-match -no-sort | xclip -in -sel primary > /dev/null"
@@ -132,37 +136,12 @@ bindsym $mod+Ctrl+h move workspace to output left
 bindsym $mod+Ctrl+l move workspace to output right
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
 
 bindsym $mod+F10 exec $HOME/.screenlayout/laptop.sh
 bindsym --release $mod+F7 exec ~/.config/i3/bin/rofi_autorandr.sh
@@ -206,38 +185,6 @@ mode $printScreenMode {
     bindsym Escape mode "default"
 }
 
-mode "focused" {
-
-  # hardcoded focus keybindings
-  bindsym f [class="(?i)firefox"] focus; mode "default"
-  bindsym t [class="(?i)termite"] focus
-  bindsym v [class="(?i)vivaldi"] focus
-  bindsym z [class="(?i)zathura"] focus
-
-  # keybindings for marking and jumping to clients
-  bindsym a exec i3-input -F 'mark %s' -P 'Mark name: '
-  bindsym g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
-
-  # Assign marks to keys 1-5
-  bindsym Shift+1 mark mark1
-  bindsym Shift+2 mark mark2
-  bindsym Shift+3 mark mark3
-  bindsym Shift+4 mark mark4
-  bindsym Shift+5 mark mark5
-
-  # Jump to clients marked 1-5
-  bindsym 1 [con_mark="mark1"] focus
-  bindsym 2 [con_mark="mark2"] focus
-  bindsym 3 [con_mark="mark3"] focus
-  bindsym 4 [con_mark="mark4"] focus
-  bindsym 5 [con_mark="mark5"] focus
-
-  # Exit to the default mode
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
-bindsym $mod+m mode "focused"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -292,17 +239,18 @@ for_window [class=".*"] border pixel 3
 
 for_window [instance="scratchpad-vim"] move to scratchpad,
 bindsym $mod+t [instance="scratchpad-vim"] scratchpad show
-exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh termite --name scratchpad-vim vim
+exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh $terminal --name scratchpad-vim vim ~/TODO.txt
 
-for_window [instance="scratchpad-todo"] move to scratchpad
-bindsym Mod4+t [instance="scratchpad-todo"] scratchpad show, exec --no-startup-id  xdotool key --window $(xdotool search --classname scratchpad-todo) R
-exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh termite --name scratchpad-todo todotxt-machine --config ~/.config/todo/todotxt-machinerc 
+#for_window [instance="scratchpad-todo"] move to scratchpad
+#bindsym Mod4+t [instance="scratchpad-todo"] scratchpad show, exec --no-startup-id  xdotool key --window $(xdotool search --classname scratchpad-todo) R
+#exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh $terminal --name scratchpad-todo todotxt-machine --config ~/.config/todo/todotxt-machinerc 
 
 # Launch keepassxc and name window scratchpad-keepassxc
 exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh keepassxc -name scratchpad-keepassxc
 # Move to scratchpad only main KeePassX windows (window_role)
-for_window [instance="scratchpad-keepassxc" title="KeePassXC$" window_type="normal"] move to scratchpad, border 3pixel
-bindsym Mod4+k [instance="scratchpad-keepassxc"] scratchpad show
+for_window [instance="scratchpad-keepassxc" title="KeePassXC$" window_type="normal"] move scratchpad, scratchpad show, move position 1400px 600px, resize set 330 800, move to scratchpad,  border 3pixel
+bindsym Mod1+ctrl+k [instance="scratchpad-keepassxc"] scratchpad show
+#bindsym Mod4+k [instance="scratchpad-keepassxc"] scratchpad show, move position mouse
 
 for_window [title="Open database"] sticky enable, border normal
 for_window [window_type="dialog"] sticky enable, border normal, focus
@@ -333,7 +281,9 @@ workspace_layout default
 
 # Screen lock
 #bindsym Mod4+l exec ~/.config/i3/i3lock-color-git.sh
-bindsym Mod4+l exec xset s activate
+#TODO:
+#bindsym Mod4+l exec xset s activate
+#bindsym $mod+l focus right
 
 # Media keys
 #bindsym XF86AudioPlay exec $i3config/musickeys.sh toggle
@@ -353,9 +303,9 @@ hide_edge_borders none
 
 #Focus
 focus_follows_mouse yes
-focus_on_window_activation urgent
+#focus_on_window_activation urgent
 
-
+#xprop WM_CLASS = instance,class
 assign [ class = "HipChat" ] workspace $workspace1
 assign [ class = "Thunar" ] workspace $workspace1
 assign [ class = "termite" ] workspace $workspace2
@@ -382,14 +332,21 @@ bindsym $mod+f [urgent=latest] focus
 
 # Start Applications
 bindsym $mod+F3 exec pcmanfm
-bindsym $mod+c exec --no-startup-id pkill picom
-bindsym $mod+Ctrl+t exec --no-startup-id picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends 
+bindsym $mod+p exec --no-startup-id pkill picom; exec notify-send 'picom is DEAD'
+bindsym $mod+Ctrl+p exec --no-startup-id picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends; exec notify-send 'picom is ALIVE'
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+Tab		workspace next
+bindsym $mod+Shift+Tab		workspace prev
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle # mute sound
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
@@ -403,13 +360,14 @@ bindsym $mod+Ctrl+Left  workspace prev
 exec --no-startup-id redshift-gtk
 #exec --no-startup-id pulseaudio -D
 exec --no-startup-id feh --bg-max ~/moonraker.jpg ~/fear-and-loathing.jpg ~/dirtyharry.jpg
-exec --no-startup-id setxkbmap -layout pl -option
+exec setxkbmap -option terminate:ctrl_alt_bksp
+exec setxkbmap -layout pl 
 exec_always --no-startup-id numlockx on
 
 # Start on specific workspace
 #exec i3-msg 'exec --no-startup-id hipchat4'
 exec i3-msg 'exec --no-startup-id vivaldi-snapshot'
-exec --no-startup-id i3-msg 'workspace $workspace2; splith; exec kitty'
+exec --no-startup-id i3-msg 'workspace $workspace2; splith; exec $terminal'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends 
 exec --no-startup-id nm-applet
@@ -444,6 +402,66 @@ smart_gaps on
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 #smart_borders no_gaps
+
+
+################ NOT USED ANYMORE ################ 
+##
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+mode "focused" {
+
+  # hardcoded focus keybindings
+  bindsym f [class="(?i)firefox"] focus; mode "default"
+  bindsym t [class="(?i)termite"] focus
+  bindsym v [class="(?i)vivaldi"] focus
+  bindsym z [class="(?i)zathura"] focus
+
+  # keybindings for marking and jumping to clients
+  bindsym a exec i3-input -F 'mark %s' -P 'Mark name: '
+  bindsym g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+
+  # Assign marks to keys 1-5
+  bindsym Shift+1 mark mark1
+  bindsym Shift+2 mark mark2
+  bindsym Shift+3 mark mark3
+  bindsym Shift+4 mark mark4
+  bindsym Shift+5 mark mark5
+
+  # Jump to clients marked 1-5
+  bindsym 1 [con_mark="mark1"] focus
+  bindsym 2 [con_mark="mark2"] focus
+  bindsym 3 [con_mark="mark3"] focus
+  bindsym 4 [con_mark="mark4"] focus
+  bindsym 5 [con_mark="mark5"] focus
+
+  # Exit to the default mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+m mode "focused"
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner

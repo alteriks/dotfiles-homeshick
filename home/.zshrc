@@ -1,4 +1,7 @@
 #setopt nocorrectall
+export TMUX_CONFIG_PATH="~/.config/tmux"
+export TMUX_PLUGIN_MANAGER_PATH="${TMUX_CONFIG_PATH}/plugins/"
+
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
@@ -8,7 +11,7 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 #export TERM="screen-256color" ### Fucks nvim on pwsh
 
 #tmuxinator
-export DISABLE_AUTO_TITLE=true
+#export DISABLE_AUTO_TITLE=true
 
 export EDITOR=vim
 # BEGIN archlinux
@@ -17,7 +20,7 @@ alias todo="todo.sh -d $HOME/.config/todo/todo.cfg"
 alias todotxt-machine="todotxt-machine --config ~/.config/todo/todotxt-machinerc"
 alias vim=nvim
 alias bc='bc -l'
-alias ag='ag --hidden --depth -1'
+alias ag='ag --hidden --follow'
 alias vimdiff='neovim -d'
 # END archlinux
 # Path to your oh-my-zsh installation.
@@ -82,7 +85,7 @@ alias cls='clear && echo -en "[3J"'
 
 
 DEFAULT_USER="alteriks"
-#if [[ $UID -eq 1001 || $UID -eq 1000 ]]; then 
+#if [[ $UID -eq 1001 || $UID -eq 1000 ]]; then
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOQUIT=false
 #fi
@@ -122,9 +125,6 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 alias windows="rdesktop -r disk:local=/home/kdajka -u dajka_krzy_ext -d GIGA -k pl -g 1920x1172 10.3.102.19"
 
 bindkey "[[1;5D" backward-word
@@ -138,8 +138,8 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[OD" backward-word
 bindkey "^[OC" forward-word
-ssh() {                                       
-    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+ssh() {
+    if [[ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]]; then
         tmux rename-window "$(if [ $# = 1 ]; then echo $1; else echo $* | egrep -o '(\w+@)?\w+\.(\w|\.)+'; fi )"
         command ssh "$@"
         tmux set-window-option automatic-rename "on" 1>/dev/null

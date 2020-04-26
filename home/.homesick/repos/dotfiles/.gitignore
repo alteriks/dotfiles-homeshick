@@ -7,3 +7,5 @@ home/.vim/.netrwhist
 home/.config/nvim/.netrwhist
 .task/keys/
 home/.config/nvim/plug/
+home/.config/tmux/plug/
+me/.config/tmux/plugins/
