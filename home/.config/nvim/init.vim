@@ -9,22 +9,23 @@ nnoremap <SPACE> <Nop>
 "  :PlugInstall 
 call plug#begin('~/.config/nvim/plug/')
 
-" Themes {{{
+" Loo {{{
 Plug 'iCyMind/NeoSolarized'
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline' "OR https://github.com/itchyny/lightline.vim + https://github.com/bagrat/vim-buffet
 Plug 'vim-airline/vim-airline-themes'
 "Plug 'liuchengxu/vista.vim'
+Plug 'ryanoasis/vim-devicons'
 
 " }}}
 
-Plug 'mhinz/vim-signify'
+Plug 'mhinz/vim-signify' "OR https://github.com/airblade/vim-gitgutter #slower
+"Plug 'edkolev/tmuxline.vim' "Run only once to generate file for TMUX
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'easymotion/vim-easymotion'
 Plug 'yegappan/mru'
 Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
-Plug 'rodjek/vim-puppet'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'mbbill/undotree'
 
@@ -34,11 +35,15 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'                               " git support
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
+Plug 'dstein64/vim-startuptime'
+"https://github.com/hyiltiz/vim-plugins-profile
+"vim --startuptime vim.log -c 'quit'; cat vim.log
+"https://github.com/junegunn/vim-plug#on-demand-loading-of-plugins
 
 
 " Search {{{
 Plug 'nelstrom/vim-visual-star-search'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-fish' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " }}}
@@ -48,9 +53,11 @@ Plug 'junegunn/fzf.vim'
 "nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
 "nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
 
+Plug 'itchyny/calendar.vim'
 
 " Linters {{{
-  Plug 'w0rp/ale'
+Plug 'w0rp/ale'
+Plug 'rodjek/vim-puppet'
 " }}}
 "
 
@@ -105,9 +112,16 @@ set termguicolors
 "'vim-airline/vim-airline'
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
- 
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_buffers = 1
+"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" We don't need to see things like -- INSERT -- anymore
+set noshowmode
+
+" Allows multiple nonsaved buffers to be open in the background
+set hidden
+       
 " 'mhinz/vim-signify'
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_update_on_focusgained = 1
@@ -165,6 +179,7 @@ let g:startify_bookmarks = [
 \ { 't': '~/.config/tmux/tmux.conf' },
 \ { 'z': '~/.zshrc' },
 \ ]
+"TODO: create script which will parse txt/md file and create custom footer. See: startify-faq-11 
 let g:startify_custom_footer =
 \ [
 \ '', "   Put new things here!", '',
@@ -176,14 +191,30 @@ let g:startify_custom_footer =
 \ "   Try :FZF <leader>o", '',
 \ ]
 
+"How to disable common but unimportant files?~
+let g:startify_skiplist = [
+\ '^/tmp',
+\ '^/mnt/nfs',
+\ '/project/.*/documentation',
+\ escape(fnamemodify($HOME, ':p'), '\') .'mysecret.txt',
+\ ]
+
 "Plug 'junegunn/fzf.vim'
 " Add namespace for fzf.vim exported commands
-let g:fzf_command_prefix = 'Fzf'
+""let g:fzf_command_prefix = 'Fzf'
 " [Buffers] Jump to the existing window if possible
 " let g:fzf_buffers_jump = 1
 
-nnoremap <silent> <leader>o :FZF<CR>
-nnoremap <silent> <leader>O :FZF!<CR>
+map <C-f> :Files<CR>
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+nnoremap <silent> <leader>f :FZF<CR>
+nnoremap <silent> <leader>F :FZF!<CR>
 nnoremap <silent> <leader>l  :FzfBuffers<CR>
 nnoremap <silent> <leader>b :FzfBLines<CR>
 nnoremap <silent> <leader>`  :FzfMarks<CR>
@@ -334,3 +365,50 @@ nnoremap <S-TAB> :bprevious<CR>
 nnoremap <C-s> :w<CR>
 " Alternate way to quit
 nnoremap <C-Q> :wq!<CR>
+
+set expandtab "Replace <TAB> with <SPACE>
+set shiftwidth=2 "Indent 2x<SPACE>
+
+augroup vagrant
+  au!
+  au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
+
+"Insert newline and return to NORMAL
+nmap <leader>o o<ESC>
+nmap <leader>O O<ESC>
+
+"Pureman comment 
+nmap <leader># I#<ESC>
+
+nmap <leader>\ :vnew<CR>
+nmap <leader>- :new<CR>
+
+"Close buffer without closing the window and activate 
+nmap <leader>! :bp<bar>sp<bar>bn<bar>bd<CR>
+
+let g:calendar_first_day = "monday"
+let g:calendar_frame = "unicode_round"
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+source ~/.cache/calendar.vim/credentials.vim
+augroup calendar-mappings
+  autocmd!
+
+  " diamond cursor
+  autocmd FileType calendar nmap <buffer> i <Plug>(calendar_up)
+  autocmd FileType calendar nmap <buffer> j <Plug>(calendar_left)
+  autocmd FileType calendar nmap <buffer> k <Plug>(calendar_down)
+  autocmd FileType calendar nmap <buffer> l <Plug>(calendar_right)
+
+  " swap v and V
+  autocmd FileType calendar nmap <buffer> V <Plug>(calendar_visual)
+  autocmd FileType calendar nmap <buffer> v <Plug>(calendar_visual_line)
+
+  " unmap <C-n>, <C-p> for other plugins
+  "autocmd FileType calendar nunmap <buffer> <C-n>
+  "autocmd FileType calendar nunmap <buffer> <C-p>
+  "Exit with 'q'
+  autocmd FileType calendar nunmap <buffer> q
+  autocmd FileType calendar nmap q :q!<CR>
+augroup END

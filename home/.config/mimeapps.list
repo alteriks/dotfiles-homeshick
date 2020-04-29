@@ -10,6 +10,11 @@ application/pdf=org.pwmt.zathura.desktop
 x-scheme-handler/tg=telegramdesktop.desktop
 image/jpeg=nomacs.desktop
 application/x-mimearchive=vivaldi-stable.desktop
+x-scheme-handler/rdp=org.remmina.Remmina.desktop
+x-scheme-handler/spice=org.remmina.Remmina.desktop
+x-scheme-handler/vnc=org.remmina.Remmina.desktop
+x-scheme-handler/remmina=org.remmina.Remmina.desktop
+application/x-remmina=org.remmina.Remmina.desktop
 
 [Added Associations]
 application/pdf=org.pwmt.zathura.desktop;
@@ -20,3 +25,8 @@ text/x-pkgbuild=neovim.desktop;
 text/markdown=markdown_previewer.desktop;
 text/plain=neovim.desktop;
 application/x-mimearchive=vivaldi-stable.desktop;
+x-scheme-handler/rdp=org.remmina.Remmina.desktop;
+x-scheme-handler/spice=org.remmina.Remmina.desktop;
+x-scheme-handler/vnc=org.remmina.Remmina.desktop;
+x-scheme-handler/remmina=org.remmina.Remmina.desktop;
+application/x-remmina=org.remmina.Remmina.desktop;

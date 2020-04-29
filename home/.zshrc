@@ -1,8 +1,5 @@
 #setopt nocorrectall
-export TMUX_CONFIG_PATH="~/.config/tmux"
-export TMUX_PLUGIN_MANAGER_PATH="${TMUX_CONFIG_PATH}/plugins/"
-
-
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
 export QT_QPA_PLATFORMTHEME=qt5ct
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 #
@@ -16,12 +13,14 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 export EDITOR=vim
 # BEGIN archlinux
 export EDITOR=nvim
+alias cat="bat -pp"
 alias todo="todo.sh -d $HOME/.config/todo/todo.cfg"
 alias todotxt-machine="todotxt-machine --config ~/.config/todo/todotxt-machinerc"
+alias vi=nvim
 alias vim=nvim
 alias bc='bc -l'
-alias ag='ag --hidden --follow'
-alias vimdiff='neovim -d'
+alias ag='ag --hidden --ignore \.git'
+alias vimdiff='nvim -d'
 # END archlinux
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.config/oh-my-zsh
@@ -138,17 +137,38 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[OD" backward-word
 bindkey "^[OC" forward-word
-ssh() {
-    if [[ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]]; then
-        tmux rename-window "$(if [ $# = 1 ]; then echo $1; else echo $* | egrep -o '(\w+@)?\w+\.(\w|\.)+'; fi )"
-        command ssh "$@"
-        tmux set-window-option automatic-rename "on" 1>/dev/null
-    else
-        command ssh "$@"
-    fi
-}
 
-export PAGER=most less
+#ssh() {
+#    if [[ -n $TMUX ]]; then
+#    #if [[ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" =~ "tmux" ]]; then
+#        tmux rename-window "$(if [ $# = 1 ]; then echo $1; else echo $* | egrep -o '(\w+@)?\w+\.(\w|\.)+'; fi )"
+#        command ssh "$@"
+#        tmux set-window-option automatic-rename "on" 1>/dev/null
+#    else
+#        command ssh "$@"
+#    fi
+#}
+
+if [[ -n $TMUX ]]; then
+  panewrap () { 
+    DDD=$1
+    if [[ "$DDD" =~ ^ssh\  ]]; then
+      echo ZZZZZ $DDD
+      DDD=$( echo $DDD| egrep -o '\w+(\.(\w|\.)+)?')
+      echo BBBBBB $DDD
+    else
+      DDD=${DDD/ */}
+    fi
+    printf "\033]2;%s\033\\" "${DDD}"; 
+    tmux rename-window -t . "$(tmux list-panes -t . -F '#T' | tr '\n' '+')"; 
+  }
+  # don't show  frequent cmd: ls|cd|which
+  preexec_functions+=( panewrap )
+
+fi
+
+export PAGER=less
+export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=always'"
 # Color man pages
 # export LESS_TERMCAP_mb=$'\E[01;32m'
 # export LESS_TERMCAP_md=$'\E[01;32m'
@@ -187,3 +207,5 @@ fi
 setopt no_share_history
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias fzfp=fzf --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500'
+
+source /home/alteriks/.config/broot/launcher/bash/br
