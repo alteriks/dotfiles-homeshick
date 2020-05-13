@@ -233,6 +233,10 @@ bindsym Mod1+ctrl+k [instance="scratchpad-keepassxc"] scratchpad show
 for_window [title="Open database"] sticky enable, border normal
 for_window [window_type="dialog"] sticky enable, border normal, focus
 for_window [title="Yubico Authenticator"] sticky enable, border normal, focus, floating enable
+for_window [title="Piper"] sticky enable, border normal, focus, floating enable
+for_window [title="Solaar"] sticky enable, border normal, focus, floating enable
+for_window [title="Bluetooth Devices"] sticky enable, border normal, focus, floating enable
+for_window [title="Bluetooth Adapters"] sticky enable, border normal, focus, floating enable
 for_window [title=" on QEMU/KVM"] sticky enable, border normal, focus, floating enable
 
 #TODO: https://wiki.archlinux.org/index.php/I3#Save_and_restore_the_window_layout
@@ -341,8 +345,6 @@ bindsym $mod+Ctrl+Left  workspace prev
 exec --no-startup-id redshift-gtk
 #exec --no-startup-id pulseaudio -D
 exec --no-startup-id feh --bg-max ~/moonraker.jpg ~/fear-and-loathing.jpg ~/dirtyharry.jpg
-exec setxkbmap -option terminate:ctrl_alt_bksp
-exec setxkbmap -layout pl 
 exec_always --no-startup-id numlockx on
 
 # Start on specific workspace

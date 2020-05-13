@@ -167,7 +167,17 @@ if [[ -n $TMUX ]]; then
 
 fi
 
+#https://wiki.archlinux.org/index.php/Systemd/User#Kill_user_processes_on_logout
+tmux () {
+  if [[ $# == 0 ]]; then
+    systemd-run --scope --user tmux 
+  else
+    /usr/bin/tmux $@
+  fi
+}
+
 export PAGER=less
+export BAT_PAGER="less -R"
 export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=always'"
 # Color man pages
 # export LESS_TERMCAP_mb=$'\E[01;32m'
