@@ -1,12 +1,12 @@
 "Map leader to space
 let mapleader = "\<Space>"
 nnoremap <SPACE> <Nop>
-"map <Space> <leader> 
+"map <Space> <leader>
 " Specify a directory for plugins
 "
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-"  :PlugInstall 
+"  :PlugInstall
 call plug#begin('~/.config/nvim/plug/')
 
 " Loo {{{
@@ -34,6 +34,7 @@ Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'                               " git support
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 
 Plug 'dstein64/vim-startuptime'
 "https://github.com/hyiltiz/vim-plugins-profile
@@ -72,6 +73,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 """""let g:deoplete#enable_at_startup = 1
 Plug 'zchee/deoplete-jedi'
 
+Plug 'mcchrish/nnn.vim'
+
 
 Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
@@ -89,6 +92,29 @@ augroup pumvisible
   autocmd!
   autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 augroup END
+
+" Disable default mappings
+let g:nnn#set_default_mappings = 0
+
+" Then set your own
+nnoremap <silent> <leader>nn :NnnPicker<CR>
+
+" Or override
+" Start nnn in the current file's directory
+nnoremap <leader>n :NnnPicker '%:p:h'<CR>
+" Opens the nnn window in a split
+let g:nnn#layout = 'new' " or vnew, tabnew etc.
+
+" Or pass a dictionary with window size
+let g:nnn#layout = { 'left': '~20%' } " or right, up, down
+
+" Floating window (neovim latest and vim with patch 8.2.191)
+let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
+
+let g:nnn#action = {
+      \ '<c-t>': 'tab split',
+      \ '<c-x>': 'split',
+      \ '<c-v>': 'vsplit' }
 
 "'vim-syntastic/syntastic'
 " Note that airline will set the statusline info, so these three lines are not needed
@@ -121,7 +147,7 @@ set noshowmode
 
 " Allows multiple nonsaved buffers to be open in the background
 set hidden
-       
+
 " 'mhinz/vim-signify'
 let g:signify_vcs_list = [ 'git' ]
 let g:signify_update_on_focusgained = 1
@@ -179,7 +205,7 @@ let g:startify_bookmarks = [
 \ { 't': '~/.config/tmux/tmux.conf' },
 \ { 'z': '~/.zshrc' },
 \ ]
-"TODO: create script which will parse txt/md file and create custom footer. See: startify-faq-11 
+"TODO: create script which will parse txt/md file and create custom footer. See: startify-faq-11
 let g:startify_custom_footer =
 \ [
 \ '', "   Put new things here!", '',
@@ -261,17 +287,6 @@ set splitright
 "Source config after every write
 "autocmd BufWritePost ~/.config/nvim/init.vim source %
 
-" Toggle paste mode mode with <Leader>pp
-nnoremap <Leader>pp :set paste!<CR>
-
-" Indent whole file while preserving cursor location with <Leader>=
-nnoremap <Leader>= m'gg=G`'
-
-" Clear trailing whitespace with <Leader>cw
-nnoremap <Leader>cw :%s/\s\+$//g<CR>:nohlsearch<CR>
-
-" select all text in buffer
-map <Leader>a ggVG
 
 " Paste at end of the line
 map <Leader>p A<Space><ESC>p
@@ -288,6 +303,8 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
+
+
 
 "let $FZF_DEFAULT_OPTS='    --margin=1,4'
 let g:fzf_layout = { 'window': 'call OpenPaddedFloating()' }
@@ -322,7 +339,7 @@ function! OpenFloatingWin()
         \ norelativenumber
         \ signcolumn=no
 endfunction
-let g:rainbow_active = 1 
+let g:rainbow_active = 1
 
 let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 " floating fzf window with borders
@@ -349,12 +366,111 @@ function! CreateCenteredFloatingWindow()
     au BufWipeout <buffer> exe 'bw '.s:buf
 endfunction
 
-"let g:vista_default_executive = 'nvim-lsp'
+" Map leader to which_key
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
+" Define prefix dictionary
+let g:which_key_map =  {}
+let g:which_key_use_floating_win = 0
+" Hide status line
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+
+
+
+let g:which_key_map.g = {
+      \ 'name' : '+git' ,
+      \ 'a' : [':Git add .'                        , 'add all'],
+      \ 'A' : [':Git add %'                        , 'add current'],
+      \ 'b' : [':Git blame'                        , 'blame'],
+      \ 'B' : [':GBrowse'                          , 'browse'],
+      \ 'c' : [':Git commit -m "autocommit"'       , 'commit'],
+      \ 'd' : [':Git diff'                         , 'diff'],
+      \ 'D' : [':Gdiffsplit'                       , 'diff split'],
+      \ 'g' : [':GGrep'                            , 'git grep'],
+      \ 'G' : [':Gstatus'                          , 'status'],
+      \ 'h' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
+      \ 'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
+      \ 'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
+      \ 'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
+      \ 'l' : [':Git log'                          , 'log'],
+      \ 'p' : [':Git push'                         , 'push'],
+      \ 'P' : [':Git pull'                         , 'pull'],
+      \ 'r' : [':GRemove'                          , 'remove'],
+      \ 's' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
+      \ 't' : [':GitGutterSignsToggle'             , 'toggle signs'],
+      \ 'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
+      \ 'v' : [':GV'                               , 'view commits'],
+      \ 'V' : [':GV!'                              , 'view buffer commits'],
+      \ }
+
+" s is for search
+let g:which_key_map.s = {
+      \ 'name' : '+search' ,
+      \ '/' : [':History/'     , 'history'],
+      \ ';' : [':Commands'     , 'commands'],
+      \ 'a' : [':Ag'           , 'text Ag'],
+      \ 'b' : [':BLines'       , 'current buffer'],
+      \ 'B' : [':Buffers'      , 'open buffers'],
+      \ 'c' : [':Commits'      , 'commits'],
+      \ 'C' : [':BCommits'     , 'buffer commits'],
+      \ 'f' : [':Files'        , 'files'],
+      \ 'g' : [':GFiles'       , 'git files'],
+      \ 'G' : [':GFiles?'      , 'modified git files'],
+      \ 'h' : [':History'      , 'file history'],
+      \ 'H' : [':History:'     , 'command history'],
+      \ 'l' : [':Lines'        , 'lines'] ,
+      \ 'm' : [':Marks'        , 'marks'] ,
+      \ 'M' : [':Maps'         , 'normal maps'] ,
+      \ 'p' : [':Helptags'     , 'help tags'] ,
+      \ 'P' : [':Tags'         , 'project tags'],
+      \ 's' : [':Snippets'     , 'snippets'],
+      \ 'S' : [':Colors'       , 'color schemes'],
+      \ 't' : [':Rg'           , 'text Rg'],
+      \ 'T' : [':BTags'        , 'buffer tags'],
+      \ 'w' : [':Windows'      , 'search windows'],
+      \ 'y' : [':Filetypes'    , 'file types'],
+      \ 'z' : [':FZF'          , 'FZF'],
+      \ }
+
+
+let g:which_key_map.1 = 'Select buffer 1'
+let g:which_key_map.2 = 'Select buffer 2'
+let g:which_key_map.3 = 'Select buffer 3'
+let g:which_key_map.4 = 'which_key_ignore'
+let g:which_key_map.5 = 'which_key_ignore'
+let g:which_key_map.6 = 'which_key_ignore'
+let g:which_key_map.7 = 'which_key_ignore'
+let g:which_key_map.8 = 'which_key_ignore'
+let g:which_key_map.9 = 'which_key_ignore'
+
+" Toggle paste mode mode with <Leader>pp
+nnoremap <Leader>pp :set paste!<CR>
+
+" Indent whole file while preserving cursor location with <Leader>=
+nnoremap <Leader>= m'gg=G`'
+let g:which_key_map['='] = 'Indent buffer'
+
+" Clear trailing whitespace
+nnoremap <Leader>c<Leader> :%s/\s\+$//g<CR>:nohlsearch<CR>
+let g:which_key_map.c = {
+  \ 'name' : '+clear',
+  \ 'SPACE' : 'Clear whitespace',
+  \ }
+
+
+" select all text in buffer while preserving location
+map <Leader>a ggVG
+let g:which_key_map.a = 'Select all'
+
+nnoremap <leader># :noh<CR> 
+let g:which_key_map['#'] = 'Clear highlight'
 
 " I hate escape more than anything else
-inoremap jk <Esc>
-inoremap kj <Esc>
+"inoremap jk <Esc>
+"inoremap kj <Esc>
 
 " TAB in general mode will move to text buffer
 nnoremap <TAB> :bnext<CR>
@@ -377,15 +493,16 @@ augroup END
 "Insert newline and return to NORMAL
 nmap <leader>o o<ESC>
 nmap <leader>O O<ESC>
-
-"Pureman comment 
-nmap <leader># I#<ESC>
+let g:which_key_map.o = 'Insert newline below and return to NORMAL'
+let g:which_key_map.O = 'Insert newline below and return to NORMAL'
 
 nmap <leader>\ :vnew<CR>
 nmap <leader>- :new<CR>
 
-"Close buffer without closing the window and activate 
-nmap <leader>! :bp<bar>sp<bar>bn<bar>bd<CR>
+"Close buffer without closing the window and activate
+nmap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+let g:which_key_map['q'] = 'Close buffer and activate next'
+
 
 let g:calendar_first_day = "monday"
 let g:calendar_frame = "unicode_round"

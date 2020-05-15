@@ -217,7 +217,7 @@ for_window [class=".*"] border pixel 3
 
 for_window [instance="scratchpad-vim"] move to scratchpad,
 bindsym $mod+t [instance="scratchpad-vim"] scratchpad show
-exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh $terminal --name scratchpad-vim vim ~/TODO.txt
+exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh $terminal --name scratchpad-vim vim ~/TODO.TXT
 
 #for_window [instance="scratchpad-todo"] move to scratchpad
 #bindsym Mod4+t [instance="scratchpad-todo"] scratchpad show, exec --no-startup-id  xdotool key --window $(xdotool search --classname scratchpad-todo) R
@@ -238,6 +238,8 @@ for_window [title="Solaar"] sticky enable, border normal, focus, floating enable
 for_window [title="Bluetooth Devices"] sticky enable, border normal, focus, floating enable
 for_window [title="Bluetooth Adapters"] sticky enable, border normal, focus, floating enable
 for_window [title=" on QEMU/KVM"] sticky enable, border normal, focus, floating enable
+for_window [class="Veracrypt"] sticky enable, border normal, focus, floating enable
+for_window [class="Nitrogen"] sticky enable, border normal, focus, floating enable
 
 #TODO: https://wiki.archlinux.org/index.php/I3#Save_and_restore_the_window_layout
 
@@ -318,7 +320,9 @@ bindsym Print exec --no-startup-id flameshot gui -p ~/Pictures/
 # Start Applications
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+p exec --no-startup-id pkill picom; exec notify-send 'picom is DEAD'
-bindsym $mod+Ctrl+p exec --no-startup-id picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends; exec notify-send 'picom is ALIVE'
+bindsym $mod+Ctrl+p exec --no-startup-id picom --config /dev/null; exec notify-send 'picom is ALIVE'
+#nvidia driver; causes HIGH CPU on nouveau
+#bindsym $mod+Ctrl+p exec --no-startup-id picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends; exec notify-send 'picom is ALIVE'
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 
 # workspace back and forth (with/without active container)
@@ -352,7 +356,10 @@ exec_always --no-startup-id numlockx on
 exec i3-msg 'exec --no-startup-id vivaldi-snapshot'
 exec --no-startup-id i3-msg 'workspace $workspace2; splith; exec $terminal'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends 
+#nvidia driver; causes HIGH CPU on nouveau
+#exec --no-startup-id nitrogen --restore; sleep 1; picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends 
+#nouveau
+exec --no-startup-id nitrogen --restore; sleep 1; picom --config /dev/null
 exec --no-startup-id nm-applet
 #exec --no-startup-id xfce4-power-manager
 exec --no-startup-id blueman-applet
