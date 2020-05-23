@@ -1,3 +1,15 @@
+":map   :noremap  :unmap     Normal, Visual, Select, Operator-pending
+":nmap  :nnoremap :nunmap    Normal
+":vmap  :vnoremap :vunmap    Visual and Select
+":smap  :snoremap :sunmap    Select
+":xmap  :xnoremap :xunmap    Visual
+":omap  :onoremap :ounmap    Operator-pending
+":map!  :noremap! :unmap!    Insert and Command-line
+":imap  :inoremap :iunmap    Insert
+":lmap  :lnoremap :lunmap    Insert, Command-line, Lang-Arg
+":cmap  :cnoremap :cunmap    Command-line
+":tmap  :tnoremap :tunmap    Terminal-Job
+
 "Map leader to space
 let mapleader = "\<Space>"
 nnoremap <SPACE> <Nop>
@@ -11,6 +23,7 @@ call plug#begin('~/.config/nvim/plug/')
 
 " Loo {{{
 Plug 'iCyMind/NeoSolarized'
+"autocmd Filetype * if &ft!="calendar"| Plug 'vim-airline/vim-airline' | endif
 Plug 'vim-airline/vim-airline' "OR https://github.com/itchyny/lightline.vim + https://github.com/bagrat/vim-buffet
 Plug 'vim-airline/vim-airline-themes'
 "Plug 'liuchengxu/vista.vim'
@@ -35,6 +48,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'                               " git support
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
+
+Plug 'vim-ctrlspace/vim-ctrlspace'
 
 Plug 'dstein64/vim-startuptime'
 "https://github.com/hyiltiz/vim-plugins-profile
@@ -140,6 +155,33 @@ let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 2
+let g:airline#extensions#tabline#show_tabs = 0
+let g:airline#extensions#tabline#show_splits = 0
+
+let g:airline#extensions#ctrlspace#enabled = 1
+let g:CtrlSpaceStatuslineFunction =
+      \  "airline#extensions#ctrlspace#statusline()"
+
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
+
+let g:CtrlSpaceUseArrowsInTerm = 1
+
+
+"let g:airline_exclude_preview = 1 ????
+"let g:CtrlSpaceCacheDir
+
+if executable("ag")
+  let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+endif
+
+function! PrintFooBar(k)
+  echo "Foo Bar!"
+endfunction
+
+let g:CtrlSpaceKeys = { "Buffer": { "a": "PrintFooBar" } }
+
+
 "let g:airline#extensions#tabline#show_buffers = 1
 "let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " We don't need to see things like -- INSERT -- anymore
@@ -227,11 +269,9 @@ let g:startify_skiplist = [
 
 "Plug 'junegunn/fzf.vim'
 " Add namespace for fzf.vim exported commands
-""let g:fzf_command_prefix = 'Fzf'
+let g:fzf_command_prefix = 'Fzf'
 " [Buffers] Jump to the existing window if possible
 " let g:fzf_buffers_jump = 1
-
-map <C-f> :Files<CR>
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -240,13 +280,19 @@ map <C-f> :Files<CR>
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 nnoremap <silent> <leader>f :FZF<CR>
-nnoremap <silent> <leader>F :FZF!<CR>
-nnoremap <silent> <leader>l  :FzfBuffers<CR>
-nnoremap <silent> <leader>b :FzfBLines<CR>
+nnoremap <silent> <leader>F :FZF!<CR> "fullscreen"
+nnoremap <silent> <leader>b  :FzfBuffers<CR>
+nnoremap <silent> <leader>l :FzfLines<CR>
+nnoremap <silent> <leader>L :FzfBLines<CR>
 nnoremap <silent> <leader>`  :FzfMarks<CR>
 nnoremap <silent> <leader>p :FzfCommands<CR>
 nnoremap <silent> <F1> :FzfHelptags<CR>
 inoremap <silent> <F1> <ESC>:FzfHelptags<CR>`
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 
 set mouse=a
@@ -255,15 +301,15 @@ set mouse=a
 set shada='50,<1000,s100,:1000,n~/.local/share/nvim/shada/main.shada
 
 "better tab completion
-set wildmode=longest,list,full
+set wildmode=longest:full
 
 " https://jeffkreeftmeijer.com/vim-number/
 set relativenumber
 set number
 augroup numbertoggle
-autocmd!
-autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 augroup END
 
 let g:netrw_banner = 0
@@ -287,6 +333,7 @@ set splitright
 "Source config after every write
 "autocmd BufWritePost ~/.config/nvim/init.vim source %
 
+let g:ctrlspace_default_mapping_key="<leader>SPC"
 
 " Paste at end of the line
 map <Leader>p A<Space><ESC>p
@@ -409,29 +456,29 @@ let g:which_key_map.g = {
 " s is for search
 let g:which_key_map.s = {
       \ 'name' : '+search' ,
-      \ '/' : [':History/'     , 'history'],
-      \ ';' : [':Commands'     , 'commands'],
-      \ 'a' : [':Ag'           , 'text Ag'],
-      \ 'b' : [':BLines'       , 'current buffer'],
-      \ 'B' : [':Buffers'      , 'open buffers'],
-      \ 'c' : [':Commits'      , 'commits'],
-      \ 'C' : [':BCommits'     , 'buffer commits'],
-      \ 'f' : [':Files'        , 'files'],
-      \ 'g' : [':GFiles'       , 'git files'],
-      \ 'G' : [':GFiles?'      , 'modified git files'],
-      \ 'h' : [':History'      , 'file history'],
-      \ 'H' : [':History:'     , 'command history'],
-      \ 'l' : [':Lines'        , 'lines'] ,
-      \ 'm' : [':Marks'        , 'marks'] ,
-      \ 'M' : [':Maps'         , 'normal maps'] ,
-      \ 'p' : [':Helptags'     , 'help tags'] ,
-      \ 'P' : [':Tags'         , 'project tags'],
-      \ 's' : [':Snippets'     , 'snippets'],
-      \ 'S' : [':Colors'       , 'color schemes'],
-      \ 't' : [':Rg'           , 'text Rg'],
-      \ 'T' : [':BTags'        , 'buffer tags'],
-      \ 'w' : [':Windows'      , 'search windows'],
-      \ 'y' : [':Filetypes'    , 'file types'],
+      \ '/' : [':FzfHistory/'     , 'history'],
+      \ ';' : [':FzfCommands'     , 'commands'],
+      \ 'a' : [':FzfAg'           , 'text Ag'],
+      \ 'B' : [':FzfBLines'       , 'current buffer'],
+      \ 'b' : [':FzfBuffers'      , 'open buffers'],
+      \ 'c' : [':FzfCommits'      , 'commits'],
+      \ 'C' : [':FzfBCommits'     , 'buffer commits'],
+      \ 'f' : [':FzfFiles'        , 'files'],
+      \ 'g' : [':FzfGFiles'       , 'git files'],
+      \ 'G' : [':FzfGFiles?'      , 'modified git files'],
+      \ 'h' : [':FzfHistory'      , 'file history'],
+      \ 'H' : [':FzfHistory:'     , 'command history'],
+      \ 'l' : [':FzfLines'        , 'lines'] ,
+      \ 'm' : [':FzfMarks'        , 'marks'] ,
+      \ 'M' : [':FzfMaps'         , 'normal maps'] ,
+      \ 'p' : [':FzfHelptags'     , 'help tags'] ,
+      \ 'P' : [':FzfTags'         , 'project tags'],
+      \ 's' : [':FzfSnippets'     , 'snippets'],
+      \ 'S' : [':FzfColors'       , 'color schemes'],
+      \ 't' : [':FzfRg'           , 'text Rg'],
+      \ 'T' : [':FzfBTags'        , 'buffer tags'],
+      \ 'w' : [':FzfWindows'      , 'search windows'],
+      \ 'y' : [':FzfFiletypes'    , 'file types'],
       \ 'z' : [':FZF'          , 'FZF'],
       \ }
 
@@ -478,9 +525,9 @@ nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 
 " Alternate way to save
-nnoremap <C-s> :w<CR>
-" Alternate way to quit
-nnoremap <C-Q> :wq!<CR>
+noremap <silent> <C-s> :update<CR>
+vnoremap <silent> <C-S> <C-C>:update<CR>
+inoremap <silent> <C-s> <C-O>:update<CR>
 
 set expandtab "Replace <TAB> with <SPACE>
 set shiftwidth=2 "Indent 2x<SPACE>
@@ -491,18 +538,30 @@ augroup vagrant
 augroup END
 
 "Insert newline and return to NORMAL
-nmap <leader>o o<ESC>
+nnoremap <silent> <leader>o :<C-u>call append(line("."), repeat([""], v:count1))<CR>
+"nmap <leader>o o<ESC>
 nmap <leader>O O<ESC>
 let g:which_key_map.o = 'Insert newline below and return to NORMAL'
 let g:which_key_map.O = 'Insert newline below and return to NORMAL'
 
-nmap <leader>\ :vnew<CR>
-nmap <leader>- :new<CR>
+nmap <leader>\ :vsplit<CR>
+nmap <leader>\| :botright vsplit<CR>
+nmap <leader>- :split<CR>
+nmap <leader>_ :botright split<CR>
+
+" Alternate way to quit
+nnoremap <silent> <leader><C-q> :q!<CR>
 
 "Close buffer without closing the window and activate
+nmap <C-q> :bp<bar>sp<bar>bn<bar>bd<CR>
 nmap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 let g:which_key_map['q'] = 'Close buffer and activate next'
 
+
+" Hide status line
+autocmd! FileType calendar
+autocmd  FileType calendar set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 let g:calendar_first_day = "monday"
 let g:calendar_frame = "unicode_round"

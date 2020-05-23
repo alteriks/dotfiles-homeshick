@@ -226,7 +226,7 @@ exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh $terminal 
 # Launch keepassxc and name window scratchpad-keepassxc
 exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh keepassxc -name scratchpad-keepassxc
 # Move to scratchpad only main KeePassX windows (window_role)
-for_window [instance="scratchpad-keepassxc" title="KeePassXC$" window_type="normal"] move scratchpad, scratchpad show, move position 1400px 600px, resize set 330 800, move to scratchpad,  border 3pixel
+for_window [instance="scratchpad-keepassxc" title="KeePassXC$" window_type="normal"] move scratchpad, scratchpad show, move position 1400px 600px, resize set 350 800, move to scratchpad,  border 3pixel
 bindsym Mod1+ctrl+k [instance="scratchpad-keepassxc"] scratchpad show
 #bindsym Mod4+k [instance="scratchpad-keepassxc"] scratchpad show, move position mouse
 
@@ -240,6 +240,11 @@ for_window [title="Bluetooth Adapters"] sticky enable, border normal, focus, flo
 for_window [title=" on QEMU/KVM"] sticky enable, border normal, focus, floating enable
 for_window [class="Veracrypt"] sticky enable, border normal, focus, floating enable
 for_window [class="Nitrogen"] sticky enable, border normal, focus, floating enable
+for_window [class="Mousepad"] border normal, focus, floating enable
+for_window [class="Arandr"] floating enable, border normal, focus,
+for_window [class="Pavucontrol"] floating enable, border normal, focus, resize set 850 500
+floating_minimum_size 100 x 50
+floating_maximum_size 1000 x 800
 
 #TODO: https://wiki.archlinux.org/index.php/I3#Save_and_restore_the_window_layout
 
