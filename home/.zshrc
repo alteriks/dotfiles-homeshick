@@ -1,7 +1,7 @@
 #setopt nocorrectall
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
 export QT_QPA_PLATFORMTHEME=qt5ct
-export VAGRANT_DEFAULT_PROVIDER=virtualbox
+#export VAGRANT_DEFAULT_PROVIDER=virtualbox
 #
 #https://deductivelabs.com/en/using-true-color-vim-tmux/
 #export TERM="xterm-256color"
