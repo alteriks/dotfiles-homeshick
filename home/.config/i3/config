@@ -62,7 +62,7 @@ bindsym $mod+Shift+f fullscreen toggle
 # split orientation
 bindsym $mod+bar split h; exec notify-send 'i3: tile horizontally'
 bindsym $mod+minus splitv; exec notify-send 'i3: tile vertically'
-bindsym $mod+q split toggle exec notify-send 'i3: split'
+#notused bindsym $mod+q split toggle exec notify-send 'i3: split'
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking; exec notify-send 'i3: stacking layout'
@@ -139,6 +139,8 @@ bindsym $mod+Shift+C reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+Escape exec --no-startup-id "~/bin/systemcontroll"
 
 
 bindsym $mod+F10 exec $HOME/.screenlayout/laptop.sh

@@ -41,6 +41,9 @@ Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'mbbill/undotree'
+Plug 'ap/vim-css-color'
+
+Plug 'wesQ3/vim-windowswap'
 
 Plug 'SirVer/ultisnips'
 
@@ -49,7 +52,8 @@ Plug 'tpope/vim-fugitive'                               " git support
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 
-Plug 'vim-ctrlspace/vim-ctrlspace'
+" Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'Konfekt/vim-ctrlspace', { 'branch': 'badd' }
 
 Plug 'dstein64/vim-startuptime'
 "https://github.com/hyiltiz/vim-plugins-profile
@@ -160,8 +164,25 @@ let g:airline#extensions#tabline#show_tabs = 0
 let g:airline#extensions#tabline#show_splits = 0
 
 let g:airline#extensions#ctrlspace#enabled = 1
-let g:CtrlSpaceStatuslineFunction =
-      \  "airline#extensions#ctrlspace#statusline()"
+let g:airline#extensions#tabline#ctrlspace_show_tab_nr = 1
+
+hi link CtrlSpaceSearch IncSearch
+hi link CtrlSpaceNormal Normal                                                                                                     
+hi link CtrlSpaceSelected Visual
+
+let g:airline_exclude_preview = 1
+
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+"let g:CtrlSpaceStatuslineFunction =
+"      \  "airline#extensions#ctrlspace#statusline()"
+
+" TAB in general mode will move to text buffer
+"nnoremap <Tab> :bnext<CR>
+nnoremap <Tab> :CtrlSpaceGoDown<CR>
+" SHIFT-TAB will go back
+"nnoremap <S-Tab> :bprevious<CR>
+nnoremap <S-Tab> :CtrlSpaceGoUp<CR>
+
 
 let g:CtrlSpaceDefaultMappingKey = "<C-space> "
 
@@ -222,8 +243,9 @@ let MRU_Add_Menu = 0
 
 "yank/paste with xclip
 "ctrl+shift+v to paste yanked buffer (unnamedplus) doesn't conflict with
+set clipboard=unnamedplus
 "MiddleClick in tmux.conf with xclip
-set clipboard=unnamed
+"set clipboard=unnamed
 "vnoremap y "*y
 "vnoremap p "*p
 
@@ -301,7 +323,7 @@ set mouse=a
 set shada='50,<1000,s100,:1000,n~/.local/share/nvim/shada/main.shada
 
 "better tab completion
-set wildmode=longest:full
+set wildmode=full
 
 " https://jeffkreeftmeijer.com/vim-number/
 set relativenumber
@@ -312,11 +334,13 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu | set nornu | endif
 augroup END
 
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
+"disable netrw
+let loaded_netrwPlugin = 1
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+" let g:netrw_winsize = 25
 
 "Easier split navigations
 "We can use different key mappings for easy navigation between splits to save a keystroke. So instead of ctrl-w then j, it’s just ctrl-j:
@@ -332,8 +356,6 @@ set splitright
 
 "Source config after every write
 "autocmd BufWritePost ~/.config/nvim/init.vim source %
-
-let g:ctrlspace_default_mapping_key="<leader>SPC"
 
 " Paste at end of the line
 map <Leader>p A<Space><ESC>p
@@ -425,6 +447,12 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
+
+"Plug 'wesQ3/vim-windowswap'
+let g:which_key_map.w = {
+      \ 'name' : '+swap window' ,
+      \ 'w' : [':call WindowSwap#EasyWindowSwap()'                        , 'easy window swap'],
+      \ }
 
 
 let g:which_key_map.g = {
@@ -519,10 +547,9 @@ let g:which_key_map['#'] = 'Clear highlight'
 "inoremap jk <Esc>
 "inoremap kj <Esc>
 
-" TAB in general mode will move to text buffer
-nnoremap <TAB> :bnext<CR>
-" SHIFT-TAB will go back
-nnoremap <S-TAB> :bprevious<CR>
+"various
+"Always open help in vertical split
+autocmd FileType help wincmd L
 
 " Alternate way to save
 noremap <silent> <C-s> :update<CR>
