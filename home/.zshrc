@@ -1,3 +1,4 @@
+
 #setopt nocorrectall
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git'
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -9,6 +10,12 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 #tmuxinator
 #export DISABLE_AUTO_TITLE=true
+
+#Disable Ctrl-S and Ctrl-Q on terminal
+stty stop ''
+stty start ''
+stty -ixon
+stty -ixoff
 
 export EDITOR=vim
 # BEGIN archlinux
@@ -101,6 +108,9 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 fpath=($HOME/.homesick/repos/homeshick/completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
+
+source ~/git/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+export KEYTIMEOUT=4
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -218,4 +228,4 @@ setopt no_share_history
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias fzfp=fzf --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500'
 
-source /home/alteriks/.config/broot/launcher/bash/br
+source $HOME/.config/broot/launcher/bash/br

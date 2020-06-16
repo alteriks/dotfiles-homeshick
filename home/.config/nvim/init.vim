@@ -26,6 +26,10 @@ Plug 'iCyMind/NeoSolarized'
 "autocmd Filetype * if &ft!="calendar"| Plug 'vim-airline/vim-airline' | endif
 Plug 'vim-airline/vim-airline' "OR https://github.com/itchyny/lightline.vim + https://github.com/bagrat/vim-buffet
 Plug 'vim-airline/vim-airline-themes'
+"
+"Plug 'itchyny/lightline.vim'
+
+
 "Plug 'liuchengxu/vista.vim'
 Plug 'ryanoasis/vim-devicons'
 
@@ -35,20 +39,26 @@ Plug 'mhinz/vim-signify' "OR https://github.com/airblade/vim-gitgutter #slower
 "Plug 'edkolev/tmuxline.vim' "Run only once to generate file for TMUX
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'easymotion/vim-easymotion'
-Plug 'yegappan/mru'
+Plug 'easymotion/vim-easymotion' "TODO: Prepare Docs Startify/vim-which-key
+Plug 'yegappan/mru' "TODO: Prepare Docs Startify/vim-which-key
 Plug 'mhinz/vim-startify'
 Plug 'rking/ag.vim'
-Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
-Plug 'mbbill/undotree'
-Plug 'ap/vim-css-color'
+"Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' } " slow
+"loads for every buffer when opening ctrlspace workspace
+"Plug 'mbbill/undotree'
+"Plug 'ap/vim-css-color', { 'for': 'css' } "loading on demand for css doesn't
+"work https://github.com/ap/vim-css-color/issues/125
 
-Plug 'wesQ3/vim-windowswap'
+Plug 'wesQ3/vim-windowswap' "TODO: Prepare Docs Startify/vim-which-key
 
-Plug 'SirVer/ultisnips'
+"Plug 'camspiers/lens.vim' "vs roman/golden-ratio
+"Plug 'camspiers/animate.vim' "CPU hungry
+
+
+Plug 'SirVer/ultisnips' "TODO: Prepare Docs Startify/vim-which-key
 
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'                               " git support
+Plug 'tpope/vim-fugitive' "TODO: Prepare Docs Startify/vim-which-key                                git support
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 
@@ -98,8 +108,15 @@ Plug 'mcchrish/nnn.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
+"Plug 'Raimondi/delimitMate'
+"
+"
+Plug 'machakann/vim-highlightedyank'
 " }}}
+"Plug 'machakann/vim-highlightedyank' https://www.reddit.com/r/neovim/comments/gofplz/neovim_has_added_the_ability_to_highlight_yanked/
+let g:highlightedyank_highlight_duration = 250
+
 
 " Initialize plugin system
 call plug#end()
@@ -336,6 +353,9 @@ augroup END
 
 "disable netrw
 let loaded_netrwPlugin = 1
+"enable fzf instead
+" autocmd VimEnter * if isdirectory(expand("<amatch>")) | exe 'FZF! '.expand("<amatch>") | endif
+
 " let g:netrw_banner = 0
 " let g:netrw_liststyle = 3
 " let g:netrw_browse_split = 4
@@ -577,7 +597,7 @@ nmap <leader>- :split<CR>
 nmap <leader>_ :botright split<CR>
 
 " Alternate way to quit
-nnoremap <silent> <leader><C-q> :q!<CR>
+nnoremap <silent> <leader><C-q> :qa!<CR>
 
 "Close buffer without closing the window and activate
 nmap <C-q> :bp<bar>sp<bar>bn<bar>bd<CR>
