@@ -354,7 +354,7 @@ bindsym $mod+Ctrl+Left  workspace prev
 
 # Autostart applications
 #exec --no-startup-id ~/.config/i3/tray
-exec --no-startup-id redshift-gtk
+#exec --no-startup-id redshift-gtk
 #exec --no-startup-id pulseaudio -D
 exec --no-startup-id feh --bg-max ~/moonraker.jpg ~/fear-and-loathing.jpg ~/dirtyharry.jpg
 exec_always --no-startup-id numlockx on

@@ -84,7 +84,7 @@ Plug 'junegunn/vim-peekaboo'
 "nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
 "nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
 
-Plug 'itchyny/calendar.vim'
+"Plug 'itchyny/calendar.vim'
 
 " Linters {{{
 Plug 'w0rp/ale'
@@ -611,90 +611,33 @@ nmap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 let g:which_key_map['q'] = 'Close buffer and activate next'
 
 
-" Hide status line
-autocmd! FileType calendar
-autocmd  FileType calendar set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+"" Hide status line
+"autocmd! FileType calendar
+"autocmd  FileType calendar set laststatus=0 noshowmode noruler
+"  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
-let g:calendar_first_day = "monday"
-let g:calendar_frame = "unicode_round"
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
-source ~/.cache/calendar.vim/credentials.vim
-augroup calendar-mappings
-  autocmd!
+"let g:calendar_first_day = "monday"
+"let g:calendar_frame = "unicode_round"
+"let g:calendar_google_calendar = 1
+"let g:calendar_google_task = 1
+"source ~/.cache/calendar.vim/credentials.vim
+"augroup calendar-mappings
+"  autocmd!
 
-  " diamond cursor
-  autocmd FileType calendar nmap <buffer> i <Plug>(calendar_up)
-  autocmd FileType calendar nmap <buffer> j <Plug>(calendar_left)
-  autocmd FileType calendar nmap <buffer> k <Plug>(calendar_down)
-  autocmd FileType calendar nmap <buffer> l <Plug>(calendar_right)
+"  " diamond cursor
+"  autocmd FileType calendar nmap <buffer> i <Plug>(calendar_up)
+"  autocmd FileType calendar nmap <buffer> j <Plug>(calendar_left)
+"  autocmd FileType calendar nmap <buffer> k <Plug>(calendar_down)
+"  autocmd FileType calendar nmap <buffer> l <Plug>(calendar_right)
 
-  " swap v and V
-  autocmd FileType calendar nmap <buffer> V <Plug>(calendar_visual)
-  autocmd FileType calendar nmap <buffer> v <Plug>(calendar_visual_line)
+"  " swap v and V
+"  autocmd FileType calendar nmap <buffer> V <Plug>(calendar_visual)
+"  autocmd FileType calendar nmap <buffer> v <Plug>(calendar_visual_line)
 
-  " unmap <C-n>, <C-p> for other plugins
-  "autocmd FileType calendar nunmap <buffer> <C-n>
-  "autocmd FileType calendar nunmap <buffer> <C-p>
-  "Exit with 'q'
-  autocmd FileType calendar nunmap <buffer> q
-  autocmd FileType calendar nmap q :q!<CR>
-augroup END
-
-" function! Broot()                                                                                                                                                                                                                                                                        
-"   let temp = tempname()                                                                                                                                                                                                                                                                  
-"   execute 'silent ! broot > ' . temp                                                                                                                                                                                                                                                     
-"   redraw!                                                                                                                                                                                                                                                                                
-"   try                                                                                                                                                                                                                                                                                    
-"     let out = filereadable(temp) ? readfile(temp) : []                                                                                                                                                                                                                                   
-"   finally                                                                                                                                                                                                                                                                                
-"     silent! call delete(temp)                                                                                                                                                                                                                                                            
-"   endtry                                                                                                                                                                                                                                                                                 
-"   if !empty(out)                                                                                                                                                                                                                                                                         
-"     execute 'edit! ' . out[0]                                                                                                                                                                                                                                                            
-"   endif                                                                                                                                                                                                                                                                                  
-" endfunction                                                                                                                                                                                                                                                                              
-                                                                                                                                                                                                                                                                                         
-nnoremap <silent> <Space>b :call Broot()<CR>
-
-"""""""""""""""""TWF
-function! TwfExit(path)
-  function! TwfExitClosure(job_id, data, event) closure
-    bd!
-    try
-      let out = filereadable(a:path) ? readfile(a:path) : []
-    finally
-      silent! call delete(a:path)
-    endtry
-    if !empty(out)
-      execute 'edit! ' . out[0]
-    endif
-  endfunction
-  return funcref('TwfExitClosure')
-endfunction
-
-function! Twf()
-  let temp = tempname()
-  call termopen('/home/alteriks/go/bin/twf ' . @% . ' > ' . temp, { 'on_exit': TwfExit(temp) })
-  startinsert
-endfunction
-
-nnoremap <silent> <Space>t :call Twf()<CR>
-function! s:isdir(dir)
-  return !empty(a:dir) && (isdirectory(a:dir) ||
-    \ (!empty($SYSTEMDRIVE) && isdirectory('/'.tolower($SYSTEMDRIVE[0]).a:dir)))
-endfunction
-
-augroup twf_ftdetect
-  autocmd!
-  " nuke netrw brain damage
-  autocmd VimEnter * silent! au! FileExplorer *
-  autocmd BufEnter * if <SID>isdir(expand('%'))
-    \ | redraw | echo ''
-    \ | let temp = tempname()
-    \ | call termopen('/home/alteriks/go/bin/twf ' . @% . ' > ' . temp, { 'on_exit': TwfExit(temp) })
-    \ | startinsert
-    \ | endif
-augroup END
-"""""""""""""""""TWF
+"  " unmap <C-n>, <C-p> for other plugins
+"  "autocmd FileType calendar nunmap <buffer> <C-n>
+"  "autocmd FileType calendar nunmap <buffer> <C-p>
+"  "Exit with 'q'
+"  autocmd FileType calendar nunmap <buffer> q
+"  autocmd FileType calendar nmap q :q!<CR>
+"augroup END
