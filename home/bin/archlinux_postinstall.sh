@@ -2,19 +2,81 @@
 pacman --noconfirm -Syu python-pip python2-pip ruby icedtea-web jre8-openjdk python-urwid
 pip install mir.qualia 
 
-# Baremetal
-pip install undervolt s-tui powerstat
+# Laptop
+pip install \ 
+    acpi_call \
+    fwupd \
+    powerstat \
+    s-tui \
+    tlp \
+    tlp-rdw \
+    undervolt
 
-pacman --noconfirm -Syu i3blocks i3lock-color compton termite arandr rofi xclip xorg-xbacklight zathura-pdf-mupdf xss-lock nemo redshift
-pacman --noconfirm -Syu nnn neovim tmux rsync bc acpi sysstat wget fzf the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip unzip i7z jq lsof lftp tcpdump mtr strace usleep most 
+pacman --noconfirm -Syu \
+    yubikey-manager-qt \
+    yubioath-desktop
+
+# Enable for ykman/ykman-gui (yubikey-manager-qt)
+systemctl enable --now pcscd
+
+pacman --noconfirm -Syu \
+    arandr \
+    i3blocks \
+    i3lock-color \
+    keepassxc \
+    nemo \
+    picom \
+    redshift \
+    rofi \
+    termite \
+    xclip \
+    xorg-xbacklight \
+    xss-lock \
+    zathura-pdf-mupdf 
+pacman --noconfirm -Syu \
+    acpi \
+    bc \
+    bind-tools \
+    fzf \
+    fd \
+    i7z \
+    jq \
+    lftp \
+    lsof \
+    mc \
+    mtr \
+    neovim \
+    net-tools \
+    nnn \
+    pkgfile \
+    rsync \
+    screen \
+    strace \
+    sysstat \
+    tcpdump \
+    the_silver_searcher \
+    tmux \
+    unace \
+    unarj \
+    unrar \
+    unzip \
+    usleep \
+    wget \
+    zip 
+
+pacman --noconfirm -Syu \
+    cmake \
+    gcc \
+    pkg-config
+
 pacman -Syu dmidecode lshw xsensors
 pacman -Syu bridge-utils extra/networkmanager-openvpn easy-rsa dnsmasq wireshark-gtk 
 pacman -Syu qemu virt-manager virt-viewer vagrant chrony
 pacman -Syu libreoffice-still nomacs
-pacman -Syu keepassxc tigervnc remmina rdesktop freerdp libvncserver
+pacman -Syu tigervnc remmina rdesktop freerdp libvncserver
 pacman -Syu chromium opera 
 
-pacman -Syu vlc digikam darktable kodi electrum filezilla
+pacman -Syu vlc digikam darktable kodi electrum 
 # for iPhone USB tethering
 pacman -Syu usbmuxd libimobiledevice
 
@@ -25,25 +87,6 @@ systemctl start libvirtd
 systemctl enable chronyd
 systemctl start chronyd
 
-
-[root@revenge ~]# cat /etc/systemd/system/powertop.service
-[Unit]
-Description=Powertop tunings
-
-[Service]
-ExecStart=/usr/bin/powertop --auto-tune
-RemainAfterExit=true
-
-[Install]
-WantedBy=multi-user.target
-[root@revenge ~]# systemctl daemon-reload
-[root@revenge ~]# systemctl status powertop
-● powertop.service - Powertop tunings
-   Loaded: loaded (/etc/systemd/system/powertop.service; disabled; vendor preset: disabled)
-   Active: inactive (dead)
-[root@revenge ~]# systemctl enable powertop
-Created symlink /etc/systemd/system/multi-user.target.wants/powertop.service → /etc/systemd/system/powertop.service.
-[root@revenge ~]# systemctl start powertop
 
 /etc/modprobe.d/nobeep.conf
 # Do not load the 'pcspkr' module on boot.
