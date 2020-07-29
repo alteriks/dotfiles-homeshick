@@ -1,3 +1,4 @@
 setxkbmap pl
 nm-applet &
-setxkbmap -option terminate:ctrl_alt_bksp
+#kpdl:dot '.' instead of ',' on numeric keyboard
+setxkbmap -option terminate:ctrl_alt_bksp -option kpdl:dot

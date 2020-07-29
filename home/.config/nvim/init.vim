@@ -75,6 +75,7 @@ Plug 'dstein64/vim-startuptime'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
 
 " }}}
 "Plug 'Shougo/denite.nvim'
@@ -108,8 +109,11 @@ Plug 'mcchrish/nnn.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'nvie/vim-flake8'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'jiangmiao/auto-pairs'
+" Pair of quotes, brackets
+Plug 'tmsvg/pear-tree'
+"Plug 'jiangmiao/auto-pairs'
 "Plug 'Raimondi/delimitMate'
+Plug 'machakann/vim-sandwich'
 "
 "
 Plug 'machakann/vim-highlightedyank'
@@ -430,6 +434,8 @@ function! OpenFloatingWin()
 endfunction
 let g:rainbow_active = 1
 
+let g:peekaboo_window="call CreateCenteredFloatingWindow()"
+
 let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 " floating fzf window with borders
 function! CreateCenteredFloatingWindow()
@@ -635,3 +641,60 @@ augroup calendar-mappings
   autocmd FileType calendar nunmap <buffer> q
   autocmd FileType calendar nmap q :q!<CR>
 augroup END
+
+" function! Broot()                                                                                                                                                                                                                                                                        
+"   let temp = tempname()                                                                                                                                                                                                                                                                  
+"   execute 'silent ! broot > ' . temp                                                                                                                                                                                                                                                     
+"   redraw!                                                                                                                                                                                                                                                                                
+"   try                                                                                                                                                                                                                                                                                    
+"     let out = filereadable(temp) ? readfile(temp) : []                                                                                                                                                                                                                                   
+"   finally                                                                                                                                                                                                                                                                                
+"     silent! call delete(temp)                                                                                                                                                                                                                                                            
+"   endtry                                                                                                                                                                                                                                                                                 
+"   if !empty(out)                                                                                                                                                                                                                                                                         
+"     execute 'edit! ' . out[0]                                                                                                                                                                                                                                                            
+"   endif                                                                                                                                                                                                                                                                                  
+" endfunction                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                         
+nnoremap <silent> <Space>b :call Broot()<CR>
+
+"""""""""""""""""TWF
+function! TwfExit(path)
+  function! TwfExitClosure(job_id, data, event) closure
+    bd!
+    try
+      let out = filereadable(a:path) ? readfile(a:path) : []
+    finally
+      silent! call delete(a:path)
+    endtry
+    if !empty(out)
+      execute 'edit! ' . out[0]
+    endif
+  endfunction
+  return funcref('TwfExitClosure')
+endfunction
+
+function! Twf()
+  let temp = tempname()
+  call termopen('/home/alteriks/go/bin/twf ' . @% . ' > ' . temp, { 'on_exit': TwfExit(temp) })
+  startinsert
+endfunction
+
+nnoremap <silent> <Space>t :call Twf()<CR>
+function! s:isdir(dir)
+  return !empty(a:dir) && (isdirectory(a:dir) ||
+    \ (!empty($SYSTEMDRIVE) && isdirectory('/'.tolower($SYSTEMDRIVE[0]).a:dir)))
+endfunction
+
+augroup twf_ftdetect
+  autocmd!
+  " nuke netrw brain damage
+  autocmd VimEnter * silent! au! FileExplorer *
+  autocmd BufEnter * if <SID>isdir(expand('%'))
+    \ | redraw | echo ''
+    \ | let temp = tempname()
+    \ | call termopen('/home/alteriks/go/bin/twf ' . @% . ' > ' . temp, { 'on_exit': TwfExit(temp) })
+    \ | startinsert
+    \ | endif
+augroup END
+"""""""""""""""""TWF

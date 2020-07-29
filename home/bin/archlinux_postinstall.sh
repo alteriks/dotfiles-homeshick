@@ -3,9 +3,9 @@ pacman --noconfirm -Syu python-pip python2-pip ruby icedtea-web jre8-openjdk pyt
 pip install mir.qualia 
 
 # Baremetal
-pip install undervolt s-tui
+pip install undervolt s-tui powerstat
 
-pacman --noconfirm -Syu i3blocks compton termite arandr rofi xclip xorg-xbacklight zathura-pdf-mupdf xss-lock nemo redshift
+pacman --noconfirm -Syu i3blocks i3lock-color compton termite arandr rofi xclip xorg-xbacklight zathura-pdf-mupdf xss-lock nemo redshift
 pacman --noconfirm -Syu nnn neovim tmux rsync bc acpi sysstat wget fzf the_silver_searcher bind-tools net-tools pkgfile mc unace unarj unrar zip unzip i7z jq lsof lftp tcpdump mtr strace usleep most 
 pacman -Syu dmidecode lshw xsensors
 pacman -Syu bridge-utils extra/networkmanager-openvpn easy-rsa dnsmasq wireshark-gtk 
@@ -78,7 +78,7 @@ git config --global icdiff.options '--highlight --line-numbers'
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-yay -Syu --afterclean --answeredit None spotify i3lock-color-git autorandr  networkmanager-dmenu-git pacolog icdiff vivaldi-snapshot rofi-calc todotxt-machine-git python-git-remote-dropbox-git
+yay -Syu --afterclean --answeredit None spotify  autorandr  networkmanager-dmenu-git pacolog icdiff vivaldi-snapshot rofi-calc todotxt-machine-git python-git-remote-dropbox-git
 yay -Syu  #rapid-photo-downloader-bzr 
 # vivaldi
 # https://gist.github.com/BlackIkeEagle/5c00face3c7a0f98847a

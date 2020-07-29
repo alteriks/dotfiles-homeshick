@@ -215,7 +215,7 @@ bindsym button9 move left
 bindsym button8 move right
 
 # Border for all windows - 3 pixels, this rule must be above others, so it can be overriden
-for_window [class=".*"] border pixel 3
+#for_window [class=".*"] border pixel 3
 
 for_window [instance="scratchpad-vim"] move to scratchpad,
 bindsym $mod+t [instance="scratchpad-vim"] scratchpad show
@@ -231,7 +231,7 @@ exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh keepassxc 
 for_window [instance="scratchpad-keepassxc" title="KeePassXC$" window_type="normal"] move scratchpad, scratchpad show, move position 1400px 600px, resize set 350 800, move to scratchpad,  border 3pixel
 bindsym Mod1+ctrl+k [instance="scratchpad-keepassxc"] scratchpad show
 #bindsym Mod4+k [instance="scratchpad-keepassxc"] scratchpad show, move position mouse
-
+for_window [class=".*"] move position center
 for_window [title="Open database"] sticky enable, border normal
 for_window [window_type="dialog"] sticky enable, border normal, focus
 for_window [title="Yubico Authenticator"] sticky enable, border normal, focus, floating enable
@@ -248,6 +248,8 @@ for_window [class="Pavucontrol"] floating enable, border normal, focus, resize s
 for_window [class="Lxappearance"] floating enable, border normal, focus, resize set 850 500
 floating_minimum_size 100 x 50
 floating_maximum_size 1000 x 800
+for_window [class="(?i)zathura"] focus
+for_window [class = "RimWorldLinux"] focus
 
 #TODO: https://wiki.archlinux.org/index.php/I3#Save_and_restore_the_window_layout
 
@@ -286,12 +288,12 @@ workspace_layout default
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym XF86MonBrightnessUp   exec xbacklight -inc 10
 
-# Floating
-default_border 1pixel
+# Normal windows should use small borders, floating should have tab title
+default_border pixel 3
 default_floating_border normal
 
 # Hide borders
-hide_edge_borders none
+hide_edge_borders smart
 
 #Focus
 focus_follows_mouse yes
@@ -299,6 +301,7 @@ focus_follows_mouse yes
 
 #xprop WM_CLASS = instance,class
 assign [ class = "HipChat" ] workspace $workspace1
+assign [ class = "RimWorldLinux" ] workspace $workspace1
 assign [ class = "Thunar" ] workspace $workspace1
 assign [ class = "Spotify" ] workspace $workspace1
 assign [ class = "termite" ] workspace $workspace2
@@ -309,12 +312,6 @@ assign [ class = "Zathura" ] workspace $workspace5
 
 bindsym $mod+f [urgent=latest] focus
 
-# change borders
-#bindsym $mod+u border none
-#bindsym $mod+y border pixel 1
-#bindsym $mod+n border normal
-
-bindsym Print exec --no-startup-id flameshot gui -p ~/Pictures/
 
 
 ################################################################################################
@@ -327,6 +324,7 @@ bindsym Print exec --no-startup-id flameshot gui -p ~/Pictures/
 ################################################################################################
 
 # Start Applications
+bindsym Print exec --no-startup-id flameshot gui -p ~/Pictures/
 bindsym $mod+F3 exec pcmanfm
 bindsym $mod+p exec --no-startup-id pkill picom; exec notify-send 'picom is DEAD'
 bindsym $mod+Ctrl+p exec --no-startup-id picom ; exec notify-send 'picom is ALIVE'
