@@ -19,7 +19,8 @@ set $terminal kitty
 bindsym $mod+Return exec $terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym --release $mod+Shift+q exec xkill
+bindsym $mod+q kill
 bindsym $mod+F4 kill
 bindsym Mod1+F4 kill
 
@@ -31,7 +32,7 @@ bindsym $mod+Shift+space exec --no-startup-id "rofi -modi calc -show calc -width
 bindsym $mod+i exec --no-startup-id "networkmanager_dmenu"
 
 # change focus
-#force_focus_wrapping yes
+focus_wrapping yes
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -62,7 +63,6 @@ bindsym $mod+Shift+f fullscreen toggle
 # split orientation
 bindsym $mod+bar split h; exec notify-send 'i3: tile horizontally'
 bindsym $mod+minus splitv; exec notify-send 'i3: tile vertically'
-#notused bindsym $mod+q split toggle exec notify-send 'i3: split'
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking; exec notify-send 'i3: stacking layout'
