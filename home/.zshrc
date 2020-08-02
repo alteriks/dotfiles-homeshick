@@ -227,6 +227,6 @@ setopt no_share_history
 alias fzfp=fzf --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500'
 
 # ZSH VIM MODE
-[ -f ~/.config/zsh-vim-mode/zsh-vim-mode.plugin.zsh ] && source ~/git/zsh-vim-mode/zsh-vim-mode.plugin.zsh; export KEYTIMEOUT=4
+[ -f ~/.config/zsh-vim-mode/zsh-vim-mode.plugin.zsh ] && source ~/.config/zsh-vim-mode/zsh-vim-mode.plugin.zsh; export KEYTIMEOUT=4
 
 source $HOME/.config/broot/launcher/bash/br
