@@ -92,3 +92,6 @@
 #[submodule "home/.config/nvim/plug/delimitMate"]
 #	path = home/.config/nvim/plug/delimitMate
 #	url = https://github.com/Raimondi/delimitMate
+[submodule "home/.config/zsh-vim-mode"]
+	path = home/.config/zsh-vim-mode
+	url = https://github.com/softmoth/zsh-vim-mode
