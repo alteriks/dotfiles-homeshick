@@ -8,13 +8,6 @@ name = "awesome"
 #bat_charging = " |^| "
 #bat_discharging = " |v| "
 
-[[block]]
-block = "backlight"
-device = "intel_backlight"
-[[block]]
-block = "battery"
-interval = 10
-format = "{percentage}% {time} {power}W"
 
 [[block]]
 block = "disk_space"

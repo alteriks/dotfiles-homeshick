@@ -22,7 +22,7 @@ nnoremap <SPACE> <Nop>
 call plug#begin('~/.config/nvim/plug/')
 
 " Loo {{{
-Plug 'iCyMind/NeoSolarized'
+Plug 'overcache/NeoSolarized'
 "autocmd Filetype * if &ft!="calendar"| Plug 'vim-airline/vim-airline' | endif
 Plug 'vim-airline/vim-airline' "OR https://github.com/itchyny/lightline.vim + https://github.com/bagrat/vim-buffet
 Plug 'vim-airline/vim-airline-themes'
@@ -169,12 +169,14 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"'iCyMind/NeoSolarized'
-"https://github.com/icymind/NeoSolarized#tmux
-colorscheme NeoSolarized
-set background=dark
+""'overcache/NeoSolarized'
+""https://github.com/icymind/NeoSolarized#tmux
+
+let g:neosolarized_vertSplitBgTrans = 1
 let g:neosolarized_contrast = "high"
 let g:neosolarized_visibility = "high"
+set background=dark
+colorscheme NeoSolarized
 set termguicolors
 
 "'vim-airline/vim-airline'

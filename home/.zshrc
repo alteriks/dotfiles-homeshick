@@ -221,13 +221,20 @@ fi
 #  source /usr/share/fzf/completion.zsh
 #fi
 
-# FZF managed by vimplug
-setopt no_share_history
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias fzfp=fzf --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500'
-
 # ZSH VIM MODE
-[ -f ~/.config/zsh-vim-mode/zsh-vim-mode.plugin.zsh ] && source ~/.config/zsh-vim-mode/zsh-vim-mode.plugin.zsh; export KEYTIMEOUT=4
+if [[ -e ~/.config/zsh-vim-mode/zsh-vim-mode.plugin.zsh ]]; then
+  source ~/.config/zsh-vim-mode/zsh-vim-mode.plugin.zsh; 
+  export KEYTIMEOUT=4
+fi
+
+# FZF managed by vimplug
+# Has to be loaded after zsh-vim-mode, so ctrl+r uses fzf magic
+setopt no_share_history
+if [[ -e ~/.fzf.zsh ]]; then
+  source ~/.fzf.zsh
+  alias fzfp=fzf --preview '(bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -500'
+fi
+
 
 # broot --install
 source $HOME/.config/broot/launcher/bash/br
