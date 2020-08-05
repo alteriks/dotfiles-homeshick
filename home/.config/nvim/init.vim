@@ -641,3 +641,7 @@ let g:which_key_map['q'] = 'Close buffer and activate next'
 "  autocmd FileType calendar nunmap <buffer> q
 "  autocmd FileType calendar nmap q :q!<CR>
 "augroup END
+"
+
+"Disable suspend - ctrl+z
+nnoremap <c-z> <nop>
