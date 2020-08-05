@@ -8,30 +8,43 @@ pip install \
     fwupd \
     powerstat \
     s-tui \
+    throttled \
     tlp \
     tlp-rdw \
+    xorg-xbacklight \
     undervolt
+
+echo thinkpad-acpi > /etc/modules-load.d/thinkpad.conf
 
 pacman --noconfirm -Syu \
     yubikey-manager-qt \
     yubioath-desktop
 
+pacman --noconfirm -Syu \
+    powerline-fonts \ 
+    ttf-font-awesome
+
 # Enable for ykman/ykman-gui (yubikey-manager-qt)
 systemctl enable --now pcscd
+
+pacman --noconfirm -Syu \
+    pasystray \
+    pulsemixer \
 
 pacman --noconfirm -Syu \
     arandr \
     i3blocks \
     i3lock-color \
     keepassxc \
+    lxqt-archiver \
     nemo \
     picom \
     redshift \
     rofi \
     termite \
     xclip \
-    xorg-xbacklight \
     xss-lock \
+    veracrypt \
     zathura-pdf-mupdf 
 pacman --noconfirm -Syu \
     acpi \
@@ -62,6 +75,7 @@ pacman --noconfirm -Syu \
     unzip \
     usleep \
     wget \
+    xorg-xev \
     zip 
 
 pacman --noconfirm -Syu \
@@ -121,7 +135,7 @@ git config --global icdiff.options '--highlight --line-numbers'
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-yay -Syu --afterclean --answeredit None spotify  autorandr  networkmanager-dmenu-git pacolog icdiff vivaldi-snapshot rofi-calc todotxt-machine-git python-git-remote-dropbox-git
+yay -Syu --afterclean --answeredit None spotify gcal autorandr  networkmanager-dmenu-git pacolog icdiff vivaldi-snapshot rofi-calc todotxt-machine-git python-git-remote-dropbox-git
 yay -Syu  #rapid-photo-downloader-bzr 
 # vivaldi
 # https://gist.github.com/BlackIkeEagle/5c00face3c7a0f98847a

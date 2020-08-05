@@ -229,4 +229,5 @@ alias fzfp=fzf --preview '(bat --style=numbers --color=always {} || cat {}) 2> /
 # ZSH VIM MODE
 [ -f ~/.config/zsh-vim-mode/zsh-vim-mode.plugin.zsh ] && source ~/.config/zsh-vim-mode/zsh-vim-mode.plugin.zsh; export KEYTIMEOUT=4
 
+# broot --install
 source $HOME/.config/broot/launcher/bash/br
