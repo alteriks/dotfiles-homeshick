@@ -70,6 +70,8 @@ Plug 'dstein64/vim-startuptime'
 "vim --startuptime vim.log -c 'quit'; cat vim.log
 "https://github.com/junegunn/vim-plug#on-demand-loading-of-plugins
 
+"Adds option to compare (diff) when swap file is found
+Plug 'chrisbra/Recover.vim'
 
 " Search {{{
 Plug 'nelstrom/vim-visual-star-search'
