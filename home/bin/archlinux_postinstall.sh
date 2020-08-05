@@ -140,3 +140,11 @@ su - ansible -c "ssh-keygen -t ed25519"
 
 yay -Syu systemd-numlockontty
 systemctl enable numLockOnTty
+
+
+# After MSI BIOS FW update UEFI entry has to be recreated
+efibootmgr --create --disk /dev/nvme0n1 --part 2 --loader /EFI/manjaro/grubx64.efi --label Manjaro --verbose
+Timeout: 1 seconds
+BootOrder: 0001,0000
+Boot0000* Windows Boot Manager  HD(2,GPT,cf37747e-6b3c-4057-8551-7b809d321037,0x109000,0x31800)/File(\EFI\MICROSOFT\BOOT\BOOTMGFW.EFI)WINDOWS.........x...B.C.D.O.B.J.E.C.T.=.{.9.d.e.a.8.6.2.c.-.5.c.d.d.-.4.e.7.0.-.a.c.c.1.-.f.3.2.b.3.4.4.d.4.7.9.5.}..._................
+Boot0001* Manjaro       HD(2,GPT,cf37747e-6b3c-4057-8551-7b809d321037,0x109000,0x31800)/File(\EFI\manjaro\grubx64.efi)

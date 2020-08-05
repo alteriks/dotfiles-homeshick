@@ -226,17 +226,16 @@ exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh $terminal 
 #exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh $terminal --name scratchpad-todo todotxt-machine --config ~/.config/todo/todotxt-machinerc 
 
 # Launch keepassxc and name window scratchpad-keepassxc
-exec --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh keepassxc -name scratchpad-keepassxc
-# Move to scratchpad only main KeePassX windows (window_role)
-for_window [instance="scratchpad-keepassxc" title="KeePassXC$" window_type="normal"] move scratchpad, scratchpad show, move position 1400px 600px, resize set 350 800, move to scratchpad,  border 3pixel
+exec_always --no-startup-id ~/.config/i3/bin/launch_and_rename_windowname.sh keepassxc -name scratchpad-keepassxc
 bindsym Mod1+ctrl+k [instance="scratchpad-keepassxc"] scratchpad show
+for_window [instance="scratchpad-keepassxc" title="KeePassXC$" window_type="normal"] move scratchpad, scratchpad show, move position 1400px 600px, resize set 650 800, move to scratchpad
 #bindsym Mod4+k [instance="scratchpad-keepassxc"] scratchpad show, move position mouse
-for_window [class=".*"] move position center
+#for_window [class=".*"] move position center
 for_window [title="Open database"] sticky enable, border normal
 for_window [window_type="dialog"] sticky enable, border normal, focus
 for_window [title="Yubico Authenticator"] sticky enable, border normal, focus, floating enable
 for_window [title="YubiKey Manager"] sticky enable, border normal, focus, floating enable
-for_window [class="KeePassXC"] sticky enable, border normal, focus, floating enable
+#for_window [class="KeePassXC"] sticky enable, border normal, focus, floating enable
 for_window [title="Piper"] sticky enable, border normal, focus, floating enable
 for_window [title="Solaar"] sticky enable, border normal, focus, floating enable
 for_window [title="Bluetooth Devices"] sticky enable, border normal, focus, floating enable
@@ -327,8 +326,9 @@ bindsym $mod+f [urgent=latest] focus
 
 # Start Applications
 bindsym Print exec --no-startup-id flameshot gui -p ~/Pictures/
+bindsym $mod+p exec --no-startup-id flameshot gui -p ~/Pictures/
 bindsym $mod+F3 exec pcmanfm
-bindsym $mod+p exec --no-startup-id pkill picom; exec notify-send 'picom is DEAD'
+#bindsym $mod+p exec --no-startup-id pkill picom; exec notify-send 'picom is DEAD'
 bindsym $mod+Ctrl+p exec --no-startup-id picom ; exec notify-send 'picom is ALIVE'
 #nvidia driver; causes HIGH CPU on nouveau
 #bindsym $mod+Ctrl+p exec --no-startup-id picom --config /dev/null --backend glx --xrender-sync-fence --experimental-backends; exec notify-send 'picom is ALIVE'
