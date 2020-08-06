@@ -39,4 +39,4 @@ block = "sound"
 block = "time"
 interval = 60
 format = "%a %d/%m %R"
-on_click = "/home/alteriks/.config/i3blocks/blocklets/rofi-calendar2"
+on_click = "/home/alteriks/.config/i3/bin/i3status-rust_rofi-calendar"

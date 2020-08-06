@@ -57,7 +57,8 @@ Plug 'wesQ3/vim-windowswap' "TODO: Prepare Docs Startify/vim-which-key
 
 Plug 'SirVer/ultisnips' "TODO: Prepare Docs Startify/vim-which-key
 
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive' "TODO: Prepare Docs Startify/vim-which-key                                git support
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
