@@ -690,3 +690,7 @@ augroup twf_ftdetect
     \ | startinsert
     \ | endif
 augroup END
+
+"ignorecase+smartcase should be used together
+set ignorecase
+set smartcase
