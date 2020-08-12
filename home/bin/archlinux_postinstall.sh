@@ -35,6 +35,7 @@ pacman --noconfirm -Syu \
     arandr \
     i3blocks \
     i3lock-color \
+    i3status-rust \
     keepassxc \
     lxqt-archiver \
     nemo \
@@ -88,7 +89,7 @@ pacman -Syu bridge-utils extra/networkmanager-openvpn easy-rsa dnsmasq wireshark
 pacman -Syu qemu virt-manager virt-viewer vagrant chrony
 pacman -Syu libreoffice-still nomacs
 pacman -Syu tigervnc remmina rdesktop freerdp libvncserver
-pacman -Syu chromium opera 
+pacman -Syu chromium opera firefox
 
 pacman -Syu vlc digikam darktable kodi electrum 
 # for iPhone USB tethering
