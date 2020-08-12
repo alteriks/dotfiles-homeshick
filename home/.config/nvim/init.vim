@@ -650,3 +650,43 @@ let g:which_key_map['q'] = 'Close buffer and activate next'
 
 "Disable suspend - ctrl+z
 nnoremap <c-z> <nop>
+
+"""""""""""""""""TWF
+function! TwfExit(path)
+  function! TwfExitClosure(job_id, data, event) closure
+    bd!
+    try
+      let out = filereadable(a:path) ? readfile(a:path) : []
+    finally
+      silent! call delete(a:path)
+    endtry
+    if !empty(out)
+      execute 'edit! ' . out[0]
+    endif
+  endfunction
+  return funcref('TwfExitClosure')
+endfunction
+
+function! Twf()
+  let temp = tempname()
+  call termopen('/home/alteriks/go/bin/twf ' . @% . ' > ' . temp, { 'on_exit': TwfExit(temp) })
+  startinsert
+endfunction
+
+nnoremap <silent> <Space>t :call Twf()<CR>
+function! s:isdir(dir)
+  return !empty(a:dir) && (isdirectory(a:dir) ||
+    \ (!empty($SYSTEMDRIVE) && isdirectory('/'.tolower($SYSTEMDRIVE[0]).a:dir)))
+endfunction
+
+augroup twf_ftdetect
+  autocmd!
+  " nuke netrw brain damage
+  autocmd VimEnter * silent! au! FileExplorer *
+  autocmd BufEnter * if <SID>isdir(expand('%'))
+    \ | redraw | echo ''
+    \ | let temp = tempname()
+    \ | call termopen('/home/alteriks/go/bin/twf ' . @% . ' > ' . temp, { 'on_exit': TwfExit(temp) })
+    \ | startinsert
+    \ | endif
+augroup END
