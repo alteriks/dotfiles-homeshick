@@ -279,10 +279,7 @@ workspace_layout default
 #workspace_layout default|stacking|tabbed
 
 # Screen lock
-#bindsym Mod4+l exec ~/.config/i3/i3lock-color-git.sh
-#TODO:
-#bindsym Mod4+l exec xset s activate
-#bindsym $mod+l focus right
+bindsym Ctrl+Mod1+l exec xset s activate
 
 # Media keys
 #bindsym XF86AudioPlay exec $i3config/musickeys.sh toggle
