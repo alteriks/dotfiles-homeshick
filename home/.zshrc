@@ -32,6 +32,7 @@ alias vimdiff='nvim -d'
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.config/oh-my-zsh
 
+ZSH_CUSTOM=$HOME/.config/oh-my-zsh_custom
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -244,3 +245,6 @@ fi
 
 # broot --install
 source $HOME/.config/broot/launcher/bash/br
+
+# smartcase tab completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'

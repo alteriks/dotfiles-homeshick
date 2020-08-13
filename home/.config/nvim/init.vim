@@ -59,6 +59,7 @@ Plug 'SirVer/ultisnips' "TODO: Prepare Docs Startify/vim-which-key
 
 " Plug 'tpope/vim-commentary'
 Plug 'tomtom/tcomment_vim'
+let g:tcomment#blank_lines=0
 Plug 'tpope/vim-fugitive' "TODO: Prepare Docs Startify/vim-which-key                                git support
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
@@ -78,7 +79,7 @@ Plug 'chrisbra/Recover.vim'
 Plug 'nelstrom/vim-visual-star-search'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-peekaboo' "ctrl+r 
 
 " }}}
 "Plug 'Shougo/denite.nvim'
@@ -402,47 +403,12 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 
-
-
-"let $FZF_DEFAULT_OPTS='    --margin=1,4'
-let g:fzf_layout = { 'window': 'call OpenPaddedFloating()' }
-
-let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
-function! OpenFloatingWin()
-  let height = &lines - 3
-  let width = float2nr(&columns - (&columns * 2 / 10))
-  let col = float2nr((&columns - width) / 2)
-
-  "Set the position, size, etc. of the floating window.
-  "The size configuration here may not be so flexible, and there's room for further improvement.
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': height * 0.3,
-        \ 'col': col + 30,
-        \ 'width': width * 2 / 3,
-        \ 'height': height / 2
-        \ }
-
-  let buf = nvim_create_buf(v:false, v:true)
-  let win = nvim_open_win(buf, v:true, opts)
-
-  "Set Floating Window Highlighting
-  call setwinvar(win, '&winhl', 'Normal:Pmenu')
-
-  setlocal
-        \ buftype=nofile
-        \ nobuflisted
-        \ bufhidden=hide
-        \ nonumber
-        \ norelativenumber
-        \ signcolumn=no
-endfunction
 let g:rainbow_active = 1
 
 let g:peekaboo_window="call CreateCenteredFloatingWindow()"
 
-let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
-" floating fzf window with borders
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'border': 'sharp' } }
+
 function! CreateCenteredFloatingWindow()
     let width = min([&columns - 4, max([80, &columns - 20])])
     let height = min([&lines - 4, max([20, &lines - 10])])
@@ -691,6 +657,6 @@ augroup twf_ftdetect
     \ | endif
 augroup END
 
-"ignorecase+smartcase should be used together
-set ignorecase
-set smartcase
+" searches are case insensitive...
+set ignorecase  " searches are case insensitive...
+set smartcase   " ... unless they contain at least one capital letter.

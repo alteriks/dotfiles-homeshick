@@ -95,3 +95,6 @@
 [submodule "home/.config/zsh-vim-mode"]
 	path = home/.config/zsh-vim-mode
 	url = https://github.com/softmoth/zsh-vim-mode
+[submodule "home/.config/oh-my-zsh"]
+	path = home/.config/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh
