@@ -287,8 +287,8 @@ bindsym Ctrl+Mod1+l exec xset s activate
 #bindsym XF86AudioNext exec $i3config/musickeys.sh next
 #bindsym XF86AudioPrev exec $i3config/musickeys.sh prev
 
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-bindsym XF86MonBrightnessUp   exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp   exec xbacklight -inc 5
 
 # Normal windows should use small borders, floating should have tab title
 default_border pixel 3
